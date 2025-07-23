@@ -187,6 +187,55 @@ Transmisión serial:
 - Espera disponibilidad UART (`uart_ready`)
 - Vuelve a S2_EsperarSensoresListos al completar
 
+## Diagrama funcional:
+```mermaid
+graph TD
+    %% Definición de nodos y subgrafos
+    subgraph Sensores
+        HCSR04_T[HC-SR04 - Tono] --- E1(Echo1)
+        E1 --- P1(Trigger1)
+        HCSR04_V[HC-SR04 - Volumen] --- E2(Echo2)
+        E2 --- P2(Trigger2)
+    end
+
+    subgraph Microcontrolador["Microcontrolador (ESP32 - Procesamiento)"]
+        P1 --> PM[Programa Principal]
+        P2 --> PM
+        E1 -.-> D_T[Distancia Tono]
+        E2 -.-> D_V[Distancia Volumen]
+
+        D_T --> |distance_cm| MN[midi_note_sender]
+        D_V --> |distance_cm| MV[midi_volume_sender]
+
+        MN --> |midi_byte_note| MUX[Mux MIDI]
+        MV --> |midi_byte_vol| MUX
+
+        MN -.-> |midi_send_note| MUX
+        MV -.-> |midi_send_vol| MUX
+
+        MUX --> |midi_byte_mux| UT[uart_tx]
+        MUX -.-> |midi_send_mux| UT
+
+        UT --> |uart_ready| MN
+        UT --> |uart_ready| MV
+    end
+
+    %% Conexiones externas
+    UT --> TX[TX MIDI Serial]
+
+    subgraph Salida_MIDI["Salida MIDI"]
+        TX --> MIDI_OUT[Dispositivo MIDI Externo]
+    end
+
+    %% Estilos opcionales
+    style Sensores fill:#f9f9f9,stroke:#333
+    style Microcontrolador fill:#e6f3ff,stroke:#333
+    style Salida_MIDI fill:#e8f5e9,stroke:#333
+```    
+Este diagrama muestra el flujo de datos de un sistema MIDI controlado por sensores ultrasónicos. Los sensores HC-SR04 miden distancias que se convierten en valores de tono y volumen MIDI mediante módulos especializados (midi_note_sender y midi_volume_sender). Un multiplexor prioriza y combina estas señales MIDI antes de enviarlas por UART a un dispositivo externo. El ESP32 coordina todo el proceso, desde la lectura de sensores hasta la transmisión serial. Finalmente, los datos MIDI se envían a un dispositivo musical externo para su interpretación.
+
+
+
 ## Diagrama RTL del SoC y su mòdulo:
 ## Simulaciones:
 Se simularos los modulos mencionados anteriormente:
