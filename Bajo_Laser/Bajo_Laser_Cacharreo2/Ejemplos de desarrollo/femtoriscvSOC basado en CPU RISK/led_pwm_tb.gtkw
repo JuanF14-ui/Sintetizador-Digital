@@ -1,0 +1,25 @@
+[*]
+[*] GTKWave Analyzer v3.3.117 (w)1999-2023 BSI
+[*] Sat Jul 19 22:18:09 2025
+[*]
+[dumpfile] "/home/juanf/Descargas/femtoriscvSOC basado en CPU RISK/sim/led_pwm_tb.vcd"
+[dumpfile_mtime] "Sat Jul 19 22:16:49 2025"
+[dumpfile_size] 8683027
+[savefile] "/home/juanf/Descargas/femtoriscvSOC basado en CPU RISK/led_pwm_tb.gtkw"
+[timestart] 3999141
+[size] 1000 600
+[pos] -1 -1
+*-9.215675 3999673 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] led_pwm_tb.
+[sst_width] 217
+[signals_width] 120
+[sst_expanded] 1
+[sst_vpaned_height] 151
+@28
+led_pwm_tb.uut.clk
+@24
+led_pwm_tb.uut.duty[16:0]
+led_pwm_tb.uut.freq[16:0]
+led_pwm_tb.uut.pwm
+[pattern_trace] 1
+[pattern_trace] 0

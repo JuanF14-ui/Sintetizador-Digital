@@ -1,0 +1,2267 @@
+
+ /----------------------------------------------------------------------------\
+ |                                                                            |
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |                                                                            |
+ |  Copyright (C) 2012 - 2020  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |                                                                            |
+ |  Permission to use, copy, modify, and/or distribute this software for any  |
+ |  purpose with or without fee is hereby granted, provided that the above    |
+ |  copyright notice and this permission notice appear in all copies.         |
+ |                                                                            |
+ |  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES  |
+ |  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF          |
+ |  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR   |
+ |  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    |
+ |  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN     |
+ |  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF   |
+ |  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.            |
+ |                                                                            |
+ \----------------------------------------------------------------------------/
+
+ Yosys 0.33+6 (git sha1 41b34a193, x86_64-conda-linux-gnu-cc 11.2.0 -fvisibility-inlines-hidden -fmessage-length=0 -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -fdebug-prefix-map=/root/conda-eda/conda-eda/workdir/conda-env/conda-bld/yosys_1694128612374/work=/usr/local/src/conda/yosys-0.33_7_g41b34a193 -fdebug-prefix-map=/home/juanf/miniconda3/envs/digital=/usr/local/src/conda-prefix -fPIC -Os -fno-merge-constants)
+
+
+-- Parsing `SOC.v' using frontend ` -vlog2k' --
+
+1. Executing Verilog-2005 frontend: SOC.v
+Parsing Verilog input from `SOC.v' to AST representation.
+Storing AST representation for module `$abstract\SOC'.
+Successfully finished Verilog frontend.
+
+-- Parsing `cores/cpu/femtorv32_quark.v' using frontend ` -vlog2k' --
+
+2. Executing Verilog-2005 frontend: cores/cpu/femtorv32_quark.v
+Parsing Verilog input from `cores/cpu/femtorv32_quark.v' to AST representation.
+Storing AST representation for module `$abstract\FemtoRV32'.
+Successfully finished Verilog frontend.
+
+-- Parsing `chip_select.v' using frontend ` -vlog2k' --
+
+3. Executing Verilog-2005 frontend: chip_select.v
+Parsing Verilog input from `chip_select.v' to AST representation.
+Storing AST representation for module `$abstract\chip_select'.
+Successfully finished Verilog frontend.
+
+-- Parsing `cores/memory/Memory.v' using frontend ` -vlog2k' --
+
+4. Executing Verilog-2005 frontend: cores/memory/Memory.v
+Parsing Verilog input from `cores/memory/Memory.v' to AST representation.
+Storing AST representation for module `$abstract\Memory'.
+Successfully finished Verilog frontend.
+
+-- Parsing `cores/uart/perip_uart.v' using frontend ` -vlog2k' --
+
+5. Executing Verilog-2005 frontend: cores/uart/perip_uart.v
+Parsing Verilog input from `cores/uart/perip_uart.v' to AST representation.
+Storing AST representation for module `$abstract\peripheral_uart'.
+Storing AST representation for module `$abstract\peripheral_uart_addr_decoder'.
+Storing AST representation for module `$abstract\peripheral_uart_register_control'.
+Successfully finished Verilog frontend.
+
+-- Parsing `cores/uart/uart.v' using frontend ` -vlog2k' --
+
+6. Executing Verilog-2005 frontend: cores/uart/uart.v
+Parsing Verilog input from `cores/uart/uart.v' to AST representation.
+Storing AST representation for module `$abstract\uart'.
+Storing AST representation for module `$abstract\uart_rx'.
+Storing AST representation for module `$abstract\uart_tx'.
+Successfully finished Verilog frontend.
+
+-- Parsing `cores/mult/perip_mult.v' using frontend ` -vlog2k' --
+
+7. Executing Verilog-2005 frontend: cores/mult/perip_mult.v
+Parsing Verilog input from `cores/mult/perip_mult.v' to AST representation.
+Storing AST representation for module `$abstract\peripheral_mult'.
+Successfully finished Verilog frontend.
+
+-- Parsing `cores/mult/mult.v' using frontend ` -vlog2k' --
+
+8. Executing Verilog-2005 frontend: cores/mult/mult.v
+Parsing Verilog input from `cores/mult/mult.v' to AST representation.
+Storing AST representation for module `$abstract\mult'.
+Successfully finished Verilog frontend.
+
+-- Parsing `cores/dpRAM/dpram.v' using frontend ` -vlog2k' --
+
+9. Executing Verilog-2005 frontend: cores/dpRAM/dpram.v
+Parsing Verilog input from `cores/dpRAM/dpram.v' to AST representation.
+Storing AST representation for module `$abstract\dp_ram'.
+Successfully finished Verilog frontend.
+
+-- Parsing `cores/dpRAM/perip_dpram.v' using frontend ` -vlog2k' --
+
+10. Executing Verilog-2005 frontend: cores/dpRAM/perip_dpram.v
+Parsing Verilog input from `cores/dpRAM/perip_dpram.v' to AST representation.
+Storing AST representation for module `$abstract\peripheral_dpram'.
+Successfully finished Verilog frontend.
+
+-- Running command `synth_ice40 -top SOC -json build/SOC.json' --
+
+11. Executing SYNTH_ICE40 pass.
+
+11.1. Executing Verilog-2005 frontend: /home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v
+Parsing Verilog input from `/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v' to AST representation.
+Generating RTLIL representation for module `\SB_IO'.
+Generating RTLIL representation for module `\SB_GB_IO'.
+Generating RTLIL representation for module `\SB_GB'.
+Generating RTLIL representation for module `\SB_LUT4'.
+Generating RTLIL representation for module `\SB_CARRY'.
+Generating RTLIL representation for module `\SB_DFF'.
+Generating RTLIL representation for module `\SB_DFFE'.
+Generating RTLIL representation for module `\SB_DFFSR'.
+Generating RTLIL representation for module `\SB_DFFR'.
+Generating RTLIL representation for module `\SB_DFFSS'.
+Generating RTLIL representation for module `\SB_DFFS'.
+Generating RTLIL representation for module `\SB_DFFESR'.
+Generating RTLIL representation for module `\SB_DFFER'.
+Generating RTLIL representation for module `\SB_DFFESS'.
+Generating RTLIL representation for module `\SB_DFFES'.
+Generating RTLIL representation for module `\SB_DFFN'.
+Generating RTLIL representation for module `\SB_DFFNE'.
+Generating RTLIL representation for module `\SB_DFFNSR'.
+Generating RTLIL representation for module `\SB_DFFNR'.
+Generating RTLIL representation for module `\SB_DFFNSS'.
+Generating RTLIL representation for module `\SB_DFFNS'.
+Generating RTLIL representation for module `\SB_DFFNESR'.
+Generating RTLIL representation for module `\SB_DFFNER'.
+Generating RTLIL representation for module `\SB_DFFNESS'.
+Generating RTLIL representation for module `\SB_DFFNES'.
+Generating RTLIL representation for module `\SB_RAM40_4K'.
+Generating RTLIL representation for module `\SB_RAM40_4KNR'.
+Generating RTLIL representation for module `\SB_RAM40_4KNW'.
+Generating RTLIL representation for module `\SB_RAM40_4KNRNW'.
+Generating RTLIL representation for module `\ICESTORM_LC'.
+Generating RTLIL representation for module `\SB_PLL40_CORE'.
+Generating RTLIL representation for module `\SB_PLL40_PAD'.
+Generating RTLIL representation for module `\SB_PLL40_2_PAD'.
+Generating RTLIL representation for module `\SB_PLL40_2F_CORE'.
+Generating RTLIL representation for module `\SB_PLL40_2F_PAD'.
+Generating RTLIL representation for module `\SB_WARMBOOT'.
+Generating RTLIL representation for module `\SB_SPRAM256KA'.
+Generating RTLIL representation for module `\SB_HFOSC'.
+Generating RTLIL representation for module `\SB_LFOSC'.
+Generating RTLIL representation for module `\SB_RGBA_DRV'.
+Generating RTLIL representation for module `\SB_LED_DRV_CUR'.
+Generating RTLIL representation for module `\SB_RGB_DRV'.
+Generating RTLIL representation for module `\SB_I2C'.
+Generating RTLIL representation for module `\SB_SPI'.
+Generating RTLIL representation for module `\SB_LEDDA_IP'.
+Generating RTLIL representation for module `\SB_FILTER_50NS'.
+Generating RTLIL representation for module `\SB_IO_I3C'.
+Generating RTLIL representation for module `\SB_IO_OD'.
+Generating RTLIL representation for module `\SB_MAC16'.
+Generating RTLIL representation for module `\ICESTORM_RAM'.
+Successfully finished Verilog frontend.
+
+11.2. Executing HIERARCHY pass (managing design hierarchy).
+
+11.3. Executing AST frontend in derive mode using pre-parsed AST for module `\SOC'.
+Generating RTLIL representation for module `\SOC'.
+
+11.3.1. Analyzing design hierarchy..
+Top module:  \SOC
+
+11.3.2. Executing AST frontend in derive mode using pre-parsed AST for module `\peripheral_mult'.
+Generating RTLIL representation for module `\peripheral_mult'.
+Parameter \clk_freq = 25000000
+Parameter \baud = 57600
+
+11.3.3. Executing AST frontend in derive mode using pre-parsed AST for module `\peripheral_uart'.
+Parameter \clk_freq = 25000000
+Parameter \baud = 57600
+Generating RTLIL representation for module `$paramod$e358107493866f19ba52d8dda1c67d080e76663e\peripheral_uart'.
+
+11.3.4. Executing AST frontend in derive mode using pre-parsed AST for module `\Memory'.
+Generating RTLIL representation for module `\Memory'.
+
+11.3.5. Executing AST frontend in derive mode using pre-parsed AST for module `\chip_select'.
+Generating RTLIL representation for module `\chip_select'.
+
+11.3.6. Executing AST frontend in derive mode using pre-parsed AST for module `\FemtoRV32'.
+Generating RTLIL representation for module `\FemtoRV32'.
+
+11.3.7. Analyzing design hierarchy..
+Top module:  \SOC
+Used module:     \peripheral_mult
+Used module:     $paramod$e358107493866f19ba52d8dda1c67d080e76663e\peripheral_uart
+Used module:     \Memory
+Used module:     \chip_select
+Used module:     \FemtoRV32
+
+11.3.8. Executing AST frontend in derive mode using pre-parsed AST for module `\mult'.
+Generating RTLIL representation for module `\mult'.
+Parameter \freq_hz = 25000000
+Parameter \baud = 57600
+
+11.3.9. Executing AST frontend in derive mode using pre-parsed AST for module `\uart'.
+Parameter \freq_hz = 25000000
+Parameter \baud = 57600
+Generating RTLIL representation for module `$paramod$1c9b49bacefaeab44db5983aee61d9795015608a\uart'.
+
+11.3.10. Executing AST frontend in derive mode using pre-parsed AST for module `\peripheral_uart_register_control'.
+Generating RTLIL representation for module `\peripheral_uart_register_control'.
+
+11.3.11. Executing AST frontend in derive mode using pre-parsed AST for module `\peripheral_uart_addr_decoder'.
+Generating RTLIL representation for module `\peripheral_uart_addr_decoder'.
+
+11.3.12. Analyzing design hierarchy..
+Top module:  \SOC
+Used module:     \peripheral_mult
+Used module:         \mult
+Used module:     $paramod$e358107493866f19ba52d8dda1c67d080e76663e\peripheral_uart
+Used module:         $paramod$1c9b49bacefaeab44db5983aee61d9795015608a\uart
+Used module:         \peripheral_uart_register_control
+Used module:         \peripheral_uart_addr_decoder
+Used module:     \Memory
+Used module:     \chip_select
+Used module:     \FemtoRV32
+
+11.3.13. Executing AST frontend in derive mode using pre-parsed AST for module `\uart_tx'.
+Generating RTLIL representation for module `\uart_tx'.
+
+11.3.14. Executing AST frontend in derive mode using pre-parsed AST for module `\uart_rx'.
+Generating RTLIL representation for module `\uart_rx'.
+
+11.3.15. Analyzing design hierarchy..
+Top module:  \SOC
+Used module:     \peripheral_mult
+Used module:         \mult
+Used module:     $paramod$e358107493866f19ba52d8dda1c67d080e76663e\peripheral_uart
+Used module:         $paramod$1c9b49bacefaeab44db5983aee61d9795015608a\uart
+Used module:             \uart_tx
+Used module:             \uart_rx
+Used module:         \peripheral_uart_register_control
+Used module:         \peripheral_uart_addr_decoder
+Used module:     \Memory
+Used module:     \chip_select
+Used module:     \FemtoRV32
+
+11.3.16. Analyzing design hierarchy..
+Top module:  \SOC
+Used module:     \peripheral_mult
+Used module:         \mult
+Used module:     $paramod$e358107493866f19ba52d8dda1c67d080e76663e\peripheral_uart
+Used module:         $paramod$1c9b49bacefaeab44db5983aee61d9795015608a\uart
+Used module:             \uart_tx
+Used module:             \uart_rx
+Used module:         \peripheral_uart_register_control
+Used module:         \peripheral_uart_addr_decoder
+Used module:     \Memory
+Used module:     \chip_select
+Used module:     \FemtoRV32
+Removing unused module `$abstract\peripheral_dpram'.
+Removing unused module `$abstract\dp_ram'.
+Removing unused module `$abstract\mult'.
+Removing unused module `$abstract\peripheral_mult'.
+Removing unused module `$abstract\uart_tx'.
+Removing unused module `$abstract\uart_rx'.
+Removing unused module `$abstract\uart'.
+Removing unused module `$abstract\peripheral_uart_register_control'.
+Removing unused module `$abstract\peripheral_uart_addr_decoder'.
+Removing unused module `$abstract\peripheral_uart'.
+Removing unused module `$abstract\Memory'.
+Removing unused module `$abstract\chip_select'.
+Removing unused module `$abstract\FemtoRV32'.
+Removing unused module `$abstract\SOC'.
+Removed 14 unused modules.
+
+11.4. Executing PROC pass (convert processes to netlists).
+
+11.4.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `Memory.$proc$cores/memory/Memory.v:0$425'.
+Cleaned up 0 empty switches.
+
+11.4.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:1414$241 in module SB_DFFNES.
+Marked 1 switch rules as full_case in process $proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:1353$234 in module SB_DFFNESS.
+Marked 1 switch rules as full_case in process $proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:1273$230 in module SB_DFFNER.
+Marked 1 switch rules as full_case in process $proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:1212$223 in module SB_DFFNESR.
+Marked 1 switch rules as full_case in process $proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:1138$220 in module SB_DFFNS.
+Marked 1 switch rules as full_case in process $proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:1088$217 in module SB_DFFNSS.
+Marked 1 switch rules as full_case in process $proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:1017$214 in module SB_DFFNR.
+Marked 1 switch rules as full_case in process $proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:967$211 in module SB_DFFNSR.
+Marked 1 switch rules as full_case in process $proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:803$203 in module SB_DFFES.
+Marked 1 switch rules as full_case in process $proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:742$196 in module SB_DFFESS.
+Marked 1 switch rules as full_case in process $proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:662$192 in module SB_DFFER.
+Marked 1 switch rules as full_case in process $proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:601$185 in module SB_DFFESR.
+Marked 1 switch rules as full_case in process $proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:527$182 in module SB_DFFS.
+Marked 1 switch rules as full_case in process $proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:477$179 in module SB_DFFSS.
+Marked 1 switch rules as full_case in process $proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:406$176 in module SB_DFFR.
+Marked 1 switch rules as full_case in process $proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:356$173 in module SB_DFFSR.
+Marked 4 switch rules as full_case in process $proc$cores/uart/uart.v:77$598 in module uart_rx.
+Marked 2 switch rules as full_case in process $proc$cores/uart/uart.v:139$591 in module uart_tx.
+Marked 1 switch rules as full_case in process $proc$cores/uart/perip_uart.v:133$588 in module peripheral_uart_addr_decoder.
+Marked 1 switch rules as full_case in process $proc$cores/uart/perip_uart.v:165$587 in module peripheral_uart_register_control.
+Marked 1 switch rules as full_case in process $proc$cores/uart/uart.v:23$580 in module $paramod$1c9b49bacefaeab44db5983aee61d9795015608a\uart.
+Marked 5 switch rules as full_case in process $proc$cores/mult/mult.v:32$570 in module mult.
+Marked 2 switch rules as full_case in process $proc$cores/cpu/femtorv32_quark.v:334$555 in module FemtoRV32.
+Marked 2 switch rules as full_case in process $proc$cores/cpu/femtorv32_quark.v:102$440 in module FemtoRV32.
+Marked 1 switch rules as full_case in process $proc$chip_select.v:47$427 in module chip_select.
+Marked 1 switch rules as full_case in process $proc$chip_select.v:34$426 in module chip_select.
+Marked 4 switch rules as full_case in process $proc$cores/memory/Memory.v:19$398 in module Memory.
+Marked 3 switch rules as full_case in process $proc$cores/mult/perip_mult.v:62$392 in module peripheral_mult.
+Marked 2 switch rules as full_case in process $proc$cores/mult/perip_mult.v:45$387 in module peripheral_mult.
+Marked 2 switch rules as full_case in process $proc$cores/mult/perip_mult.v:29$386 in module peripheral_mult.
+Removed a total of 0 dead cases.
+
+11.4.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 10 redundant assignments.
+Promoted 57 assignments to connections.
+
+11.4.4. Executing PROC_INIT pass (extract init attributes).
+Found init rule in `\SB_DFFNES.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$244'.
+  Set init value: \Q = 1'0
+Found init rule in `\SB_DFFNESS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$240'.
+  Set init value: \Q = 1'0
+Found init rule in `\SB_DFFNER.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$233'.
+  Set init value: \Q = 1'0
+Found init rule in `\SB_DFFNESR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$229'.
+  Set init value: \Q = 1'0
+Found init rule in `\SB_DFFNS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$222'.
+  Set init value: \Q = 1'0
+Found init rule in `\SB_DFFNSS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$219'.
+  Set init value: \Q = 1'0
+Found init rule in `\SB_DFFNR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$216'.
+  Set init value: \Q = 1'0
+Found init rule in `\SB_DFFNSR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$213'.
+  Set init value: \Q = 1'0
+Found init rule in `\SB_DFFNE.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$210'.
+  Set init value: \Q = 1'0
+Found init rule in `\SB_DFFN.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$208'.
+  Set init value: \Q = 1'0
+Found init rule in `\SB_DFFES.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$206'.
+  Set init value: \Q = 1'0
+Found init rule in `\SB_DFFESS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$202'.
+  Set init value: \Q = 1'0
+Found init rule in `\SB_DFFER.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$195'.
+  Set init value: \Q = 1'0
+Found init rule in `\SB_DFFESR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$191'.
+  Set init value: \Q = 1'0
+Found init rule in `\SB_DFFS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$184'.
+  Set init value: \Q = 1'0
+Found init rule in `\SB_DFFSS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$181'.
+  Set init value: \Q = 1'0
+Found init rule in `\SB_DFFR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$178'.
+  Set init value: \Q = 1'0
+Found init rule in `\SB_DFFSR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$175'.
+  Set init value: \Q = 1'0
+Found init rule in `\SB_DFFE.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$172'.
+  Set init value: \Q = 1'0
+Found init rule in `\SB_DFF.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$170'.
+  Set init value: \Q = 1'0
+Found init rule in `\mult.$proc$cores/mult/mult.v:0$578'.
+  Set init value: \result = 0
+  Set init value: \done = 1'0
+
+11.4.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \S in `\SB_DFFNES.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:1414$241'.
+Found async reset \R in `\SB_DFFNER.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:1273$230'.
+Found async reset \S in `\SB_DFFNS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:1138$220'.
+Found async reset \R in `\SB_DFFNR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:1017$214'.
+Found async reset \S in `\SB_DFFES.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:803$203'.
+Found async reset \R in `\SB_DFFER.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:662$192'.
+Found async reset \S in `\SB_DFFS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:527$182'.
+Found async reset \R in `\SB_DFFR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:406$176'.
+Found async reset \reset in `\mult.$proc$cores/mult/mult.v:32$570'.
+
+11.4.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+
+11.4.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\SB_DFFNES.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$244'.
+Creating decoders for process `\SB_DFFNES.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:1414$241'.
+     1/1: $0\Q[0:0]
+Creating decoders for process `\SB_DFFNESS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$240'.
+Creating decoders for process `\SB_DFFNESS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:1353$234'.
+     1/1: $0\Q[0:0]
+Creating decoders for process `\SB_DFFNER.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$233'.
+Creating decoders for process `\SB_DFFNER.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:1273$230'.
+     1/1: $0\Q[0:0]
+Creating decoders for process `\SB_DFFNESR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$229'.
+Creating decoders for process `\SB_DFFNESR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:1212$223'.
+     1/1: $0\Q[0:0]
+Creating decoders for process `\SB_DFFNS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$222'.
+Creating decoders for process `\SB_DFFNS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:1138$220'.
+     1/1: $0\Q[0:0]
+Creating decoders for process `\SB_DFFNSS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$219'.
+Creating decoders for process `\SB_DFFNSS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:1088$217'.
+     1/1: $0\Q[0:0]
+Creating decoders for process `\SB_DFFNR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$216'.
+Creating decoders for process `\SB_DFFNR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:1017$214'.
+     1/1: $0\Q[0:0]
+Creating decoders for process `\SB_DFFNSR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$213'.
+Creating decoders for process `\SB_DFFNSR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:967$211'.
+     1/1: $0\Q[0:0]
+Creating decoders for process `\SB_DFFNE.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$210'.
+Creating decoders for process `\SB_DFFNE.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:922$209'.
+     1/1: $0\Q[0:0]
+Creating decoders for process `\SB_DFFN.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$208'.
+Creating decoders for process `\SB_DFFN.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:882$207'.
+Creating decoders for process `\SB_DFFES.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$206'.
+Creating decoders for process `\SB_DFFES.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:803$203'.
+     1/1: $0\Q[0:0]
+Creating decoders for process `\SB_DFFESS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$202'.
+Creating decoders for process `\SB_DFFESS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:742$196'.
+     1/1: $0\Q[0:0]
+Creating decoders for process `\SB_DFFER.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$195'.
+Creating decoders for process `\SB_DFFER.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:662$192'.
+     1/1: $0\Q[0:0]
+Creating decoders for process `\SB_DFFESR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$191'.
+Creating decoders for process `\SB_DFFESR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:601$185'.
+     1/1: $0\Q[0:0]
+Creating decoders for process `\SB_DFFS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$184'.
+Creating decoders for process `\SB_DFFS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:527$182'.
+     1/1: $0\Q[0:0]
+Creating decoders for process `\SB_DFFSS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$181'.
+Creating decoders for process `\SB_DFFSS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:477$179'.
+     1/1: $0\Q[0:0]
+Creating decoders for process `\SB_DFFR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$178'.
+Creating decoders for process `\SB_DFFR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:406$176'.
+     1/1: $0\Q[0:0]
+Creating decoders for process `\SB_DFFSR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$175'.
+Creating decoders for process `\SB_DFFSR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:356$173'.
+     1/1: $0\Q[0:0]
+Creating decoders for process `\SB_DFFE.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$172'.
+Creating decoders for process `\SB_DFFE.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:311$171'.
+     1/1: $0\Q[0:0]
+Creating decoders for process `\SB_DFF.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$170'.
+Creating decoders for process `\SB_DFF.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:271$169'.
+Creating decoders for process `\uart_rx.$proc$cores/uart/uart.v:77$598'.
+     1/7: $0\rxd_reg[7:0]
+     2/7: $0\rx_bitcount[3:0]
+     3/7: $0\rx_count16[3:0]
+     4/7: $0\rx_busy[0:0]
+     5/7: $0\rx_avail[0:0]
+     6/7: $0\rx_error[0:0]
+     7/7: $0\rx_data[7:0]
+Creating decoders for process `\uart_tx.$proc$cores/uart/uart.v:139$591'.
+     1/5: $0\txd_reg[7:0]
+     2/5: $0\tx_count16[3:0]
+     3/5: $0\tx_bitcount[3:0]
+     4/5: $0\uart_txd[0:0]
+     5/5: $0\tx_busy[0:0]
+Creating decoders for process `\peripheral_uart_addr_decoder.$proc$cores/uart/perip_uart.v:133$588'.
+     1/1: $1\sel[1:0]
+Creating decoders for process `\peripheral_uart_register_control.$proc$cores/uart/perip_uart.v:165$587'.
+     1/1: $0\d_out[31:0]
+Creating decoders for process `\peripheral_uart_register_control.$proc$cores/uart/perip_uart.v:157$584'.
+     1/2: $0\uart_ctrl[7:0]
+     2/2: $0\d_in_uart[7:0]
+Creating decoders for process `$paramod$1c9b49bacefaeab44db5983aee61d9795015608a\uart.$proc$cores/uart/uart.v:30$583'.
+Creating decoders for process `$paramod$1c9b49bacefaeab44db5983aee61d9795015608a\uart.$proc$cores/uart/uart.v:23$580'.
+     1/1: $0\enable16_counter[5:0]
+Creating decoders for process `\mult.$proc$cores/mult/mult.v:0$578'.
+Creating decoders for process `\mult.$proc$cores/mult/mult.v:32$570'.
+     1/15: $5\state[2:0]
+     2/15: $4\state[2:0]
+     3/15: $3\state[2:0]
+     4/15: $2\state[2:0]
+     5/15: $2\result[31:0]
+     6/15: $2\done[0:0]
+     7/15: $2\count[4:0]
+     8/15: $2\B[15:0]
+     9/15: $2\A[15:0]
+    10/15: $1\count[4:0]
+    11/15: $1\state[2:0]
+    12/15: $1\done[0:0]
+    13/15: $1\result[31:0]
+    14/15: $1\B[15:0]
+    15/15: $1\A[15:0]
+Creating decoders for process `\FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:380$568'.
+Creating decoders for process `\FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:334$555'.
+     1/5: $0\state[3:0]
+     2/5: $0\instr[29:0]
+     3/5: $0\PC[23:0]
+     4/5: $0\rs2[31:0]
+     5/5: $0\rs1[31:0]
+Creating decoders for process `\FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:153$480'.
+     1/2: $0\aluShamt[4:0]
+     2/2: $0\aluReg[31:0]
+Creating decoders for process `\FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:102$440'.
+     1/6: $2$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_EN[31:0]$450
+     2/6: $2$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_DATA[31:0]$449
+     3/6: $2$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_ADDR[4:0]$448
+     4/6: $1$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_EN[31:0]$446
+     5/6: $1$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_DATA[31:0]$445
+     6/6: $1$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_ADDR[4:0]$444
+Creating decoders for process `\chip_select.$proc$chip_select.v:47$427'.
+     1/1: $1\mem_rdata[31:0]
+Creating decoders for process `\chip_select.$proc$chip_select.v:34$426'.
+     1/1: $1\cs[6:0]
+Creating decoders for process `\Memory.$proc$cores/memory/Memory.v:19$398'.
+     1/13: $1$memwr$\MEM$cores/memory/Memory.v:26$397_EN[31:0]$423
+     2/13: $1$memwr$\MEM$cores/memory/Memory.v:26$397_DATA[31:0]$422
+     3/13: $1$memwr$\MEM$cores/memory/Memory.v:26$397_ADDR[29:0]$421
+     4/13: $1$memwr$\MEM$cores/memory/Memory.v:25$396_EN[31:0]$420
+     5/13: $1$memwr$\MEM$cores/memory/Memory.v:25$396_DATA[31:0]$419
+     6/13: $1$memwr$\MEM$cores/memory/Memory.v:25$396_ADDR[29:0]$418
+     7/13: $1$memwr$\MEM$cores/memory/Memory.v:24$395_EN[31:0]$417
+     8/13: $1$memwr$\MEM$cores/memory/Memory.v:24$395_DATA[31:0]$416
+     9/13: $1$memwr$\MEM$cores/memory/Memory.v:24$395_ADDR[29:0]$415
+    10/13: $1$memwr$\MEM$cores/memory/Memory.v:23$394_EN[31:0]$414
+    11/13: $1$memwr$\MEM$cores/memory/Memory.v:23$394_DATA[31:0]$413
+    12/13: $1$memwr$\MEM$cores/memory/Memory.v:23$394_ADDR[29:0]$412
+    13/13: $0\mem_rdata[31:0]
+Creating decoders for process `\peripheral_mult.$proc$cores/mult/perip_mult.v:62$392'.
+     1/3: $3\d_out[31:0]
+     2/3: $2\d_out[31:0]
+     3/3: $1\d_out[31:0]
+Creating decoders for process `\peripheral_mult.$proc$cores/mult/perip_mult.v:45$387'.
+     1/6: $2\init[0:0]
+     2/6: $2\B[15:0]
+     3/6: $2\A[15:0]
+     4/6: $1\B[15:0]
+     5/6: $1\A[15:0]
+     6/6: $1\init[0:0]
+Creating decoders for process `\peripheral_mult.$proc$cores/mult/perip_mult.v:29$386'.
+     1/2: $2\s[4:0]
+     2/2: $1\s[4:0]
+
+11.4.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\peripheral_uart_addr_decoder.\sel' from process `\peripheral_uart_addr_decoder.$proc$cores/uart/perip_uart.v:133$588'.
+No latch inferred for signal `\chip_select.\mem_rdata' from process `\chip_select.$proc$chip_select.v:47$427'.
+No latch inferred for signal `\chip_select.\cs' from process `\chip_select.$proc$chip_select.v:34$426'.
+No latch inferred for signal `\peripheral_mult.\s' from process `\peripheral_mult.$proc$cores/mult/perip_mult.v:29$386'.
+
+11.4.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\SB_DFFNES.\Q' using process `\SB_DFFNES.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:1414$241'.
+  created $adff cell `$procdff$1090' with negative edge clock and positive level reset.
+Creating register for signal `\SB_DFFNESS.\Q' using process `\SB_DFFNESS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:1353$234'.
+  created $dff cell `$procdff$1091' with negative edge clock.
+Creating register for signal `\SB_DFFNER.\Q' using process `\SB_DFFNER.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:1273$230'.
+  created $adff cell `$procdff$1092' with negative edge clock and positive level reset.
+Creating register for signal `\SB_DFFNESR.\Q' using process `\SB_DFFNESR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:1212$223'.
+  created $dff cell `$procdff$1093' with negative edge clock.
+Creating register for signal `\SB_DFFNS.\Q' using process `\SB_DFFNS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:1138$220'.
+  created $adff cell `$procdff$1094' with negative edge clock and positive level reset.
+Creating register for signal `\SB_DFFNSS.\Q' using process `\SB_DFFNSS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:1088$217'.
+  created $dff cell `$procdff$1095' with negative edge clock.
+Creating register for signal `\SB_DFFNR.\Q' using process `\SB_DFFNR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:1017$214'.
+  created $adff cell `$procdff$1096' with negative edge clock and positive level reset.
+Creating register for signal `\SB_DFFNSR.\Q' using process `\SB_DFFNSR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:967$211'.
+  created $dff cell `$procdff$1097' with negative edge clock.
+Creating register for signal `\SB_DFFNE.\Q' using process `\SB_DFFNE.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:922$209'.
+  created $dff cell `$procdff$1098' with negative edge clock.
+Creating register for signal `\SB_DFFN.\Q' using process `\SB_DFFN.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:882$207'.
+  created $dff cell `$procdff$1099' with negative edge clock.
+Creating register for signal `\SB_DFFES.\Q' using process `\SB_DFFES.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:803$203'.
+  created $adff cell `$procdff$1100' with positive edge clock and positive level reset.
+Creating register for signal `\SB_DFFESS.\Q' using process `\SB_DFFESS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:742$196'.
+  created $dff cell `$procdff$1101' with positive edge clock.
+Creating register for signal `\SB_DFFER.\Q' using process `\SB_DFFER.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:662$192'.
+  created $adff cell `$procdff$1102' with positive edge clock and positive level reset.
+Creating register for signal `\SB_DFFESR.\Q' using process `\SB_DFFESR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:601$185'.
+  created $dff cell `$procdff$1103' with positive edge clock.
+Creating register for signal `\SB_DFFS.\Q' using process `\SB_DFFS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:527$182'.
+  created $adff cell `$procdff$1104' with positive edge clock and positive level reset.
+Creating register for signal `\SB_DFFSS.\Q' using process `\SB_DFFSS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:477$179'.
+  created $dff cell `$procdff$1105' with positive edge clock.
+Creating register for signal `\SB_DFFR.\Q' using process `\SB_DFFR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:406$176'.
+  created $adff cell `$procdff$1106' with positive edge clock and positive level reset.
+Creating register for signal `\SB_DFFSR.\Q' using process `\SB_DFFSR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:356$173'.
+  created $dff cell `$procdff$1107' with positive edge clock.
+Creating register for signal `\SB_DFFE.\Q' using process `\SB_DFFE.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:311$171'.
+  created $dff cell `$procdff$1108' with positive edge clock.
+Creating register for signal `\SB_DFF.\Q' using process `\SB_DFF.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:271$169'.
+  created $dff cell `$procdff$1109' with positive edge clock.
+Creating register for signal `\uart_rx.\rx_data' using process `\uart_rx.$proc$cores/uart/uart.v:77$598'.
+  created $dff cell `$procdff$1110' with positive edge clock.
+Creating register for signal `\uart_rx.\rx_error' using process `\uart_rx.$proc$cores/uart/uart.v:77$598'.
+  created $dff cell `$procdff$1111' with positive edge clock.
+Creating register for signal `\uart_rx.\rx_avail' using process `\uart_rx.$proc$cores/uart/uart.v:77$598'.
+  created $dff cell `$procdff$1112' with positive edge clock.
+Creating register for signal `\uart_rx.\rx_busy' using process `\uart_rx.$proc$cores/uart/uart.v:77$598'.
+  created $dff cell `$procdff$1113' with positive edge clock.
+Creating register for signal `\uart_rx.\rx_count16' using process `\uart_rx.$proc$cores/uart/uart.v:77$598'.
+  created $dff cell `$procdff$1114' with positive edge clock.
+Creating register for signal `\uart_rx.\rx_bitcount' using process `\uart_rx.$proc$cores/uart/uart.v:77$598'.
+  created $dff cell `$procdff$1115' with positive edge clock.
+Creating register for signal `\uart_rx.\rxd_reg' using process `\uart_rx.$proc$cores/uart/uart.v:77$598'.
+  created $dff cell `$procdff$1116' with positive edge clock.
+Creating register for signal `\uart_tx.\tx_busy' using process `\uart_tx.$proc$cores/uart/uart.v:139$591'.
+  created $dff cell `$procdff$1117' with positive edge clock.
+Creating register for signal `\uart_tx.\uart_txd' using process `\uart_tx.$proc$cores/uart/uart.v:139$591'.
+  created $dff cell `$procdff$1118' with positive edge clock.
+Creating register for signal `\uart_tx.\tx_bitcount' using process `\uart_tx.$proc$cores/uart/uart.v:139$591'.
+  created $dff cell `$procdff$1119' with positive edge clock.
+Creating register for signal `\uart_tx.\tx_count16' using process `\uart_tx.$proc$cores/uart/uart.v:139$591'.
+  created $dff cell `$procdff$1120' with positive edge clock.
+Creating register for signal `\uart_tx.\txd_reg' using process `\uart_tx.$proc$cores/uart/uart.v:139$591'.
+  created $dff cell `$procdff$1121' with positive edge clock.
+Creating register for signal `\peripheral_uart_register_control.\d_out' using process `\peripheral_uart_register_control.$proc$cores/uart/perip_uart.v:165$587'.
+  created $dff cell `$procdff$1122' with positive edge clock.
+Creating register for signal `\peripheral_uart_register_control.\ledout' using process `\peripheral_uart_register_control.$proc$cores/uart/perip_uart.v:157$584'.
+  created $dff cell `$procdff$1123' with positive edge clock.
+Creating register for signal `\peripheral_uart_register_control.\d_in_uart' using process `\peripheral_uart_register_control.$proc$cores/uart/perip_uart.v:157$584'.
+  created $dff cell `$procdff$1124' with positive edge clock.
+Creating register for signal `\peripheral_uart_register_control.\uart_ctrl' using process `\peripheral_uart_register_control.$proc$cores/uart/perip_uart.v:157$584'.
+  created $dff cell `$procdff$1125' with positive edge clock.
+Creating register for signal `$paramod$1c9b49bacefaeab44db5983aee61d9795015608a\uart.\uart_rxd1' using process `$paramod$1c9b49bacefaeab44db5983aee61d9795015608a\uart.$proc$cores/uart/uart.v:30$583'.
+  created $dff cell `$procdff$1126' with positive edge clock.
+Creating register for signal `$paramod$1c9b49bacefaeab44db5983aee61d9795015608a\uart.\uart_rxd2' using process `$paramod$1c9b49bacefaeab44db5983aee61d9795015608a\uart.$proc$cores/uart/uart.v:30$583'.
+  created $dff cell `$procdff$1127' with positive edge clock.
+Creating register for signal `$paramod$1c9b49bacefaeab44db5983aee61d9795015608a\uart.\enable16_counter' using process `$paramod$1c9b49bacefaeab44db5983aee61d9795015608a\uart.$proc$cores/uart/uart.v:23$580'.
+  created $dff cell `$procdff$1128' with positive edge clock.
+Creating register for signal `\mult.\A' using process `\mult.$proc$cores/mult/mult.v:32$570'.
+  created $dff cell `$procdff$1131' with positive edge clock.
+Creating register for signal `\mult.\B' using process `\mult.$proc$cores/mult/mult.v:32$570'.
+  created $dff cell `$procdff$1134' with positive edge clock.
+Creating register for signal `\mult.\result' using process `\mult.$proc$cores/mult/mult.v:32$570'.
+  created $adff cell `$procdff$1135' with positive edge clock and positive level reset.
+Creating register for signal `\mult.\done' using process `\mult.$proc$cores/mult/mult.v:32$570'.
+  created $adff cell `$procdff$1136' with positive edge clock and positive level reset.
+Creating register for signal `\mult.\state' using process `\mult.$proc$cores/mult/mult.v:32$570'.
+  created $adff cell `$procdff$1137' with positive edge clock and positive level reset.
+Creating register for signal `\mult.\count' using process `\mult.$proc$cores/mult/mult.v:32$570'.
+  created $dff cell `$procdff$1140' with positive edge clock.
+Creating register for signal `\FemtoRV32.\cycles' using process `\FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:380$568'.
+  created $dff cell `$procdff$1141' with positive edge clock.
+Creating register for signal `\FemtoRV32.\rs1' using process `\FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:334$555'.
+  created $dff cell `$procdff$1142' with positive edge clock.
+Creating register for signal `\FemtoRV32.\rs2' using process `\FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:334$555'.
+  created $dff cell `$procdff$1143' with positive edge clock.
+Creating register for signal `\FemtoRV32.\PC' using process `\FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:334$555'.
+  created $dff cell `$procdff$1144' with positive edge clock.
+Creating register for signal `\FemtoRV32.\instr' using process `\FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:334$555'.
+  created $dff cell `$procdff$1145' with positive edge clock.
+Creating register for signal `\FemtoRV32.\state' using process `\FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:334$555'.
+  created $dff cell `$procdff$1146' with positive edge clock.
+Creating register for signal `\FemtoRV32.\aluReg' using process `\FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:153$480'.
+  created $dff cell `$procdff$1147' with positive edge clock.
+Creating register for signal `\FemtoRV32.\aluShamt' using process `\FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:153$480'.
+  created $dff cell `$procdff$1148' with positive edge clock.
+Creating register for signal `\FemtoRV32.$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_ADDR' using process `\FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:102$440'.
+  created $dff cell `$procdff$1149' with positive edge clock.
+Creating register for signal `\FemtoRV32.$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_DATA' using process `\FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:102$440'.
+  created $dff cell `$procdff$1150' with positive edge clock.
+Creating register for signal `\FemtoRV32.$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_EN' using process `\FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:102$440'.
+  created $dff cell `$procdff$1151' with positive edge clock.
+Creating register for signal `\Memory.\mem_rdata' using process `\Memory.$proc$cores/memory/Memory.v:19$398'.
+  created $dff cell `$procdff$1152' with positive edge clock.
+Creating register for signal `\Memory.$memwr$\MEM$cores/memory/Memory.v:23$394_ADDR' using process `\Memory.$proc$cores/memory/Memory.v:19$398'.
+  created $dff cell `$procdff$1153' with positive edge clock.
+Creating register for signal `\Memory.$memwr$\MEM$cores/memory/Memory.v:23$394_DATA' using process `\Memory.$proc$cores/memory/Memory.v:19$398'.
+  created $dff cell `$procdff$1154' with positive edge clock.
+Creating register for signal `\Memory.$memwr$\MEM$cores/memory/Memory.v:23$394_EN' using process `\Memory.$proc$cores/memory/Memory.v:19$398'.
+  created $dff cell `$procdff$1155' with positive edge clock.
+Creating register for signal `\Memory.$memwr$\MEM$cores/memory/Memory.v:24$395_ADDR' using process `\Memory.$proc$cores/memory/Memory.v:19$398'.
+  created $dff cell `$procdff$1156' with positive edge clock.
+Creating register for signal `\Memory.$memwr$\MEM$cores/memory/Memory.v:24$395_DATA' using process `\Memory.$proc$cores/memory/Memory.v:19$398'.
+  created $dff cell `$procdff$1157' with positive edge clock.
+Creating register for signal `\Memory.$memwr$\MEM$cores/memory/Memory.v:24$395_EN' using process `\Memory.$proc$cores/memory/Memory.v:19$398'.
+  created $dff cell `$procdff$1158' with positive edge clock.
+Creating register for signal `\Memory.$memwr$\MEM$cores/memory/Memory.v:25$396_ADDR' using process `\Memory.$proc$cores/memory/Memory.v:19$398'.
+  created $dff cell `$procdff$1159' with positive edge clock.
+Creating register for signal `\Memory.$memwr$\MEM$cores/memory/Memory.v:25$396_DATA' using process `\Memory.$proc$cores/memory/Memory.v:19$398'.
+  created $dff cell `$procdff$1160' with positive edge clock.
+Creating register for signal `\Memory.$memwr$\MEM$cores/memory/Memory.v:25$396_EN' using process `\Memory.$proc$cores/memory/Memory.v:19$398'.
+  created $dff cell `$procdff$1161' with positive edge clock.
+Creating register for signal `\Memory.$memwr$\MEM$cores/memory/Memory.v:26$397_ADDR' using process `\Memory.$proc$cores/memory/Memory.v:19$398'.
+  created $dff cell `$procdff$1162' with positive edge clock.
+Creating register for signal `\Memory.$memwr$\MEM$cores/memory/Memory.v:26$397_DATA' using process `\Memory.$proc$cores/memory/Memory.v:19$398'.
+  created $dff cell `$procdff$1163' with positive edge clock.
+Creating register for signal `\Memory.$memwr$\MEM$cores/memory/Memory.v:26$397_EN' using process `\Memory.$proc$cores/memory/Memory.v:19$398'.
+  created $dff cell `$procdff$1164' with positive edge clock.
+Creating register for signal `\peripheral_mult.\d_out' using process `\peripheral_mult.$proc$cores/mult/perip_mult.v:62$392'.
+  created $dff cell `$procdff$1165' with positive edge clock.
+Creating register for signal `\peripheral_mult.\A' using process `\peripheral_mult.$proc$cores/mult/perip_mult.v:45$387'.
+  created $dff cell `$procdff$1166' with positive edge clock.
+Creating register for signal `\peripheral_mult.\B' using process `\peripheral_mult.$proc$cores/mult/perip_mult.v:45$387'.
+  created $dff cell `$procdff$1167' with positive edge clock.
+Creating register for signal `\peripheral_mult.\init' using process `\peripheral_mult.$proc$cores/mult/perip_mult.v:45$387'.
+  created $dff cell `$procdff$1168' with positive edge clock.
+
+11.4.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+11.4.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `SB_DFFNES.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$244'.
+Found and cleaned up 1 empty switch in `\SB_DFFNES.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:1414$241'.
+Removing empty process `SB_DFFNES.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:1414$241'.
+Removing empty process `SB_DFFNESS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$240'.
+Found and cleaned up 2 empty switches in `\SB_DFFNESS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:1353$234'.
+Removing empty process `SB_DFFNESS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:1353$234'.
+Removing empty process `SB_DFFNER.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$233'.
+Found and cleaned up 1 empty switch in `\SB_DFFNER.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:1273$230'.
+Removing empty process `SB_DFFNER.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:1273$230'.
+Removing empty process `SB_DFFNESR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$229'.
+Found and cleaned up 2 empty switches in `\SB_DFFNESR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:1212$223'.
+Removing empty process `SB_DFFNESR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:1212$223'.
+Removing empty process `SB_DFFNS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$222'.
+Removing empty process `SB_DFFNS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:1138$220'.
+Removing empty process `SB_DFFNSS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$219'.
+Found and cleaned up 1 empty switch in `\SB_DFFNSS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:1088$217'.
+Removing empty process `SB_DFFNSS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:1088$217'.
+Removing empty process `SB_DFFNR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$216'.
+Removing empty process `SB_DFFNR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:1017$214'.
+Removing empty process `SB_DFFNSR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$213'.
+Found and cleaned up 1 empty switch in `\SB_DFFNSR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:967$211'.
+Removing empty process `SB_DFFNSR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:967$211'.
+Removing empty process `SB_DFFNE.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$210'.
+Found and cleaned up 1 empty switch in `\SB_DFFNE.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:922$209'.
+Removing empty process `SB_DFFNE.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:922$209'.
+Removing empty process `SB_DFFN.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$208'.
+Removing empty process `SB_DFFN.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:882$207'.
+Removing empty process `SB_DFFES.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$206'.
+Found and cleaned up 1 empty switch in `\SB_DFFES.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:803$203'.
+Removing empty process `SB_DFFES.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:803$203'.
+Removing empty process `SB_DFFESS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$202'.
+Found and cleaned up 2 empty switches in `\SB_DFFESS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:742$196'.
+Removing empty process `SB_DFFESS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:742$196'.
+Removing empty process `SB_DFFER.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$195'.
+Found and cleaned up 1 empty switch in `\SB_DFFER.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:662$192'.
+Removing empty process `SB_DFFER.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:662$192'.
+Removing empty process `SB_DFFESR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$191'.
+Found and cleaned up 2 empty switches in `\SB_DFFESR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:601$185'.
+Removing empty process `SB_DFFESR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:601$185'.
+Removing empty process `SB_DFFS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$184'.
+Removing empty process `SB_DFFS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:527$182'.
+Removing empty process `SB_DFFSS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$181'.
+Found and cleaned up 1 empty switch in `\SB_DFFSS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:477$179'.
+Removing empty process `SB_DFFSS.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:477$179'.
+Removing empty process `SB_DFFR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$178'.
+Removing empty process `SB_DFFR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:406$176'.
+Removing empty process `SB_DFFSR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$175'.
+Found and cleaned up 1 empty switch in `\SB_DFFSR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:356$173'.
+Removing empty process `SB_DFFSR.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:356$173'.
+Removing empty process `SB_DFFE.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$172'.
+Found and cleaned up 1 empty switch in `\SB_DFFE.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:311$171'.
+Removing empty process `SB_DFFE.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:311$171'.
+Removing empty process `SB_DFF.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:0$170'.
+Removing empty process `SB_DFF.$proc$/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_sim.v:271$169'.
+Found and cleaned up 9 empty switches in `\uart_rx.$proc$cores/uart/uart.v:77$598'.
+Removing empty process `uart_rx.$proc$cores/uart/uart.v:77$598'.
+Found and cleaned up 5 empty switches in `\uart_tx.$proc$cores/uart/uart.v:139$591'.
+Removing empty process `uart_tx.$proc$cores/uart/uart.v:139$591'.
+Found and cleaned up 1 empty switch in `\peripheral_uart_addr_decoder.$proc$cores/uart/perip_uart.v:133$588'.
+Removing empty process `peripheral_uart_addr_decoder.$proc$cores/uart/perip_uart.v:133$588'.
+Found and cleaned up 1 empty switch in `\peripheral_uart_register_control.$proc$cores/uart/perip_uart.v:165$587'.
+Removing empty process `peripheral_uart_register_control.$proc$cores/uart/perip_uart.v:165$587'.
+Found and cleaned up 2 empty switches in `\peripheral_uart_register_control.$proc$cores/uart/perip_uart.v:157$584'.
+Removing empty process `peripheral_uart_register_control.$proc$cores/uart/perip_uart.v:157$584'.
+Removing empty process `$paramod$1c9b49bacefaeab44db5983aee61d9795015608a\uart.$proc$cores/uart/uart.v:30$583'.
+Found and cleaned up 1 empty switch in `$paramod$1c9b49bacefaeab44db5983aee61d9795015608a\uart.$proc$cores/uart/uart.v:23$580'.
+Removing empty process `$paramod$1c9b49bacefaeab44db5983aee61d9795015608a\uart.$proc$cores/uart/uart.v:23$580'.
+Removing empty process `mult.$proc$cores/mult/mult.v:0$578'.
+Found and cleaned up 4 empty switches in `\mult.$proc$cores/mult/mult.v:32$570'.
+Removing empty process `mult.$proc$cores/mult/mult.v:32$570'.
+Removing empty process `FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:380$568'.
+Found and cleaned up 4 empty switches in `\FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:334$555'.
+Removing empty process `FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:334$555'.
+Found and cleaned up 3 empty switches in `\FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:153$480'.
+Removing empty process `FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:153$480'.
+Found and cleaned up 2 empty switches in `\FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:102$440'.
+Removing empty process `FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:102$440'.
+Found and cleaned up 1 empty switch in `\chip_select.$proc$chip_select.v:47$427'.
+Removing empty process `chip_select.$proc$chip_select.v:47$427'.
+Found and cleaned up 1 empty switch in `\chip_select.$proc$chip_select.v:34$426'.
+Removing empty process `chip_select.$proc$chip_select.v:34$426'.
+Found and cleaned up 5 empty switches in `\Memory.$proc$cores/memory/Memory.v:19$398'.
+Removing empty process `Memory.$proc$cores/memory/Memory.v:19$398'.
+Found and cleaned up 3 empty switches in `\peripheral_mult.$proc$cores/mult/perip_mult.v:62$392'.
+Removing empty process `peripheral_mult.$proc$cores/mult/perip_mult.v:62$392'.
+Found and cleaned up 2 empty switches in `\peripheral_mult.$proc$cores/mult/perip_mult.v:45$387'.
+Removing empty process `peripheral_mult.$proc$cores/mult/perip_mult.v:45$387'.
+Found and cleaned up 2 empty switches in `\peripheral_mult.$proc$cores/mult/perip_mult.v:29$386'.
+Removing empty process `peripheral_mult.$proc$cores/mult/perip_mult.v:29$386'.
+Cleaned up 64 empty switches.
+
+11.4.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module uart_rx.
+Optimizing module uart_tx.
+Optimizing module peripheral_uart_addr_decoder.
+Optimizing module peripheral_uart_register_control.
+Optimizing module $paramod$1c9b49bacefaeab44db5983aee61d9795015608a\uart.
+Optimizing module mult.
+Optimizing module FemtoRV32.
+Optimizing module chip_select.
+Optimizing module Memory.
+Optimizing module $paramod$e358107493866f19ba52d8dda1c67d080e76663e\peripheral_uart.
+Optimizing module peripheral_mult.
+Optimizing module SOC.
+
+11.5. Executing FLATTEN pass (flatten design).
+Deleting now unused module uart_rx.
+Deleting now unused module uart_tx.
+Deleting now unused module peripheral_uart_addr_decoder.
+Deleting now unused module peripheral_uart_register_control.
+Deleting now unused module $paramod$1c9b49bacefaeab44db5983aee61d9795015608a\uart.
+Deleting now unused module mult.
+Deleting now unused module FemtoRV32.
+Deleting now unused module chip_select.
+Deleting now unused module Memory.
+Deleting now unused module $paramod$e358107493866f19ba52d8dda1c67d080e76663e\peripheral_uart.
+Deleting now unused module peripheral_mult.
+
+11.6. Executing TRIBUF pass.
+
+11.7. Executing DEMINOUT pass (demote inout ports to input or output).
+
+11.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC.
+
+11.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC..
+Removed 21 unused cells and 317 unused wires.
+
+11.10. Executing CHECK pass (checking for obvious problems).
+Checking module SOC...
+Warning: Wire SOC.\chip_select.chip1_dout [31] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip1_dout [30] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip1_dout [29] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip1_dout [28] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip1_dout [27] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip1_dout [26] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip1_dout [25] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip1_dout [24] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip1_dout [23] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip1_dout [22] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip1_dout [21] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip1_dout [20] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip1_dout [19] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip1_dout [18] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip1_dout [17] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip1_dout [16] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip1_dout [15] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip1_dout [14] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip1_dout [13] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip1_dout [12] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip1_dout [11] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip1_dout [10] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip1_dout [9] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip1_dout [8] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip1_dout [7] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip1_dout [6] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip1_dout [5] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip1_dout [4] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip1_dout [3] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip1_dout [2] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip1_dout [1] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip1_dout [0] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip3_dout [31] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip3_dout [30] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip3_dout [29] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip3_dout [28] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip3_dout [27] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip3_dout [26] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip3_dout [25] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip3_dout [24] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip3_dout [23] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip3_dout [22] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip3_dout [21] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip3_dout [20] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip3_dout [19] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip3_dout [18] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip3_dout [17] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip3_dout [16] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip3_dout [15] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip3_dout [14] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip3_dout [13] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip3_dout [12] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip3_dout [11] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip3_dout [10] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip3_dout [9] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip3_dout [8] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip3_dout [7] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip3_dout [6] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip3_dout [5] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip3_dout [4] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip3_dout [3] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip3_dout [2] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip3_dout [1] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip3_dout [0] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip4_dout [31] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip4_dout [30] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip4_dout [29] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip4_dout [28] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip4_dout [27] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip4_dout [26] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip4_dout [25] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip4_dout [24] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip4_dout [23] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip4_dout [22] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip4_dout [21] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip4_dout [20] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip4_dout [19] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip4_dout [18] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip4_dout [17] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip4_dout [16] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip4_dout [15] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip4_dout [14] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip4_dout [13] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip4_dout [12] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip4_dout [11] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip4_dout [10] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip4_dout [9] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip4_dout [8] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip4_dout [7] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip4_dout [6] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip4_dout [5] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip4_dout [4] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip4_dout [3] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip4_dout [2] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip4_dout [1] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip4_dout [0] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip5_dout [31] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip5_dout [30] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip5_dout [29] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip5_dout [28] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip5_dout [27] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip5_dout [26] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip5_dout [25] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip5_dout [24] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip5_dout [23] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip5_dout [22] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip5_dout [21] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip5_dout [20] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip5_dout [19] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip5_dout [18] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip5_dout [17] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip5_dout [16] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip5_dout [15] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip5_dout [14] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip5_dout [13] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip5_dout [12] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip5_dout [11] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip5_dout [10] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip5_dout [9] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip5_dout [8] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip5_dout [7] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip5_dout [6] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip5_dout [5] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip5_dout [4] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip5_dout [3] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip5_dout [2] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip5_dout [1] is used but has no driver.
+Warning: Wire SOC.\chip_select.chip5_dout [0] is used but has no driver.
+Found and reported 128 problems.
+
+11.11. Executing OPT pass (performing simple optimizations).
+
+11.11.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC.
+
+11.11.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC'.
+Removed a total of 29 cells.
+
+11.11.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \SOC..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+      Replacing known input bits on port B of cell $flatten\CPU.$procmux$889: \CPU.state -> { 3'100 \CPU.state [0] }
+      Replacing known input bits on port A of cell $flatten\per_uart.\uart0.\uart_rx_inst.$procmux$690: \per_uart.uart0.uart_rx_inst.rx_busy -> 1'1
+      Replacing known input bits on port A of cell $flatten\per_uart.\uart0.\uart_rx_inst.$procmux$685: \per_uart.uart0.uart_rx_inst.rx_busy -> 1'1
+      Replacing known input bits on port A of cell $flatten\per_uart.\uart0.\uart_rx_inst.$procmux$687: \per_uart.uart0.uart_rx_inst.rx_busy -> 1'1
+      Replacing known input bits on port B of cell $flatten\per_uart.\uart0.\uart_rx_inst.$procmux$693: \per_uart.uart0.uart_rx_inst.rx_busy -> 1'0
+  Analyzing evaluation results.
+    dead port 2/2 on $mux $flatten\CPU.$procmux$953.
+    dead port 2/2 on $mux $flatten\CPU.$procmux$959.
+    dead port 2/2 on $mux $flatten\CPU.$procmux$965.
+    dead port 2/2 on $mux $flatten\mult1.$procmux$1036.
+    dead port 2/2 on $mux $flatten\mult1.$procmux$1039.
+    dead port 2/2 on $mux $flatten\mult1.$procmux$1045.
+    dead port 2/2 on $mux $flatten\mult1.$procmux$1054.
+    dead port 2/2 on $mux $flatten\mult1.$procmux$1060.
+    dead port 2/2 on $mux $flatten\mult1.$procmux$1066.
+    dead port 2/2 on $mux $flatten\mult1.$procmux$1085.
+    dead port 2/2 on $mux $flatten\mult1.\mult1.$procmux$829.
+    dead port 2/2 on $mux $flatten\mult1.\mult1.$procmux$838.
+    dead port 2/2 on $mux $flatten\mult1.\mult1.$procmux$849.
+Removed 13 multiplexer ports.
+
+11.11.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \SOC.
+    Consolidated identical input bits for $mux cell $flatten\CPU.$procmux$951:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$flatten\CPU.$procmux$951_Y
+      New ports: A=1'0, B=1'1, Y=$flatten\CPU.$procmux$951_Y [0]
+      New connections: $flatten\CPU.$procmux$951_Y [31:1] = { $flatten\CPU.$procmux$951_Y [0] $flatten\CPU.$procmux$951_Y [0] $flatten\CPU.$procmux$951_Y [0] $flatten\CPU.$procmux$951_Y [0] $flatten\CPU.$procmux$951_Y [0] $flatten\CPU.$procmux$951_Y [0] $flatten\CPU.$procmux$951_Y [0] $flatten\CPU.$procmux$951_Y [0] $flatten\CPU.$procmux$951_Y [0] $flatten\CPU.$procmux$951_Y [0] $flatten\CPU.$procmux$951_Y [0] $flatten\CPU.$procmux$951_Y [0] $flatten\CPU.$procmux$951_Y [0] $flatten\CPU.$procmux$951_Y [0] $flatten\CPU.$procmux$951_Y [0] $flatten\CPU.$procmux$951_Y [0] $flatten\CPU.$procmux$951_Y [0] $flatten\CPU.$procmux$951_Y [0] $flatten\CPU.$procmux$951_Y [0] $flatten\CPU.$procmux$951_Y [0] $flatten\CPU.$procmux$951_Y [0] $flatten\CPU.$procmux$951_Y [0] $flatten\CPU.$procmux$951_Y [0] $flatten\CPU.$procmux$951_Y [0] $flatten\CPU.$procmux$951_Y [0] $flatten\CPU.$procmux$951_Y [0] $flatten\CPU.$procmux$951_Y [0] $flatten\CPU.$procmux$951_Y [0] $flatten\CPU.$procmux$951_Y [0] $flatten\CPU.$procmux$951_Y [0] $flatten\CPU.$procmux$951_Y [0] }
+    Consolidated identical input bits for $mux cell $flatten\RAM.$procmux$1003:
+      Old ports: A=0, B=16711680, Y=$flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:25$396_EN[31:0]$407
+      New ports: A=1'0, B=1'1, Y=$flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:25$396_EN[31:0]$407 [16]
+      New connections: { $flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:25$396_EN[31:0]$407 [31:17] $flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:25$396_EN[31:0]$407 [15:0] } = { 8'00000000 $flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:25$396_EN[31:0]$407 [16] $flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:25$396_EN[31:0]$407 [16] $flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:25$396_EN[31:0]$407 [16] $flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:25$396_EN[31:0]$407 [16] $flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:25$396_EN[31:0]$407 [16] $flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:25$396_EN[31:0]$407 [16] $flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:25$396_EN[31:0]$407 [16] 16'0000000000000000 }
+    Consolidated identical input bits for $mux cell $flatten\RAM.$procmux$1012:
+      Old ports: A=0, B=65280, Y=$flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:24$395_EN[31:0]$404
+      New ports: A=1'0, B=1'1, Y=$flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:24$395_EN[31:0]$404 [8]
+      New connections: { $flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:24$395_EN[31:0]$404 [31:9] $flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:24$395_EN[31:0]$404 [7:0] } = { 16'0000000000000000 $flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:24$395_EN[31:0]$404 [8] $flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:24$395_EN[31:0]$404 [8] $flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:24$395_EN[31:0]$404 [8] $flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:24$395_EN[31:0]$404 [8] $flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:24$395_EN[31:0]$404 [8] $flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:24$395_EN[31:0]$404 [8] $flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:24$395_EN[31:0]$404 [8] 8'00000000 }
+    Consolidated identical input bits for $mux cell $flatten\RAM.$procmux$1021:
+      Old ports: A=0, B=255, Y=$flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:23$394_EN[31:0]$401
+      New ports: A=1'0, B=1'1, Y=$flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:23$394_EN[31:0]$401 [0]
+      New connections: $flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:23$394_EN[31:0]$401 [31:1] = { 24'000000000000000000000000 $flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:23$394_EN[31:0]$401 [0] $flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:23$394_EN[31:0]$401 [0] $flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:23$394_EN[31:0]$401 [0] $flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:23$394_EN[31:0]$401 [0] $flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:23$394_EN[31:0]$401 [0] $flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:23$394_EN[31:0]$401 [0] $flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:23$394_EN[31:0]$401 [0] }
+    Consolidated identical input bits for $mux cell $flatten\RAM.$procmux$994:
+      Old ports: A=0, B=32'11111111000000000000000000000000, Y=$flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:26$397_EN[31:0]$410
+      New ports: A=1'0, B=1'1, Y=$flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:26$397_EN[31:0]$410 [24]
+      New connections: { $flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:26$397_EN[31:0]$410 [31:25] $flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:26$397_EN[31:0]$410 [23:0] } = { $flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:26$397_EN[31:0]$410 [24] $flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:26$397_EN[31:0]$410 [24] $flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:26$397_EN[31:0]$410 [24] $flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:26$397_EN[31:0]$410 [24] $flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:26$397_EN[31:0]$410 [24] $flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:26$397_EN[31:0]$410 [24] $flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:26$397_EN[31:0]$410 [24] 24'000000000000000000000000 }
+    New ctrl vector for $pmux cell $flatten\mult1.\mult1.$procmux$861: { $auto$opt_reduce.cc:134:opt_pmux$1175 $flatten\mult1.\mult1.$procmux$854_CMP }
+    New ctrl vector for $pmux cell $flatten\mult1.\mult1.$procmux$866: { $auto$opt_reduce.cc:134:opt_pmux$1177 $flatten\mult1.\mult1.$procmux$853_CMP }
+    New ctrl vector for $pmux cell $flatten\per_uart.\uart0.\uart_rx_inst.$procmux$649: $auto$opt_reduce.cc:134:opt_pmux$1179
+    New ctrl vector for $pmux cell $flatten\per_uart.\uart0.\uart_tx_inst.$procmux$757: $auto$opt_reduce.cc:134:opt_pmux$1181
+    New ctrl vector for $pmux cell $flatten\per_uart.\uart0.\uart_tx_inst.$procmux$785: { $flatten\per_uart.\uart0.\uart_tx_inst.$procmux$760_CMP $auto$opt_reduce.cc:134:opt_pmux$1183 }
+  Optimizing cells in module \SOC.
+    Consolidated identical input bits for $mux cell $flatten\CPU.$procmux$968:
+      Old ports: A=0, B=$flatten\CPU.$2$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_EN[31:0]$450, Y=$flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_EN[31:0]$443
+      New ports: A=1'0, B=$flatten\CPU.$procmux$951_Y [0], Y=$flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_EN[31:0]$443 [0]
+      New connections: $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_EN[31:0]$443 [31:1] = { $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_EN[31:0]$443 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_EN[31:0]$443 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_EN[31:0]$443 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_EN[31:0]$443 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_EN[31:0]$443 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_EN[31:0]$443 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_EN[31:0]$443 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_EN[31:0]$443 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_EN[31:0]$443 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_EN[31:0]$443 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_EN[31:0]$443 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_EN[31:0]$443 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_EN[31:0]$443 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_EN[31:0]$443 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_EN[31:0]$443 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_EN[31:0]$443 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_EN[31:0]$443 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_EN[31:0]$443 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_EN[31:0]$443 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_EN[31:0]$443 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_EN[31:0]$443 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_EN[31:0]$443 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_EN[31:0]$443 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_EN[31:0]$443 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_EN[31:0]$443 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_EN[31:0]$443 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_EN[31:0]$443 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_EN[31:0]$443 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_EN[31:0]$443 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_EN[31:0]$443 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$428_EN[31:0]$443 [0] }
+  Optimizing cells in module \SOC.
+Performed a total of 11 changes.
+
+11.11.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC'.
+Removed a total of 2 cells.
+
+11.11.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+11.11.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC..
+Removed 0 unused cells and 44 unused wires.
+
+11.11.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC.
+
+11.11.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+11.11.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \SOC..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+11.11.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \SOC.
+Performed a total of 0 changes.
+
+11.11.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC'.
+Removed a total of 0 cells.
+
+11.11.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+11.11.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC..
+
+11.11.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC.
+
+11.11.16. Finished OPT passes. (There is nothing left to do.)
+
+11.12. Executing FSM pass (extract and optimize FSM).
+
+11.12.1. Executing FSM_DETECT pass (finding FSMs in design).
+Not marking SOC.mult1.mult1.state as FSM state register:
+    Circuit seems to be self-resetting.
+
+11.12.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+11.12.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+11.12.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC..
+
+11.12.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+11.12.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+11.12.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+11.12.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+11.13. Executing OPT pass (performing simple optimizations).
+
+11.13.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC.
+
+11.13.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC'.
+Removed a total of 0 cells.
+
+11.13.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \SOC..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+11.13.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \SOC.
+Performed a total of 0 changes.
+
+11.13.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC'.
+Removed a total of 0 cells.
+
+11.13.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $flatten\per_uart.\uart0.\uart_tx_inst.$procdff$1121 ($dff) from module SOC (D = $flatten\per_uart.\uart0.\uart_tx_inst.$procmux$763_Y, Q = \per_uart.uart0.uart_tx_inst.txd_reg).
+Adding SRST signal on $flatten\per_uart.\uart0.\uart_tx_inst.$procdff$1120 ($dff) from module SOC (D = $flatten\per_uart.\uart0.\uart_tx_inst.$procmux$770_Y, Q = \per_uart.uart0.uart_tx_inst.tx_count16, rval = 4'0000).
+Adding EN signal on $auto$ff.cc:266:slice$1185 ($sdff) from module SOC (D = $flatten\per_uart.\uart0.\uart_tx_inst.$procmux$770_Y, Q = \per_uart.uart0.uart_tx_inst.tx_count16).
+Adding EN signal on $flatten\per_uart.\uart0.\uart_tx_inst.$procdff$1119 ($dff) from module SOC (D = $flatten\per_uart.\uart0.\uart_tx_inst.$procmux$779_Y, Q = \per_uart.uart0.uart_tx_inst.tx_bitcount).
+Adding SRST signal on $flatten\per_uart.\uart0.\uart_tx_inst.$procdff$1118 ($dff) from module SOC (D = $flatten\per_uart.\uart0.\uart_tx_inst.$procmux$791_Y, Q = \per_uart.uart0.uart_tx_inst.uart_txd, rval = 1'1).
+Adding EN signal on $auto$ff.cc:266:slice$1190 ($sdff) from module SOC (D = $flatten\per_uart.\uart0.\uart_tx_inst.$procmux$785_Y, Q = \per_uart.uart0.uart_tx_inst.uart_txd).
+Adding SRST signal on $flatten\per_uart.\uart0.\uart_tx_inst.$procdff$1117 ($dff) from module SOC (D = $flatten\per_uart.\uart0.\uart_tx_inst.$procmux$803_Y, Q = \per_uart.uart0.uart_tx_inst.tx_busy, rval = 1'0).
+Adding EN signal on $flatten\per_uart.\uart0.\uart_rx_inst.$procdff$1116 ($dff) from module SOC (D = { \per_uart.uart0.uart_rxd2 \per_uart.uart0.uart_rx_inst.rxd_reg [7:1] }, Q = \per_uart.uart0.uart_rx_inst.rxd_reg).
+Adding SRST signal on $flatten\per_uart.\uart0.\uart_rx_inst.$procdff$1115 ($dff) from module SOC (D = $flatten\per_uart.\uart0.\uart_rx_inst.$procmux$669_Y, Q = \per_uart.uart0.uart_rx_inst.rx_bitcount, rval = 4'0000).
+Adding EN signal on $auto$ff.cc:266:slice$1200 ($sdff) from module SOC (D = $flatten\per_uart.\uart0.\uart_rx_inst.$procmux$667_Y, Q = \per_uart.uart0.uart_rx_inst.rx_bitcount).
+Adding SRST signal on $flatten\per_uart.\uart0.\uart_rx_inst.$procdff$1114 ($dff) from module SOC (D = $flatten\per_uart.\uart0.\uart_rx_inst.$procmux$679_Y, Q = \per_uart.uart0.uart_rx_inst.rx_count16, rval = 4'0000).
+Adding EN signal on $auto$ff.cc:266:slice$1208 ($sdff) from module SOC (D = $flatten\per_uart.\uart0.\uart_rx_inst.$procmux$677_Y, Q = \per_uart.uart0.uart_rx_inst.rx_count16).
+Adding SRST signal on $flatten\per_uart.\uart0.\uart_rx_inst.$procdff$1113 ($dff) from module SOC (D = $flatten\per_uart.\uart0.\uart_rx_inst.$procmux$697_Y, Q = \per_uart.uart0.uart_rx_inst.rx_busy, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$1214 ($sdff) from module SOC (D = $flatten\per_uart.\uart0.\uart_rx_inst.$procmux$695_Y, Q = \per_uart.uart0.uart_rx_inst.rx_busy).
+Adding SRST signal on $flatten\per_uart.\uart0.\uart_rx_inst.$procdff$1112 ($dff) from module SOC (D = $flatten\per_uart.\uart0.\uart_rx_inst.$procmux$715_Y, Q = \per_uart.uart0.uart_rx_inst.rx_avail, rval = 1'0).
+Adding SRST signal on $flatten\per_uart.\uart0.\uart_rx_inst.$procdff$1111 ($dff) from module SOC (D = $flatten\per_uart.\uart0.\uart_rx_inst.$procmux$733_Y, Q = \per_uart.uart0.uart_rx_inst.rx_error, rval = 1'0).
+Adding EN signal on $flatten\per_uart.\uart0.\uart_rx_inst.$procdff$1110 ($dff) from module SOC (D = \per_uart.uart0.uart_rx_inst.rxd_reg, Q = \per_uart.uart0.uart_rx_inst.rx_data).
+Adding SRST signal on $flatten\per_uart.\uart0.$procdff$1128 ($dff) from module SOC (D = $flatten\per_uart.\uart0.$sub$cores/uart/uart.v:25$581_Y [5:0], Q = \per_uart.uart0.enable16_counter, rval = 6'011010).
+Adding EN signal on $flatten\per_uart.\regs.$procdff$1125 ($dff) from module SOC (D = \CPU.rs2 [7:0], Q = \per_uart.regs.uart_ctrl).
+Adding EN signal on $flatten\per_uart.\regs.$procdff$1124 ($dff) from module SOC (D = \CPU.rs2 [7:0], Q = \per_uart.regs.d_in_uart).
+Adding EN signal on $flatten\mult1.\mult1.$procdff$1140 ($dff) from module SOC (D = $flatten\mult1.\mult1.$0\count[4:0], Q = \mult1.mult1.count).
+Adding EN signal on $flatten\mult1.\mult1.$procdff$1136 ($adff) from module SOC (D = $flatten\mult1.\mult1.$0\done[0:0], Q = \mult1.mult1.done).
+Adding EN signal on $flatten\mult1.\mult1.$procdff$1135 ($adff) from module SOC (D = $flatten\mult1.\mult1.$0\result[31:0], Q = \mult1.mult1.result).
+Adding EN signal on $flatten\mult1.\mult1.$procdff$1134 ($dff) from module SOC (D = $flatten\mult1.\mult1.$0\B[15:0], Q = \mult1.mult1.B).
+Adding EN signal on $flatten\mult1.\mult1.$procdff$1131 ($dff) from module SOC (D = $flatten\mult1.\mult1.$0\A[15:0], Q = \mult1.mult1.A).
+Adding SRST signal on $flatten\mult1.$procdff$1168 ($dff) from module SOC (D = $flatten\mult1.$2\init[0:0], Q = \mult1.init, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$1249 ($sdff) from module SOC (D = \CPU.rs2 [0], Q = \mult1.init).
+Adding SRST signal on $flatten\mult1.$procdff$1167 ($dff) from module SOC (D = $flatten\mult1.$2\B[15:0], Q = \mult1.B, rval = 16'0000000000000000).
+Adding EN signal on $auto$ff.cc:266:slice$1253 ($sdff) from module SOC (D = { \RAM.mem_wdata [15:8] \CPU.rs2 [7:0] }, Q = \mult1.B).
+Adding SRST signal on $flatten\mult1.$procdff$1166 ($dff) from module SOC (D = $flatten\mult1.$2\A[15:0], Q = \mult1.A, rval = 16'0000000000000000).
+Adding EN signal on $auto$ff.cc:266:slice$1257 ($sdff) from module SOC (D = { \RAM.mem_wdata [15:8] \CPU.rs2 [7:0] }, Q = \mult1.A).
+Adding SRST signal on $flatten\mult1.$procdff$1165 ($dff) from module SOC (D = $flatten\mult1.$2\d_out[31:0], Q = \mult1.d_out, rval = 0).
+Adding EN signal on $auto$ff.cc:266:slice$1261 ($sdff) from module SOC (D = $flatten\mult1.$3\d_out[31:0], Q = \mult1.d_out).
+Adding EN signal on $flatten\RAM.$procdff$1152 ($dff) from module SOC (D = $flatten\RAM.$memrd$\MEM$cores/memory/Memory.v:21$411_DATA, Q = \RAM.mem_rdata).
+Adding EN signal on $flatten\CPU.$procdff$1148 ($dff) from module SOC (D = $flatten\CPU.$0\aluShamt[4:0], Q = \CPU.aluShamt).
+Adding EN signal on $flatten\CPU.$procdff$1147 ($dff) from module SOC (D = $flatten\CPU.$0\aluReg[31:0], Q = \CPU.aluReg).
+Adding SRST signal on $flatten\CPU.$procdff$1146 ($dff) from module SOC (D = $flatten\CPU.$procmux$891_Y, Q = \CPU.state, rval = 4'1000).
+Adding EN signal on $auto$ff.cc:266:slice$1282 ($sdff) from module SOC (D = $flatten\CPU.$procmux$891_Y [0], Q = \CPU.state [0]).
+Adding EN signal on $flatten\CPU.$procdff$1145 ($dff) from module SOC (D = \CPU.mem_rdata [31:2], Q = \CPU.instr).
+Adding SRST signal on $flatten\CPU.$procdff$1144 ($dff) from module SOC (D = $flatten\CPU.$procmux$912_Y, Q = \CPU.PC, rval = 24'000000000000000000000000).
+Adding EN signal on $auto$ff.cc:266:slice$1290 ($sdff) from module SOC (D = $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:354$561_Y, Q = \CPU.PC).
+Adding EN signal on $flatten\CPU.$procdff$1143 ($dff) from module SOC (D = $flatten\CPU.$memrd$\registerFile$cores/cpu/femtorv32_quark.v:347$559_DATA, Q = \CPU.rs2).
+Adding EN signal on $flatten\CPU.$procdff$1142 ($dff) from module SOC (D = $flatten\CPU.$memrd$\registerFile$cores/cpu/femtorv32_quark.v:346$558_DATA, Q = \CPU.rs1).
+
+11.13.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC..
+Removed 54 unused cells and 54 unused wires.
+
+11.13.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC.
+
+11.13.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+11.13.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \SOC..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+11.13.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \SOC.
+Performed a total of 0 changes.
+
+11.13.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC'.
+Removed a total of 8 cells.
+
+11.13.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+11.13.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC..
+Removed 0 unused cells and 8 unused wires.
+
+11.13.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC.
+
+11.13.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+11.13.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \SOC..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+11.13.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \SOC.
+Performed a total of 0 changes.
+
+11.13.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC'.
+Removed a total of 0 cells.
+
+11.13.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+11.13.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC..
+
+11.13.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC.
+
+11.13.23. Finished OPT passes. (There is nothing left to do.)
+
+11.14. Executing WREDUCE pass (reducing word size of cells).
+Removed top 19 address bits (of 30) from memory init port SOC.$flatten\RAM.$auto$proc_memwr.cc:45:proc_memwr$1170 (RAM.MEM).
+Removed top 19 address bits (of 30) from memory init port SOC.$flatten\RAM.$auto$proc_memwr.cc:45:proc_memwr$1171 (RAM.MEM).
+Removed top 19 address bits (of 30) from memory init port SOC.$flatten\RAM.$auto$proc_memwr.cc:45:proc_memwr$1172 (RAM.MEM).
+Removed top 19 address bits (of 30) from memory init port SOC.$flatten\RAM.$auto$proc_memwr.cc:45:proc_memwr$1173 (RAM.MEM).
+Removed top 21 address bits (of 32) from memory init port SOC.$flatten\RAM.$meminit$\MEM$cores/memory/Memory.v:0$424 (RAM.MEM).
+Removed top 19 address bits (of 30) from memory read port SOC.$flatten\RAM.$memrd$\MEM$cores/memory/Memory.v:21$411 (RAM.MEM).
+Removed top 31 bits (of 32) from port B of cell SOC.$flatten\CPU.$add$cores/cpu/femtorv32_quark.v:380$569 ($add).
+Removed top 28 bits (of 32) from mux cell SOC.$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:357$562 ($mux).
+Removed top 2 bits (of 4) from mux cell SOC.$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:285$536 ($mux).
+Removed top 1 bits (of 2) from port B of cell SOC.$flatten\CPU.$eq$cores/cpu/femtorv32_quark.v:247$523 ($eq).
+Removed top 8 bits (of 32) from mux cell SOC.$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:230$518 ($mux).
+Removed top 8 bits (of 32) from mux cell SOC.$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:229$514 ($mux).
+Removed top 19 bits (of 24) from mux cell SOC.$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:212$504 ($mux).
+Removed top 29 bits (of 32) from port B of cell SOC.$flatten\CPU.$add$cores/cpu/femtorv32_quark.v:200$500 ($add).
+Removed top 8 bits (of 32) from port Y of cell SOC.$flatten\CPU.$add$cores/cpu/femtorv32_quark.v:200$500 ($add).
+Removed top 31 bits (of 32) from port B of cell SOC.$flatten\CPU.$sub$cores/cpu/femtorv32_quark.v:174$482 ($sub).
+Removed top 27 bits (of 32) from port Y of cell SOC.$flatten\CPU.$sub$cores/cpu/femtorv32_quark.v:174$482 ($sub).
+Removed top 31 bits (of 32) from mux cell SOC.$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:145$466 ($mux).
+Removed top 31 bits (of 32) from mux cell SOC.$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:144$464 ($mux).
+Removed top 32 bits (of 33) from port B of cell SOC.$flatten\CPU.$add$cores/cpu/femtorv32_quark.v:131$457 ($add).
+Removed top 1 bits (of 33) from port B of cell SOC.$flatten\CPU.$add$cores/cpu/femtorv32_quark.v:131$456 ($add).
+Removed top 2 bits (of 5) from port B of cell SOC.$flatten\CPU.$eq$cores/cpu/femtorv32_quark.v:88$437 ($eq).
+Removed top 1 bits (of 5) from port B of cell SOC.$flatten\CPU.$eq$cores/cpu/femtorv32_quark.v:87$436 ($eq).
+Removed top 1 bits (of 5) from port B of cell SOC.$flatten\CPU.$eq$cores/cpu/femtorv32_quark.v:83$433 ($eq).
+Removed top 1 bits (of 5) from port B of cell SOC.$flatten\CPU.$eq$cores/cpu/femtorv32_quark.v:82$432 ($eq).
+Removed top 2 bits (of 5) from port B of cell SOC.$flatten\CPU.$eq$cores/cpu/femtorv32_quark.v:81$431 ($eq).
+Removed top 7 bits (of 8) from port A of cell SOC.$flatten\CPU.$shl$cores/cpu/femtorv32_quark.v:68$429 ($shl).
+Removed top 1 bits (of 8) from port B of cell SOC.$flatten\chip_select.$procmux$992_CMP0 ($eq).
+Removed top 1 bits (of 8) from port B of cell SOC.$flatten\chip_select.$procmux$991_CMP0 ($eq).
+Removed top 1 bits (of 8) from port B of cell SOC.$flatten\chip_select.$procmux$990_CMP0 ($eq).
+Removed top 1 bits (of 8) from port B of cell SOC.$flatten\chip_select.$procmux$989_CMP0 ($eq).
+Removed top 1 bits (of 8) from port B of cell SOC.$flatten\chip_select.$procmux$988_CMP0 ($eq).
+Removed top 1 bits (of 8) from port B of cell SOC.$flatten\chip_select.$procmux$987_CMP0 ($eq).
+Removed top 6 bits (of 7) from port B of cell SOC.$flatten\chip_select.$procmux$984_CMP0 ($eq).
+Removed top 5 bits (of 7) from port B of cell SOC.$flatten\chip_select.$procmux$983_CMP0 ($eq).
+Removed top 4 bits (of 7) from port B of cell SOC.$flatten\chip_select.$procmux$982_CMP0 ($eq).
+Removed top 3 bits (of 7) from port B of cell SOC.$flatten\chip_select.$procmux$981_CMP0 ($eq).
+Removed top 2 bits (of 7) from port B of cell SOC.$flatten\chip_select.$procmux$980_CMP0 ($eq).
+Removed top 1 bits (of 7) from port B of cell SOC.$flatten\chip_select.$procmux$979_CMP0 ($eq).
+Removed top 19 bits (of 30) from mux cell SOC.$flatten\RAM.$procmux$1027 ($mux).
+Removed top 19 bits (of 30) from mux cell SOC.$flatten\RAM.$procmux$1018 ($mux).
+Removed top 19 bits (of 30) from mux cell SOC.$flatten\RAM.$procmux$1009 ($mux).
+Removed top 19 bits (of 30) from mux cell SOC.$flatten\RAM.$procmux$1000 ($mux).
+Removed top 31 bits (of 32) from port B of cell SOC.$flatten\per_uart.\uart0.$sub$cores/uart/uart.v:25$581 ($sub).
+Removed top 26 bits (of 32) from port Y of cell SOC.$flatten\per_uart.\uart0.$sub$cores/uart/uart.v:25$581 ($sub).
+Removed top 5 bits (of 8) from FF cell SOC.$auto$ff.cc:266:slice$1226 ($dffe).
+Removed top 31 bits (of 32) from port B of cell SOC.$flatten\per_uart.\uart0.\uart_rx_inst.$add$cores/uart/uart.v:101$603 ($add).
+Removed top 28 bits (of 32) from port Y of cell SOC.$flatten\per_uart.\uart0.\uart_rx_inst.$add$cores/uart/uart.v:101$603 ($add).
+Removed top 31 bits (of 32) from port B of cell SOC.$flatten\per_uart.\uart0.\uart_rx_inst.$add$cores/uart/uart.v:98$601 ($add).
+Removed top 28 bits (of 32) from port Y of cell SOC.$flatten\per_uart.\uart0.\uart_rx_inst.$add$cores/uart/uart.v:98$601 ($add).
+Removed top 1 bits (of 3) from port B of cell SOC.$auto$opt_dff.cc:195:make_patterns_logic$1270 ($ne).
+Removed top 31 bits (of 32) from port B of cell SOC.$flatten\per_uart.\uart0.\uart_tx_inst.$add$cores/uart/uart.v:156$597 ($add).
+Removed top 28 bits (of 32) from port Y of cell SOC.$flatten\per_uart.\uart0.\uart_tx_inst.$add$cores/uart/uart.v:156$597 ($add).
+Removed top 31 bits (of 32) from port B of cell SOC.$flatten\per_uart.\uart0.\uart_tx_inst.$add$cores/uart/uart.v:153$595 ($add).
+Removed top 28 bits (of 32) from port Y of cell SOC.$flatten\per_uart.\uart0.\uart_tx_inst.$add$cores/uart/uart.v:153$595 ($add).
+Removed top 22 bits (of 32) from mux cell SOC.$flatten\per_uart.\regs.$procmux$813 ($pmux).
+Removed top 1 bits (of 2) from port B of cell SOC.$flatten\per_uart.\regs.$procmux$815_CMP0 ($eq).
+Removed top 22 bits (of 32) from FF cell SOC.$flatten\per_uart.\regs.$procdff$1122 ($dff).
+Removed top 1 bits (of 2) from mux cell SOC.$flatten\per_uart.\decoder.$ternary$cores/uart/perip_uart.v:135$589 ($mux).
+Removed top 1 bits (of 2) from port B of cell SOC.$auto$opt_dff.cc:195:make_patterns_logic$1203 ($ne).
+Removed top 31 bits (of 32) from port B of cell SOC.$flatten\mult1.\mult1.$add$cores/mult/mult.v:83$575 ($add).
+Removed top 27 bits (of 32) from port Y of cell SOC.$flatten\mult1.\mult1.$add$cores/mult/mult.v:83$575 ($add).
+Removed top 27 bits (of 32) from port B of cell SOC.$flatten\mult1.\mult1.$gt$cores/mult/mult.v:84$576 ($gt).
+Removed top 1 bits (of 3) from port B of cell SOC.$flatten\mult1.\mult1.$procmux$830_CMP0 ($eq).
+Removed top 2 bits (of 3) from mux cell SOC.$flatten\mult1.\mult1.$procmux$836 ($mux).
+Removed top 2 bits (of 3) from port B of cell SOC.$flatten\mult1.\mult1.$procmux$839_CMP0 ($eq).
+Removed top 1 bits (of 3) from port B of cell SOC.$flatten\mult1.\mult1.$procmux$854_CMP0 ($eq).
+Removed top 2 bits (of 5) from port B of cell SOC.$flatten\mult1.$procmux$1084_CMP0 ($eq).
+Removed top 1 bits (of 5) from port B of cell SOC.$flatten\mult1.$procmux$1083_CMP0 ($eq).
+Removed top 1 bits (of 5) from port B of cell SOC.$flatten\mult1.$procmux$1082_CMP0 ($eq).
+Removed top 1 bits (of 5) from port B of cell SOC.$flatten\mult1.$procmux$1035_CMP0 ($eq).
+Removed top 27 bits (of 32) from wire SOC.$flatten\CPU.$sub$cores/cpu/femtorv32_quark.v:174$482_Y.
+Removed top 31 bits (of 32) from wire SOC.$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:144$464_Y.
+Removed top 31 bits (of 32) from wire SOC.$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:145$466_Y.
+Removed top 8 bits (of 32) from wire SOC.$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:229$514_Y.
+Removed top 8 bits (of 32) from wire SOC.$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:230$518_Y.
+Removed top 2 bits (of 4) from wire SOC.$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:285$536_Y.
+Removed top 28 bits (of 32) from wire SOC.$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:357$562_Y.
+Removed top 19 bits (of 30) from wire SOC.$flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:23$394_ADDR[29:0]$399.
+Removed top 24 bits (of 32) from wire SOC.$flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:23$394_EN[31:0]$401.
+Removed top 19 bits (of 30) from wire SOC.$flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:24$395_ADDR[29:0]$402.
+Removed top 16 bits (of 32) from wire SOC.$flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:24$395_EN[31:0]$404.
+Removed top 19 bits (of 30) from wire SOC.$flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:25$396_ADDR[29:0]$405.
+Removed top 8 bits (of 32) from wire SOC.$flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:25$396_EN[31:0]$407.
+Removed top 19 bits (of 30) from wire SOC.$flatten\RAM.$0$memwr$\MEM$cores/memory/Memory.v:26$397_ADDR[29:0]$408.
+Removed top 2 bits (of 3) from wire SOC.$flatten\mult1.\mult1.$4\state[2:0].
+Removed top 27 bits (of 32) from wire SOC.$flatten\mult1.\mult1.$add$cores/mult/mult.v:83$575_Y.
+Removed top 1 bits (of 2) from wire SOC.$flatten\per_uart.\decoder.$ternary$cores/uart/perip_uart.v:135$589_Y.
+Removed top 22 bits (of 32) from wire SOC.$flatten\per_uart.\regs.$0\d_out[31:0].
+Removed top 26 bits (of 32) from wire SOC.$flatten\per_uart.\uart0.$sub$cores/uart/uart.v:25$581_Y.
+Removed top 28 bits (of 32) from wire SOC.$flatten\per_uart.\uart0.\uart_rx_inst.$add$cores/uart/uart.v:101$603_Y.
+Removed top 28 bits (of 32) from wire SOC.$flatten\per_uart.\uart0.\uart_rx_inst.$add$cores/uart/uart.v:98$601_Y.
+Removed top 28 bits (of 32) from wire SOC.$flatten\per_uart.\uart0.\uart_tx_inst.$add$cores/uart/uart.v:153$595_Y.
+Removed top 3 bits (of 4) from wire SOC.$flatten\per_uart.\uart0.\uart_tx_inst.$procmux$770_Y.
+Removed top 8 bits (of 32) from wire SOC.mem_addr.
+Removed top 22 bits (of 32) from wire SOC.uart_dout.
+
+11.15. Executing PEEPOPT pass (run peephole optimizers).
+
+11.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC..
+Removed 0 unused cells and 26 unused wires.
+
+11.17. Executing SHARE pass (SAT-based resource sharing).
+
+11.18. Executing TECHMAP pass (map to technology primitives).
+
+11.18.1. Executing Verilog-2005 frontend: /home/juanf/miniconda3/envs/digital/bin/../share/yosys/cmp2lut.v
+Parsing Verilog input from `/home/juanf/miniconda3/envs/digital/bin/../share/yosys/cmp2lut.v' to AST representation.
+Generating RTLIL representation for module `\_90_lut_cmp_'.
+Successfully finished Verilog frontend.
+
+11.18.2. Continuing TECHMAP pass.
+No more expansions possible.
+
+11.19. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC.
+
+11.20. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC..
+
+11.21. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module SOC:
+  creating $macc model for $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:127$454 ($add).
+  creating $macc model for $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:131$456 ($add).
+  creating $macc model for $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:131$457 ($add).
+  creating $macc model for $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:200$500 ($add).
+  creating $macc model for $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:205$503 ($add).
+  creating $macc model for $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:211$505 ($add).
+  creating $macc model for $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:380$569 ($add).
+  creating $macc model for $flatten\CPU.$sub$cores/cpu/femtorv32_quark.v:174$482 ($sub).
+  creating $macc model for $flatten\mult1.\mult1.$add$cores/mult/mult.v:76$574 ($add).
+  creating $macc model for $flatten\mult1.\mult1.$add$cores/mult/mult.v:83$575 ($add).
+  creating $macc model for $flatten\per_uart.\uart0.$sub$cores/uart/uart.v:25$581 ($sub).
+  creating $macc model for $flatten\per_uart.\uart0.\uart_rx_inst.$add$cores/uart/uart.v:101$603 ($add).
+  creating $macc model for $flatten\per_uart.\uart0.\uart_rx_inst.$add$cores/uart/uart.v:98$601 ($add).
+  creating $macc model for $flatten\per_uart.\uart0.\uart_tx_inst.$add$cores/uart/uart.v:153$595 ($add).
+  creating $macc model for $flatten\per_uart.\uart0.\uart_tx_inst.$add$cores/uart/uart.v:156$597 ($add).
+  merging $macc model for $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:131$456 into $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:131$457.
+  creating $alu model for $macc $flatten\per_uart.\uart0.\uart_tx_inst.$add$cores/uart/uart.v:153$595.
+  creating $alu model for $macc $flatten\per_uart.\uart0.\uart_rx_inst.$add$cores/uart/uart.v:98$601.
+  creating $alu model for $macc $flatten\per_uart.\uart0.\uart_rx_inst.$add$cores/uart/uart.v:101$603.
+  creating $alu model for $macc $flatten\per_uart.\uart0.$sub$cores/uart/uart.v:25$581.
+  creating $alu model for $macc $flatten\mult1.\mult1.$add$cores/mult/mult.v:83$575.
+  creating $alu model for $macc $flatten\mult1.\mult1.$add$cores/mult/mult.v:76$574.
+  creating $alu model for $macc $flatten\CPU.$sub$cores/cpu/femtorv32_quark.v:174$482.
+  creating $alu model for $macc $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:380$569.
+  creating $alu model for $macc $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:211$505.
+  creating $alu model for $macc $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:205$503.
+  creating $alu model for $macc $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:200$500.
+  creating $alu model for $macc $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:131$457.
+  creating $alu model for $macc $flatten\per_uart.\uart0.\uart_tx_inst.$add$cores/uart/uart.v:156$597.
+  creating $alu model for $macc $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:127$454.
+  creating $alu model for $flatten\mult1.\mult1.$gt$cores/mult/mult.v:84$576 ($gt): new $alu
+  creating $alu cell for $flatten\mult1.\mult1.$gt$cores/mult/mult.v:84$576: $auto$alumacc.cc:485:replace_alu$1325
+  creating $alu cell for $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:127$454: $auto$alumacc.cc:485:replace_alu$1330
+  creating $alu cell for $flatten\per_uart.\uart0.\uart_tx_inst.$add$cores/uart/uart.v:156$597: $auto$alumacc.cc:485:replace_alu$1333
+  creating $alu cell for $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:131$457: $auto$alumacc.cc:485:replace_alu$1336
+  creating $alu cell for $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:200$500: $auto$alumacc.cc:485:replace_alu$1339
+  creating $alu cell for $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:205$503: $auto$alumacc.cc:485:replace_alu$1342
+  creating $alu cell for $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:211$505: $auto$alumacc.cc:485:replace_alu$1345
+  creating $alu cell for $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:380$569: $auto$alumacc.cc:485:replace_alu$1348
+  creating $alu cell for $flatten\CPU.$sub$cores/cpu/femtorv32_quark.v:174$482: $auto$alumacc.cc:485:replace_alu$1351
+  creating $alu cell for $flatten\mult1.\mult1.$add$cores/mult/mult.v:76$574: $auto$alumacc.cc:485:replace_alu$1354
+  creating $alu cell for $flatten\mult1.\mult1.$add$cores/mult/mult.v:83$575: $auto$alumacc.cc:485:replace_alu$1357
+  creating $alu cell for $flatten\per_uart.\uart0.$sub$cores/uart/uart.v:25$581: $auto$alumacc.cc:485:replace_alu$1360
+  creating $alu cell for $flatten\per_uart.\uart0.\uart_rx_inst.$add$cores/uart/uart.v:101$603: $auto$alumacc.cc:485:replace_alu$1363
+  creating $alu cell for $flatten\per_uart.\uart0.\uart_rx_inst.$add$cores/uart/uart.v:98$601: $auto$alumacc.cc:485:replace_alu$1366
+  creating $alu cell for $flatten\per_uart.\uart0.\uart_tx_inst.$add$cores/uart/uart.v:153$595: $auto$alumacc.cc:485:replace_alu$1369
+  created 15 $alu and 0 $macc cells.
+
+11.22. Executing OPT pass (performing simple optimizations).
+
+11.22.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC.
+
+11.22.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC'.
+Removed a total of 0 cells.
+
+11.22.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \SOC..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+11.22.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \SOC.
+Performed a total of 0 changes.
+
+11.22.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC'.
+Removed a total of 0 cells.
+
+11.22.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+11.22.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC..
+Removed 2 unused cells and 3 unused wires.
+
+11.22.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC.
+
+11.22.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+11.22.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \SOC..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+11.22.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \SOC.
+Performed a total of 0 changes.
+
+11.22.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC'.
+Removed a total of 0 cells.
+
+11.22.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+11.22.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC..
+
+11.22.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC.
+
+11.22.16. Finished OPT passes. (There is nothing left to do.)
+
+11.23. Executing MEMORY pass.
+
+11.23.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 96 transformations.
+
+11.23.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 6 transformations.
+
+11.23.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+  Analyzing SOC.CPU.registerFile write port 0.
+  Analyzing SOC.RAM.MEM write port 0.
+  Analyzing SOC.RAM.MEM write port 1.
+  Analyzing SOC.RAM.MEM write port 2.
+  Analyzing SOC.RAM.MEM write port 3.
+
+11.23.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+11.23.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+Checking read port `\CPU.registerFile'[0] in module `\SOC': merging output FF to cell.
+    Write port 0: don't care on collision.
+Checking read port `\CPU.registerFile'[1] in module `\SOC': merging output FF to cell.
+    Write port 0: don't care on collision.
+Checking read port `\RAM.MEM'[0] in module `\SOC': merging output FF to cell.
+    Write port 0: don't care on collision.
+    Write port 1: don't care on collision.
+    Write port 2: don't care on collision.
+    Write port 3: don't care on collision.
+
+11.23.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC..
+Removed 3 unused cells and 99 unused wires.
+
+11.23.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+Consolidating read ports of memory SOC.CPU.registerFile by address:
+Consolidating write ports of memory SOC.RAM.MEM by address:
+  Merging ports 0, 1 (address \mem_addr [12:2]).
+  Merging ports 0, 2 (address \mem_addr [12:2]).
+  Merging ports 0, 3 (address \mem_addr [12:2]).
+
+11.23.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+11.23.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC..
+Removed 4 unused cells and 4 unused wires.
+
+11.23.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+11.24. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC..
+
+11.25. Executing MEMORY_LIBMAP pass (mapping memories to cells).
+mapping memory SOC.CPU.registerFile via $__ICE40_RAM4K_
+mapping memory SOC.RAM.MEM via $__ICE40_RAM4K_
+
+11.26. Executing TECHMAP pass (map to technology primitives).
+
+11.26.1. Executing Verilog-2005 frontend: /home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/brams_map.v
+Parsing Verilog input from `/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/brams_map.v' to AST representation.
+Generating RTLIL representation for module `\$__ICE40_RAM4K_'.
+Successfully finished Verilog frontend.
+
+11.26.2. Executing Verilog-2005 frontend: /home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/spram_map.v
+Parsing Verilog input from `/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/spram_map.v' to AST representation.
+Generating RTLIL representation for module `\$__ICE40_SPRAM_'.
+Successfully finished Verilog frontend.
+
+11.26.3. Continuing TECHMAP pass.
+Using template $paramod$a1f6b5309207cf102bfb625dccbd224ad06df61d\$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
+Using template $paramod$94818debca79c6c28692f98c624f4b4aecaa5116\$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
+Using template $paramod$efd5332fc853844d4aff5d1e1c1a8d0a4760d9dd\$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
+Using template $paramod$e2059a4705224ce6818ac396b147c7bdbeefcbce\$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
+Using template $paramod$b0ec188ce7cedeed5f96e9a4db9684a760c80814\$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
+Using template $paramod$3097ee367c341d68a188cbb6dfa64ce829c8b335\$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
+Using template $paramod$de86f3ed0c3239e855b133e28c7361be940ccca5\$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
+Using template $paramod$f5a7c89524a6bf6c383a8f9329dacfdb59069ff7\$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
+Using template $paramod$7e216d6f3ab6020c9a4de2d9b7ade92ae7c5b586\$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
+Using template $paramod$50e48c59a44de37061d122e9103950243f92d6c4\$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
+Using template $paramod$a82a305711f0d451c4597d1869db38a9c44d19f2\$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
+Using template $paramod$66d9fc55303b2d0fe9fac5c94cca7b47681bb96b\$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
+Using template $paramod$03537e5087f2ba9b23bfb0036763cead3c277f7a\$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
+Using template $paramod$13ced540a54bc298935e24dd63dc2d7dc3d2c9cf\$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
+Using template $paramod$738eee1c0e668d87886966e849d790a775af08ba\$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
+Using template $paramod$d32376ec1ff45ec0dd005aedbb306ccd9ac5efed\$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
+Using template $paramod$bdb17f72b840a7b6860f086ac19a0e8c2eb07d57\$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
+No more expansions possible.
+
+11.27. Executing ICE40_BRAMINIT pass.
+
+11.28. Executing OPT pass (performing simple optimizations).
+
+11.28.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC.
+
+11.28.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC'.
+Removed a total of 3 cells.
+
+11.28.3. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $auto$ff.cc:266:slice$1291 ($sdffe) from module SOC (D = $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:354$561_Y [1:0], Q = \CPU.PC [1:0]).
+Adding SRST signal on $auto$ff.cc:266:slice$1244 ($dffe) from module SOC (D = \mult1.A [0], Q = \mult1.mult1.A [0], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$1239 ($dffe) from module SOC (D = \mult1.B [15], Q = \mult1.mult1.B [15], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$1228 ($dffe) from module SOC (D = $auto$wreduce.cc:461:run$1313 [4:0], Q = \mult1.mult1.count, rval = 5'00000).
+
+11.28.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC..
+Removed 2 unused cells and 327 unused wires.
+
+11.28.5. Rerunning OPT passes. (Removed registers in this run.)
+
+11.28.6. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC.
+
+11.28.7. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC'.
+Removed a total of 0 cells.
+
+11.28.8. Executing OPT_DFF pass (perform DFF optimizations).
+
+11.28.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC..
+Removed 4 unused cells and 4 unused wires.
+
+11.28.10. Finished fast OPT passes.
+
+11.29. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+11.30. Executing OPT pass (performing simple optimizations).
+
+11.30.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC.
+
+11.30.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC'.
+Removed a total of 0 cells.
+
+11.30.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \SOC..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+11.30.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \SOC.
+    Consolidated identical input bits for $mux cell $flatten\CPU.$procmux$889:
+      Old ports: A=4'0001, B=4'100x, Y=$flatten\CPU.$procmux$889_Y
+      New ports: A=2'01, B=2'1x, Y={ $flatten\CPU.$procmux$889_Y [3] $flatten\CPU.$procmux$889_Y [0] }
+      New connections: $flatten\CPU.$procmux$889_Y [2:1] = 2'00
+    Consolidated identical input bits for $mux cell $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:206$501:
+      Old ports: A={ \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [5] \CPU.instr [28:23] \CPU.instr [9:6] 1'0 }, B={ \CPU.instr [21:10] 12'000000000000 }, Y=$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:206$501_Y
+      New ports: A={ \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [5] \CPU.instr [28:23] \CPU.instr [9:6] }, B={ \CPU.instr [21:10] 11'00000000000 }, Y=$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:206$501_Y [23:1]
+      New connections: $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:206$501_Y [0] = 1'0
+    Consolidated identical input bits for $mux cell $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:227$509:
+      Old ports: A=0, B={ \CPU.instr [29:10] 12'000000000000 }, Y=$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:227$509_Y
+      New ports: A=20'00000000000000000000, B=\CPU.instr [29:10], Y=$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:227$509_Y [31:12]
+      New connections: $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:227$509_Y [11:0] = 12'000000000000
+    Consolidated identical input bits for $mux cell $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:284$535:
+      Old ports: A=4'0100, B=4'1000, Y=$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:284$535_Y
+      New ports: A=2'01, B=2'10, Y=$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:284$535_Y [3:2]
+      New connections: $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:284$535_Y [1:0] = 2'00
+    Consolidated identical input bits for $mux cell $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:288$538:
+      Old ports: A=4'0011, B=4'1100, Y=$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:288$538_Y
+      New ports: A=2'01, B=2'10, Y={ $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:288$538_Y [2] $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:288$538_Y [0] }
+      New connections: { $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:288$538_Y [3] $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:288$538_Y [1] } = { $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:288$538_Y [2] $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:288$538_Y [0] }
+    Consolidated identical input bits for $mux cell $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:357$562:
+      Old ports: A=4'0001, B=4'1000, Y=$auto$wreduce.cc:461:run$1304 [3:0]
+      New ports: A=2'01, B=2'10, Y={ $auto$wreduce.cc:461:run$1304 [3] $auto$wreduce.cc:461:run$1304 [0] }
+      New connections: $auto$wreduce.cc:461:run$1304 [2:1] = 2'00
+    Consolidated identical input bits for $mux cell $flatten\mult1.\mult1.$procmux$827:
+      Old ports: A=3'001, B=3'100, Y=$flatten\mult1.\mult1.$5\state[2:0]
+      New ports: A=2'01, B=2'10, Y={ $flatten\mult1.\mult1.$5\state[2:0] [2] $flatten\mult1.\mult1.$5\state[2:0] [0] }
+      New connections: $flatten\mult1.\mult1.$5\state[2:0] [1] = 1'0
+    Consolidated identical input bits for $mux cell $flatten\mult1.\mult1.$procmux$847:
+      Old ports: A=3'000, B=3'101, Y=$flatten\mult1.\mult1.$3\state[2:0]
+      New ports: A=1'0, B=1'1, Y=$flatten\mult1.\mult1.$3\state[2:0] [0]
+      New connections: $flatten\mult1.\mult1.$3\state[2:0] [2:1] = { $flatten\mult1.\mult1.$3\state[2:0] [0] 1'0 }
+    Consolidated identical input bits for $mux cell $flatten\mult1.\mult1.$ternary$cores/mult/mult.v:84$577:
+      Old ports: A=3'000, B=3'100, Y=$flatten\mult1.\mult1.$ternary$cores/mult/mult.v:84$577_Y
+      New ports: A=1'0, B=1'1, Y=$flatten\mult1.\mult1.$ternary$cores/mult/mult.v:84$577_Y [2]
+      New connections: $flatten\mult1.\mult1.$ternary$cores/mult/mult.v:84$577_Y [1:0] = 2'00
+    Consolidated identical input bits for $mux cell $flatten\per_uart.\decoder.$ternary$cores/uart/perip_uart.v:136$590:
+      Old ports: A=2'00, B=2'10, Y=$flatten\per_uart.\decoder.$ternary$cores/uart/perip_uart.v:136$590_Y
+      New ports: A=1'0, B=1'1, Y=$flatten\per_uart.\decoder.$ternary$cores/uart/perip_uart.v:136$590_Y [1]
+      New connections: $flatten\per_uart.\decoder.$ternary$cores/uart/perip_uart.v:136$590_Y [0] = 1'0
+  Optimizing cells in module \SOC.
+    Consolidated identical input bits for $mux cell $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:205$502:
+      Old ports: A=$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:206$501_Y, B={ \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [17:10] \CPU.instr [18] \CPU.instr [28:19] 1'0 }, Y=$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:205$502_Y
+      New ports: A=$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:206$501_Y [23:1], B={ \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [17:10] \CPU.instr [18] \CPU.instr [28:19] }, Y=$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:205$502_Y [23:1]
+      New connections: $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:205$502_Y [0] = 1'0
+    Consolidated identical input bits for $mux cell $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:287$539:
+      Old ports: A=4'1111, B=$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:288$538_Y, Y=$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:287$539_Y
+      New ports: A=2'11, B={ $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:288$538_Y [2] $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:288$538_Y [0] }, Y={ $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:287$539_Y [2] $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:287$539_Y [0] }
+      New connections: { $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:287$539_Y [3] $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:287$539_Y [1] } = { $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:287$539_Y [2] $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:287$539_Y [0] }
+  Optimizing cells in module \SOC.
+Performed a total of 12 changes.
+
+11.30.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC'.
+Removed a total of 1 cells.
+
+11.30.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+11.30.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC..
+Removed 0 unused cells and 1 unused wires.
+
+11.30.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC.
+
+11.30.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+11.30.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \SOC..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+11.30.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \SOC.
+Performed a total of 0 changes.
+
+11.30.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC'.
+Removed a total of 0 cells.
+
+11.30.13. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $auto$ff.cc:266:slice$1868 ($sdffe) from module SOC (D = $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:354$561_Y [0], Q = \CPU.PC [0]).
+
+11.30.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC..
+Removed 0 unused cells and 1 unused wires.
+
+11.30.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC.
+
+11.30.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+11.30.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \SOC..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+11.30.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \SOC.
+    New input vector for $reduce_and cell $auto$opt_dff.cc:220:make_patterns_logic$1886: { $auto$opt_dff.cc:194:make_patterns_logic$1869 $auto$opt_dff.cc:194:make_patterns_logic$1883 \CPU.state [2] }
+    Consolidated identical input bits for $mux cell $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:355$560:
+      Old ports: A={ \CPU.PCplus4 [23:2] 2'x }, B={ \CPU.PCplusImm [23:1] 1'x }, Y=$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:355$560_Y
+      New ports: A={ \CPU.PCplus4 [23:2] 1'x }, B=\CPU.PCplusImm [23:1], Y=$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:355$560_Y [23:1]
+      New connections: $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:355$560_Y [0] = 1'x
+  Optimizing cells in module \SOC.
+Performed a total of 2 changes.
+
+11.30.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC'.
+Removed a total of 0 cells.
+
+11.30.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+11.30.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC..
+
+11.30.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC.
+
+11.30.23. Rerunning OPT passes. (Maybe there is more to do..)
+
+11.30.24. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \SOC..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+11.30.25. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \SOC.
+Performed a total of 0 changes.
+
+11.30.26. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC'.
+Removed a total of 0 cells.
+
+11.30.27. Executing OPT_DFF pass (perform DFF optimizations).
+
+11.30.28. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC..
+
+11.30.29. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC.
+
+11.30.30. Finished OPT passes. (There is nothing left to do.)
+
+11.31. Executing ICE40_WRAPCARRY pass (wrap carries).
+
+11.32. Executing TECHMAP pass (map to technology primitives).
+
+11.32.1. Executing Verilog-2005 frontend: /home/juanf/miniconda3/envs/digital/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/home/juanf/miniconda3/envs/digital/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Successfully finished Verilog frontend.
+
+11.32.2. Executing Verilog-2005 frontend: /home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/arith_map.v
+Parsing Verilog input from `/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/arith_map.v' to AST representation.
+Generating RTLIL representation for module `\_80_ice40_alu'.
+Successfully finished Verilog frontend.
+
+11.32.3. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $reduce_or.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $reduce_bool.
+Using extmapper simplemap for cells of type $dffe.
+Using template $paramod$672a140277c71df8314410f22acc08d55222c3c7\_80_ice40_alu for cells of type $alu.
+Using template $paramod$740b056ede97228d3eae64ea2fdc81f0a33e0fe7\_80_ice40_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $sdffce.
+Using extmapper simplemap for cells of type $dff.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $reduce_and.
+Using extmapper simplemap for cells of type $or.
+Using extmapper simplemap for cells of type $sdffe.
+Using template $paramod$c2e415ef15bc3ccd2723772353a6b450d3d76206\_90_pmux for cells of type $pmux.
+Using template $paramod$dc04b7d98e503a7bab16fce2df70e6e2c5ca34d6\_80_ice40_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $logic_not.
+Using extmapper simplemap for cells of type $eq.
+Using template $paramod$6a42b6fefed750f8a1c58eab59479d960557103c\_80_ice40_alu for cells of type $alu.
+Using template $paramod$e82d3fc1811c5751348a3964470632b35a435fc7\_80_ice40_alu for cells of type $alu.
+Using template $paramod$448756c9a9dfaa49080ce4b90c6cc182883e181f\_80_ice40_alu for cells of type $alu.
+Using template $paramod$2bd81f420048247ff6903399c560fe0f8bd48ccc\_80_ice40_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod$080e6a70eb8bfa1ccf22d9718e795074645029a4\_80_ice40_alu for cells of type $alu.
+Using template $paramod$32a7b7b86c07519b7537abc18e96f0331f97914d\_80_ice40_alu for cells of type $alu.
+Using template $paramod$constmap:1b6115d36d46c0296d0024e3e3623593810ba834$paramod$3b3a66a7766bf28794ddcd35314b025da1fe57c8\_90_shift_ops_shr_shl_sshl_sshr for cells of type $shl.
+Using extmapper simplemap for cells of type $ne.
+Using template $paramod$0063cc74cb9d92ba0fcb27304a45144f31b8a510\_90_pmux for cells of type $pmux.
+Using template $paramod$54d740639e1393b22262823179ff783ea9f17a35\_90_pmux for cells of type $pmux.
+Using extmapper simplemap for cells of type $sdff.
+Using template $paramod$c5c783b17ab1d780abfad8cfe6563a0a7b47a3b0\_90_pmux for cells of type $pmux.
+Using template $paramod$789c344356a154d2afc7b832b41d1067dbc946ba\_80_ice40_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $logic_and.
+Using template $paramod$5fa769bd6f6ca230a24c9bbc0e120f15bcfea838\_90_pmux for cells of type $pmux.
+Using template $paramod$521ce43182eecb9f60c72393a788160d2c356bf5\_90_pmux for cells of type $pmux.
+Using template $paramod$a04dd9d4d8b430140c4ff94b50470fb380fda2a0\_80_ice40_alu for cells of type $alu.
+Using template $paramod$fbc7873bff55778c0b3173955b7e4bce1d9d6834\_80_ice40_alu for cells of type $alu.
+Using template $paramod$57f63e8a3282e053be0430389b09fa050ac7dca0\_90_pmux for cells of type $pmux.
+Using extmapper simplemap for cells of type $adffe.
+Using extmapper simplemap for cells of type $adff.
+Using template $paramod$77db613179eb70c5e4e5c5aca72d602a7c6017b6\_90_pmux for cells of type $pmux.
+Using extmapper simplemap for cells of type $pos.
+No more expansions possible.
+
+11.33. Executing OPT pass (performing simple optimizations).
+
+11.33.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC.
+
+11.33.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC'.
+Removed a total of 201 cells.
+
+11.33.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+11.33.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC..
+Removed 229 unused cells and 797 unused wires.
+
+11.33.5. Finished fast OPT passes.
+
+11.34. Executing ICE40_OPT pass (performing simple optimizations).
+
+11.34.1. Running ICE40 specific optimizations.
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) SOC.$auto$alumacc.cc:485:replace_alu$1325.slice[0].carry: CO=$auto$alumacc.cc:485:replace_alu$1325.BB [0]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) SOC.$auto$alumacc.cc:485:replace_alu$1333.slice[0].carry: CO=\per_uart.uart0.uart_tx_inst.tx_bitcount [0]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) SOC.$auto$alumacc.cc:485:replace_alu$1336.slice[32].carry: CO=$auto$alumacc.cc:485:replace_alu$1336.C [32]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) SOC.$auto$alumacc.cc:485:replace_alu$1339.slice[0].carry: CO=\CPU.PC [2]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) SOC.$auto$alumacc.cc:485:replace_alu$1348.slice[0].carry: CO=\CPU.cycles [0]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) SOC.$auto$alumacc.cc:485:replace_alu$1351.slice[0].carry: CO=\CPU.aluShamt [0]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) SOC.$auto$alumacc.cc:485:replace_alu$1357.slice[0].carry: CO=\mult1.mult1.count [0]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) SOC.$auto$alumacc.cc:485:replace_alu$1360.slice[0].carry: CO=\per_uart.uart0.enable16_counter [0]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) SOC.$auto$alumacc.cc:485:replace_alu$1363.slice[0].carry: CO=\per_uart.uart0.uart_rx_inst.rx_bitcount [0]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) SOC.$auto$alumacc.cc:485:replace_alu$1366.slice[0].carry: CO=\per_uart.uart0.uart_rx_inst.rx_count16 [0]
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) SOC.$auto$alumacc.cc:485:replace_alu$1369.slice[0].carry: CO=\per_uart.uart0.uart_tx_inst.tx_count16 [0]
+
+11.34.2. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC.
+
+11.34.3. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC'.
+Removed a total of 0 cells.
+
+11.34.4. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $auto$ff.cc:266:slice$4397 ($_SDFF_PN0_) from module SOC (D = \CPU.state [1], Q = \CPU.state [2], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$4146 ($_DFF_P_) from module SOC (D = $flatten\per_uart.\regs.$procmux$813.B_AND_S [9], Q = \per_uart.regs.d_out [9], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$4145 ($_DFF_P_) from module SOC (D = $flatten\per_uart.\regs.$procmux$813.B_AND_S [8], Q = \per_uart.regs.d_out [8], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$4144 ($_DFF_P_) from module SOC (D = $flatten\per_uart.\regs.$procmux$813.Y_B [7], Q = \per_uart.regs.d_out [7], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$4143 ($_DFF_P_) from module SOC (D = $flatten\per_uart.\regs.$procmux$813.B_AND_S [16], Q = \per_uart.regs.d_out [6], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$4142 ($_DFF_P_) from module SOC (D = $flatten\per_uart.\regs.$procmux$813.B_AND_S [15], Q = \per_uart.regs.d_out [5], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$4141 ($_DFF_P_) from module SOC (D = $flatten\per_uart.\regs.$procmux$813.B_AND_S [14], Q = \per_uart.regs.d_out [4], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$4140 ($_DFF_P_) from module SOC (D = $flatten\per_uart.\regs.$procmux$813.B_AND_S [13], Q = \per_uart.regs.d_out [3], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$4139 ($_DFF_P_) from module SOC (D = $flatten\per_uart.\regs.$procmux$813.B_AND_S [12], Q = \per_uart.regs.d_out [2], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$4138 ($_DFF_P_) from module SOC (D = $flatten\per_uart.\regs.$procmux$813.B_AND_S [11], Q = \per_uart.regs.d_out [1], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$4137 ($_DFF_P_) from module SOC (D = $flatten\per_uart.\regs.$procmux$813.B_AND_S [10], Q = \per_uart.regs.d_out [0], rval = 1'0).
+Setting constant 0-bit at position 0 on $auto$ff.cc:266:slice$2560 ($_SDFFE_PN0P_) from module SOC.
+
+11.34.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC..
+Removed 16 unused cells and 7 unused wires.
+
+11.34.6. Rerunning OPT passes. (Removed registers in this run.)
+
+11.34.7. Running ICE40 specific optimizations.
+
+11.34.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC.
+
+11.34.9. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC'.
+Removed a total of 0 cells.
+
+11.34.10. Executing OPT_DFF pass (perform DFF optimizations).
+
+11.34.11. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC..
+
+11.34.12. Rerunning OPT passes. (Removed registers in this run.)
+
+11.34.13. Running ICE40 specific optimizations.
+
+11.34.14. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC.
+
+11.34.15. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC'.
+Removed a total of 0 cells.
+
+11.34.16. Executing OPT_DFF pass (perform DFF optimizations).
+
+11.34.17. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC..
+
+11.34.18. Finished OPT passes. (There is nothing left to do.)
+
+11.35. Executing DFFLEGALIZE pass (convert FFs to types supported by the target).
+
+11.36. Executing TECHMAP pass (map to technology primitives).
+
+11.36.1. Executing Verilog-2005 frontend: /home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/ff_map.v
+Parsing Verilog input from `/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/ff_map.v' to AST representation.
+Generating RTLIL representation for module `\$_DFF_N_'.
+Generating RTLIL representation for module `\$_DFF_P_'.
+Generating RTLIL representation for module `\$_DFFE_NP_'.
+Generating RTLIL representation for module `\$_DFFE_PP_'.
+Generating RTLIL representation for module `\$_DFF_NP0_'.
+Generating RTLIL representation for module `\$_DFF_NP1_'.
+Generating RTLIL representation for module `\$_DFF_PP0_'.
+Generating RTLIL representation for module `\$_DFF_PP1_'.
+Generating RTLIL representation for module `\$_DFFE_NP0P_'.
+Generating RTLIL representation for module `\$_DFFE_NP1P_'.
+Generating RTLIL representation for module `\$_DFFE_PP0P_'.
+Generating RTLIL representation for module `\$_DFFE_PP1P_'.
+Generating RTLIL representation for module `\$_SDFF_NP0_'.
+Generating RTLIL representation for module `\$_SDFF_NP1_'.
+Generating RTLIL representation for module `\$_SDFF_PP0_'.
+Generating RTLIL representation for module `\$_SDFF_PP1_'.
+Generating RTLIL representation for module `\$_SDFFCE_NP0P_'.
+Generating RTLIL representation for module `\$_SDFFCE_NP1P_'.
+Generating RTLIL representation for module `\$_SDFFCE_PP0P_'.
+Generating RTLIL representation for module `\$_SDFFCE_PP1P_'.
+Successfully finished Verilog frontend.
+
+11.36.2. Continuing TECHMAP pass.
+Using template \$_DFFE_PP_ for cells of type $_DFFE_PP_.
+Using template \$_DFF_P_ for cells of type $_DFF_P_.
+Using template \$_SDFFCE_PP0P_ for cells of type $_SDFFCE_PP0P_.
+Using template \$_SDFF_PP0_ for cells of type $_SDFF_PP0_.
+Using template \$_SDFFCE_PP1P_ for cells of type $_SDFFCE_PP1P_.
+Using template \$_DFFE_PP0P_ for cells of type $_DFFE_PP0P_.
+Using template \$_DFF_PP0_ for cells of type $_DFF_PP0_.
+Using template \$_SDFF_PP1_ for cells of type $_SDFF_PP1_.
+No more expansions possible.
+
+11.37. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC.
+
+11.38. Executing SIMPLEMAP pass (map simple cells to gate primitives).
+Mapping SOC.$auto$alumacc.cc:485:replace_alu$1333.slice[0].carry ($lut).
+Mapping SOC.$auto$alumacc.cc:485:replace_alu$1336.slice[32].carry ($lut).
+Mapping SOC.$auto$alumacc.cc:485:replace_alu$1339.slice[0].carry ($lut).
+Mapping SOC.$auto$alumacc.cc:485:replace_alu$1348.slice[0].carry ($lut).
+Mapping SOC.$auto$alumacc.cc:485:replace_alu$1351.slice[0].carry ($lut).
+Mapping SOC.$auto$alumacc.cc:485:replace_alu$1357.slice[0].carry ($lut).
+Mapping SOC.$auto$alumacc.cc:485:replace_alu$1360.slice[0].carry ($lut).
+Mapping SOC.$auto$alumacc.cc:485:replace_alu$1363.slice[0].carry ($lut).
+Mapping SOC.$auto$alumacc.cc:485:replace_alu$1366.slice[0].carry ($lut).
+Mapping SOC.$auto$alumacc.cc:485:replace_alu$1369.slice[0].carry ($lut).
+
+11.39. Executing ICE40_OPT pass (performing simple optimizations).
+
+11.39.1. Running ICE40 specific optimizations.
+
+11.39.2. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC.
+
+11.39.3. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC'.
+Removed a total of 250 cells.
+
+11.39.4. Executing OPT_DFF pass (perform DFF optimizations).
+
+11.39.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC..
+Removed 0 unused cells and 2090 unused wires.
+
+11.39.6. Rerunning OPT passes. (Removed registers in this run.)
+
+11.39.7. Running ICE40 specific optimizations.
+
+11.39.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC.
+
+11.39.9. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC'.
+Removed a total of 0 cells.
+
+11.39.10. Executing OPT_DFF pass (perform DFF optimizations).
+
+11.39.11. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC..
+
+11.39.12. Finished OPT passes. (There is nothing left to do.)
+
+11.40. Executing TECHMAP pass (map to technology primitives).
+
+11.40.1. Executing Verilog-2005 frontend: /home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/latches_map.v
+Parsing Verilog input from `/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/latches_map.v' to AST representation.
+Generating RTLIL representation for module `\$_DLATCH_N_'.
+Generating RTLIL representation for module `\$_DLATCH_P_'.
+Successfully finished Verilog frontend.
+
+11.40.2. Continuing TECHMAP pass.
+No more expansions possible.
+
+11.41. Executing ABC pass (technology mapping using ABC).
+
+11.41.1. Extracting gate netlist of module `\SOC' to `<abc-temp-dir>/input.blif'..
+Extracted 1868 gates and 2467 wires to a netlist network with 597 inputs and 431 outputs.
+
+11.41.1.1. Executing ABC.
+Running ABC command: "<yosys-exe-dir>/yosys-abc" -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_lut <abc-temp-dir>/lutdefs.txt 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + dch -f 
+ABC: + if 
+ABC: + mfs2 
+ABC: + lutpack -S 1 
+ABC: + dress <abc-temp-dir>/input.blif 
+ABC: Total number of equiv classes                =     645.
+ABC: Participating nodes from both networks       =    1441.
+ABC: Participating nodes from the first network   =     679. (  75.53 % of nodes)
+ABC: Participating nodes from the second network  =     762. (  84.76 % of nodes)
+ABC: Node pairs (any polarity)                    =     679. (  75.53 % of names can be moved)
+ABC: Node pairs (same polarity)                   =     543. (  60.40 % of names can be moved)
+ABC: Total runtime =     0.08 sec
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+11.41.1.2. Re-integrating ABC results.
+ABC RESULTS:              $lut cells:      898
+ABC RESULTS:        internal signals:     1439
+ABC RESULTS:           input signals:      597
+ABC RESULTS:          output signals:      431
+Removing temp directory.
+
+11.42. Executing ICE40_WRAPCARRY pass (wrap carries).
+
+11.43. Executing TECHMAP pass (map to technology primitives).
+
+11.43.1. Executing Verilog-2005 frontend: /home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/ff_map.v
+Parsing Verilog input from `/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/ff_map.v' to AST representation.
+Generating RTLIL representation for module `\$_DFF_N_'.
+Generating RTLIL representation for module `\$_DFF_P_'.
+Generating RTLIL representation for module `\$_DFFE_NP_'.
+Generating RTLIL representation for module `\$_DFFE_PP_'.
+Generating RTLIL representation for module `\$_DFF_NP0_'.
+Generating RTLIL representation for module `\$_DFF_NP1_'.
+Generating RTLIL representation for module `\$_DFF_PP0_'.
+Generating RTLIL representation for module `\$_DFF_PP1_'.
+Generating RTLIL representation for module `\$_DFFE_NP0P_'.
+Generating RTLIL representation for module `\$_DFFE_NP1P_'.
+Generating RTLIL representation for module `\$_DFFE_PP0P_'.
+Generating RTLIL representation for module `\$_DFFE_PP1P_'.
+Generating RTLIL representation for module `\$_SDFF_NP0_'.
+Generating RTLIL representation for module `\$_SDFF_NP1_'.
+Generating RTLIL representation for module `\$_SDFF_PP0_'.
+Generating RTLIL representation for module `\$_SDFF_PP1_'.
+Generating RTLIL representation for module `\$_SDFFCE_NP0P_'.
+Generating RTLIL representation for module `\$_SDFFCE_NP1P_'.
+Generating RTLIL representation for module `\$_SDFFCE_PP0P_'.
+Generating RTLIL representation for module `\$_SDFFCE_PP1P_'.
+Successfully finished Verilog frontend.
+
+11.43.2. Continuing TECHMAP pass.
+No more expansions possible.
+Removed 19 unused cells and 1242 unused wires.
+
+11.44. Executing OPT_LUT pass (optimize LUTs).
+Discovering LUTs.
+Number of LUTs:     1114
+  1-LUT               42
+  2-LUT              135
+  3-LUT              500
+  4-LUT              437
+  with \SB_CARRY    (#0)  204
+  with \SB_CARRY    (#1)  204
+
+Eliminating LUTs.
+Number of LUTs:     1114
+  1-LUT               42
+  2-LUT              135
+  3-LUT              500
+  4-LUT              437
+  with \SB_CARRY    (#0)  204
+  with \SB_CARRY    (#1)  204
+
+Combining LUTs.
+Number of LUTs:     1102
+  1-LUT               41
+  2-LUT              121
+  3-LUT              496
+  4-LUT              444
+  with \SB_CARRY    (#0)  204
+  with \SB_CARRY    (#1)  204
+
+Eliminated 0 LUTs.
+Combined 12 LUTs.
+
+11.45. Executing TECHMAP pass (map to technology primitives).
+
+11.45.1. Executing Verilog-2005 frontend: /home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_map.v
+Parsing Verilog input from `/home/juanf/miniconda3/envs/digital/bin/../share/yosys/ice40/cells_map.v' to AST representation.
+Generating RTLIL representation for module `\$lut'.
+Successfully finished Verilog frontend.
+
+11.45.2. Continuing TECHMAP pass.
+Using template $paramod$fd904e9e35cfd343a9df248824bd3f1408724879\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000001\LUT=2'01 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'0001 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'01000000 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'0100 for cells of type $lut.
+Using template $paramod$d53578aacfd93124244778d88be0e90eb09c1b1b\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'10110000 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'11001010 for cells of type $lut.
+Using template $paramod$56c6fc98268f6966dd23dcb4af9b8f5298fa7ead\$lut for cells of type $lut.
+Using template $paramod$6e238df02989b317f10820a22773676e71120644\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00110101 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00010000 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'1000 for cells of type $lut.
+Using template $paramod$c35ad3063d5038410210ddc72c1fd5fed46413b4\$lut for cells of type $lut.
+Using template $paramod$973818279bc95792902f3c09371fd2407d04a2a5\$lut for cells of type $lut.
+Using template $paramod$cc08dba3aac8677e797984bdf18a09dd37547dd3\$lut for cells of type $lut.
+Using template $paramod$2ea69c779d6c1b79ac5a87b0d1523c67d5628dba\$lut for cells of type $lut.
+Using template $paramod$e9c77024ca501b890c641f9c0b10e27242db8730\$lut for cells of type $lut.
+Using template $paramod$6d6beead1425af15cf78b27fd9b11b41b5d4bce8\$lut for cells of type $lut.
+Using template $paramod$722bfd9af0ae56ca9d1d12a221cb5ede16461f26\$lut for cells of type $lut.
+Using template $paramod$c1a19a87ccbbb03d43a72335db63f692ddf82cc1\$lut for cells of type $lut.
+Using template $paramod$94ac66a11090dca84889e55fcf03297912a5b7ec\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'1011 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00000001 for cells of type $lut.
+Using template $paramod$575b200168b9e109c2ed99df4359056f2c6696ac\$lut for cells of type $lut.
+Using template $paramod$ad3a97108c9f4d10f8acfa309b668b9455d3d733\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'10000000 for cells of type $lut.
+Using template $paramod$658b9ed803f0d3d335616d3858b53e0a2522f1e8\$lut for cells of type $lut.
+Using template $paramod$a55f1cd7dd899e453fe61d7ec95053334d858d41\$lut for cells of type $lut.
+Using template $paramod$2d8ecce5c907513cebcd38ab5efe0fc26fc03464\$lut for cells of type $lut.
+Using template $paramod$c24ed72ebb67e9ead6029e42e909ef7fc0abbb11\$lut for cells of type $lut.
+Using template $paramod$272652f6c6fbe9a75eff76e45cc7e2788835518b\$lut for cells of type $lut.
+Using template $paramod$b297295e19b03521716155b85537bbe86d6a9ae6\$lut for cells of type $lut.
+Using template $paramod$ef55f89c74d994c27b4ec4bac79af43e8b1d7e25\$lut for cells of type $lut.
+Using template $paramod$e49f6e3576ef1a6d2f58c54414dbb786af8cc869\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'11111000 for cells of type $lut.
+Using template $paramod$f3e1547c4b47e64c590e75cf09078b2507c8cc75\$lut for cells of type $lut.
+Using template $paramod$35d201d5d13b0689930fb454a340191997b0e867\$lut for cells of type $lut.
+Using template $paramod$179512a187da069f3b79ef6612a41e494e7d54b6\$lut for cells of type $lut.
+Using template $paramod$571404c0889eaf57f492cb5e37f8acb5df5852f9\$lut for cells of type $lut.
+Using template $paramod$fccccf8bb2add7667329c686feec7546eb9a3ae3\$lut for cells of type $lut.
+Using template $paramod$608f40069c27841a5b3bdf03643a34bdc8974072\$lut for cells of type $lut.
+Using template $paramod$b4f85a6321a00b090afc4e21d68e7b99eb94d149\$lut for cells of type $lut.
+Using template $paramod$5c32c59025c0b98f20e63f249d83e7ebb4b085e3\$lut for cells of type $lut.
+Using template $paramod$7fcc2f13195f27c397064377984d87a90c06749d\$lut for cells of type $lut.
+Using template $paramod$71d951b20e73043168c1656217d126e617052faa\$lut for cells of type $lut.
+Using template $paramod$1bf62ab10e48d71d6497bccacf5c70420c470fe9\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'01110000 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'11100000 for cells of type $lut.
+Using template $paramod$c7da182350c463dac9341b9202c767a484f2d529\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'10001111 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'01010011 for cells of type $lut.
+Using template $paramod$e5759512db67494ff77fbdfc66dff4006376568f\$lut for cells of type $lut.
+Using template $paramod$a63d84c9dd26caf4e75c7cc2f6f70f64a5b14aa1\$lut for cells of type $lut.
+Using template $paramod$cbfd30b70b4f0ac8dd1d3ed758215fbf49783a3b\$lut for cells of type $lut.
+Using template $paramod$7a9d9396461df152f697894fa3b294ad1b285e08\$lut for cells of type $lut.
+Using template $paramod$240307bbace6557f3d46ac64c87ca4d697801fc3\$lut for cells of type $lut.
+Using template $paramod$b4d0f4738a5ce50c7f36c2aa2ecc09cfb874f2b6\$lut for cells of type $lut.
+Using template $paramod$f63fe32f78d5f3c5de711945c592c8c5ec2303ae\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00001101 for cells of type $lut.
+Using template $paramod$332a399730bfc61adea04021a76b1c4e4030f37d\$lut for cells of type $lut.
+Using template $paramod$b93d1ea7a612a32c185108f67a153d44ffb9aac2\$lut for cells of type $lut.
+Using template $paramod$a3cdc1eb771a2c6a16f64da161e11100ac409d2b\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'11010000 for cells of type $lut.
+Using template $paramod$f9b715fbf1040e81e900b2461c2390d17ed5e988\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00000111 for cells of type $lut.
+Using template $paramod$9d707d218adbd63b6f9a0c79d7ee037306fb6296\$lut for cells of type $lut.
+Using template $paramod$497e0cbc82b1309c608871dfc99c744090a076e3\$lut for cells of type $lut.
+Using template $paramod$4282def8dbd6df3d1248ad282c629bee684502c2\$lut for cells of type $lut.
+Using template $paramod$dddfdc2633093a03e6470d46e677d9447254dca8\$lut for cells of type $lut.
+Using template $paramod$bba54c1ef87367812b4c15f4aed5ac70773df775\$lut for cells of type $lut.
+Using template $paramod$4d80b2350afbf957388ad464d6a1930002dd1b04\$lut for cells of type $lut.
+Using template $paramod$2b187743e9a5d701dd1d8451ad4fa986c1aea139\$lut for cells of type $lut.
+Using template $paramod$11ec7271d8e6e5aeaace08c13e4c601f10e31038\$lut for cells of type $lut.
+Using template $paramod$940bde85b32efdf2cc7bb2c7f3eef7e523e7570c\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'10101100 for cells of type $lut.
+Using template $paramod$53ce561f80f32d4298a3beadc88b6c5c78293221\$lut for cells of type $lut.
+Using template $paramod$4b2297966ddb718657b80566604f97685ffc0120\$lut for cells of type $lut.
+Using template $paramod$4789582d00084c3344b7a6dacf516efd46244876\$lut for cells of type $lut.
+Using template $paramod$c5b694ec89d7629b942ccf6a9be1d39e24f8edec\$lut for cells of type $lut.
+Using template $paramod$fe9a0158d0352193457c4f5b6282ac86d35fb3ee\$lut for cells of type $lut.
+Using template $paramod$fabf1f27adead66f603436aa091302122e430ef0\$lut for cells of type $lut.
+Using template $paramod$87d03a3adfeb45c31a27a100630b6aa0c98d2f81\$lut for cells of type $lut.
+Using template $paramod$ab8bb87959c5d7cfa27886cee1355b38e054a61a\$lut for cells of type $lut.
+Using template $paramod$12879138d1e376f344e47ea40be66b776233be75\$lut for cells of type $lut.
+Using template $paramod$a50be0e6fa3a01511bb234559cb74fb8bd3e2061\$lut for cells of type $lut.
+Using template $paramod$90211918a84e1cef3407e0f8e61fa8260d248e82\$lut for cells of type $lut.
+Using template $paramod$a15fd389a2f54cb7b94707b25934d226e68d9e2e\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00011100 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'0111 for cells of type $lut.
+Using template $paramod$de5d058ee690ab1000716900700c3e1da7e31b2e\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'11110100 for cells of type $lut.
+Using template $paramod$774861bf9b1885d60265e6ddea1c95a32f095489\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'11111110 for cells of type $lut.
+Using template $paramod$e2e4d79bec18c28fa313e8bd8f4df6f8a38115b2\$lut for cells of type $lut.
+Using template $paramod$d014a4937d8cb7f59ef9a60b84724ded7affa8d7\$lut for cells of type $lut.
+Using template $paramod$c4c148354f86d2131dbfed31e2e01cbbb5aefda7\$lut for cells of type $lut.
+Using template $paramod$99a2a175d178a040bb1ffceb53184fb0f59423c6\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00111010 for cells of type $lut.
+Using template $paramod$6d23198eb2b8f79a41c7626605a61009695893b1\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'10100011 for cells of type $lut.
+Using template $paramod$b4f15f202f50520dbc381cd0880ac94f830f05a8\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00111101 for cells of type $lut.
+Using template $paramod$c5f3c57a6d466a2f42208bafb8985b96ce884440\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'01100001 for cells of type $lut.
+Using template $paramod$c600b4b1adc22857e1c1ba3b6aeb516fabe09da0\$lut for cells of type $lut.
+Using template $paramod$4972722c284f07fee673f7cb99e6a36ce4a244f0\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'11101111 for cells of type $lut.
+Using template $paramod$048d4aa2263b685fba6c6b0d38f6224df0dc3042\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'10111111 for cells of type $lut.
+No more expansions possible.
+Removed 0 unused cells and 2383 unused wires.
+
+11.46. Executing AUTONAME pass.
+Renamed 32102 objects in module SOC (65 iterations).
+
+11.47. Executing HIERARCHY pass (managing design hierarchy).
+
+11.47.1. Analyzing design hierarchy..
+Top module:  \SOC
+
+11.47.2. Analyzing design hierarchy..
+Top module:  \SOC
+Removed 0 unused modules.
+
+11.48. Printing statistics.
+
+=== SOC ===
+
+   Number of wires:                681
+   Number of wire bits:           3784
+   Number of public wires:         681
+   Number of public wire bits:    3784
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               1671
+     SB_CARRY                      210
+     SB_DFF                         35
+     SB_DFFE                       136
+     SB_DFFER                       33
+     SB_DFFESR                     109
+     SB_DFFESS                       1
+     SB_DFFR                         3
+     SB_DFFSR                       18
+     SB_DFFSS                        4
+     SB_LUT4                      1102
+     SB_RAM40_4K                    20
+
+11.49. Executing CHECK pass (checking for obvious problems).
+Checking module SOC...
+Found and reported 0 problems.
+
+11.50. Executing JSON backend.
+
+Warnings: 128 unique messages, 128 total
+End of script. Logfile hash: 7079d6bb94, CPU: user 12.12s system 0.08s, MEM: 44.16 MB peak
+Yosys 0.33+6 (git sha1 41b34a193, x86_64-conda-linux-gnu-cc 11.2.0 -fvisibility-inlines-hidden -fmessage-length=0 -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -fdebug-prefix-map=/root/conda-eda/conda-eda/workdir/conda-env/conda-bld/yosys_1694128612374/work=/usr/local/src/conda/yosys-0.33_7_g41b34a193 -fdebug-prefix-map=/home/juanf/miniconda3/envs/digital=/usr/local/src/conda-prefix -fPIC -Os -fno-merge-constants)
+Time spent: 67% 7x techmap (8 sec), 6% 29x opt_expr (0 sec), ...

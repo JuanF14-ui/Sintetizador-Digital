@@ -7,7 +7,7 @@ from client import Client
 SSID = "Redmi Note 13"
 PASSWORD = "123456789"
 # OSC DEFINITIONS
-OSC_SERVER = "192.168.112.203"
+OSC_SERVER = "192.168.59.203"
 OSC_PORT = 9001
 CLIENT_ID = "/dev1"
 TOPIC_FLUTE = CLIENT_ID + "/piano"
