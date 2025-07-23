@@ -53,7 +53,17 @@ Este módulo tiene como propósito principal la detección de teclas presionadas
 #### `peripheral_mult`
 - Proveer un módulo simple de multiplicación por hardware, con registros de entrada/salida para interactuar desde el CPU.
 
+
 ---
+
+## 🔁 Diagrama ASM
+
+![Diagrama ASM del módulo PWM_AUDIO](./diagrama_asm_pwm_audio.png)
+
+El sistema comienza en un estado de inicialización con frecuencia cero y reset en alto. Luego verifica continuamente el estado de los botones físicos. Cuando uno está presionado, se asigna una nueva frecuencia.
+
+---
+
 
 ## Diagramas RTL
 
