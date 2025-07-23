@@ -192,7 +192,7 @@ EOF
 
 ### Simulación del módulo led_pwm
 
-![Simulación de PWM en GTKWave](pwm_led_sim.png)
+![Simulación de PWM en GTKWave](https://github.com/JuanF14-ui/Sintetizador-de-Chuck-Digital/blob/6a2fc039a764bf39cc6c69c2a2e3a019a119fdf5/TECLADO/docs/GTKW__1.png)
 
 A continuación se presenta el análisis de la simulación obtenida mediante GTKWave, a partir del testbench correspondiente al módulo `led_pwm`.
 
@@ -227,7 +227,7 @@ El módulo `led_pwm` genera correctamente una señal PWM con un ciclo de trabajo
 
 ### Simulación del módulo keyboard_pwm
 
-![Simulación del módulo keyboard_pwm en GTKWave](sim_pwm_keyboard.png)
+![Simulación del módulo keyboard_pwm en GTKWave](https://github.com/JuanF14-ui/Sintetizador-de-Chuck-Digital/blob/6a2fc039a764bf39cc6c69c2a2e3a019a119fdf5/TECLADO/docs/GTKW_2.png)
 
 En esta simulación se observa el comportamiento del módulo keyboard_pwm, el cual recibe entradas de botones y entrega como salida una señal PWM cuya frecuencia depende del divisor seleccionado.
 
@@ -267,7 +267,7 @@ La simulación muestra un comportamiento correcto del sistema:
 
 ### Simulación del módulo perip_contador
 
-![Simulación del módulo perip_contador en GTKWave](sim_contador.png)
+![Simulación del módulo perip_contador en GTKWave](https://github.com/JuanF14-ui/Sintetizador-de-Chuck-Digital/blob/6a2fc039a764bf39cc6c69c2a2e3a019a119fdf5/TECLADO/docs/GTKW_3.png)
 
 En esta simulación se evalúa el comportamiento del módulo perip_contador, el cual cuenta cuántas veces se pulsa cada tecla (DO, RE, MI, FA) mediante la detección de flancos positivos en las entradas.
 
@@ -299,7 +299,7 @@ Conclusión:
 
 ### Simulación del módulo keyboard_pwm + SoC completo
 
-![Simulación del sistema completo: entrada de botones, PWM y UART](sim_keyboard_pwm.png)
+![Simulación del sistema completo: entrada de botones, PWM y UART](https://github.com/JuanF14-ui/Sintetizador-de-Chuck-Digital/blob/5cee717dcdfb01cf5979fc196f2acb34bbf46851/TECLADO/docs/GTKW_4.png)
 
 En esta simulación se observa el comportamiento integrado del SoC ante la presión de teclas y la generación de la señal PWM de audio. También se verifican los canales UART para interacción con dispositivos externos.
 
