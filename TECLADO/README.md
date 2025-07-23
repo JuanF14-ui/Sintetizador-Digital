@@ -55,6 +55,47 @@ Este módulo tiene como propósito principal la detección de teclas presionadas
 
 
 ---
+# Máquinas de estado
+
+## Máquina de estado: `keyboard_pwm` / `perip_keyboard_pwm`
+
+| Estado | Condición de entrada                          | Acciones / salidas                                                                 | Próximo estado                                                         |
+|--------|-----------------------------------------------|------------------------------------------------------------------------------------|------------------------------------------------------------------------|
+| IDLE   | `btn == 0` **y/o** `note_freq_from_soc == 0`  | `final_pwm_freq = 0`  &nbsp;•&nbsp; `PWM = 0`                                      | `PLAY` si `btn != 0` **o** `note_freq_from_soc != 0`                   |
+| PLAY   | `btn != 0` **o** `note_freq_from_soc != 0`    | Calcula prioridad **DO > RE > MI > FA**. <br>`final_pwm_freq = (note_freq_from_soc != 0) ? soc : buttons` | `IDLE` si todo vuelve a 0. <br>Si cambia cualquier botón, permanece en `PLAY` y recalcula |
+
+> **Notas:**
+> - `btn` es un vector de 4 bits (Do, Re, Mi, Fa).  
+> - `note_freq_from_soc` permite forzar la frecuencia desde el SoC (override).  
+> - En `PLAY`, ante cualquier cambio de botones o del override, se recalcula la frecuencia sin salir del estado.
+
+## Máquina de estado: `led_pwm` (generador PWM 50%)
+
+| Estado    | Condición                         | Acción                              | Siguiente estado                                      |
+|-----------|-----------------------------------|--------------------------------------|-------------------------------------------------------|
+| WAIT_CFG  | `freq == 0`                       | `pwm = 0`, `counter = 0`             | `WAIT_CFG` (si `freq == 0`) <br>`HIGH` (si `freq != 0`) |
+| HIGH      | `counter < freq`                  | `pwm = 1`, `counter++`               | `LOW` cuando `counter == freq`                        |
+| LOW       | `counter < 2*freq`                | `pwm = 0`, `counter++`               | `HIGH` cuando `counter == 2*freq - 1` y `counter = 0` |
+
+> **Notas:**
+> - `freq` define la semiperiodo (la otra mitad es `2*freq - 1`).  
+> - Se obtiene un **duty cycle ≈ 50%**: tiempo en HIGH ≈ tiempo en LOW.  
+> - Si `freq` cambia a 0 en cualquier momento, se vuelve a `WAIT_CFG`, apagando el PWM.
+
+
+## Máquina de estado: `perip_contador` (conteo de flancos)
+
+| Estado     | Condición                | Acción                       | Next        |
+|------------|--------------------------|------------------------------|-------------|
+| WAIT_EDGE  | *default*                | `key_prev <= key_state`      | `INC` si hay flanco ↑ |
+| INC        | Flanco de subida detectado | `count++`                    | `WAIT_EDGE` |
+
+> **Notas:**
+> - Puede implementarse con un solo estado global y lógica de detección de flanco (`rising = key_state & ~key_prev`).  
+> - `key_prev` se actualiza cada ciclo para comparar con `key_state`.
+
+
+
 
 ## Diagrama ASM
 
@@ -108,3 +149,34 @@ Este módulo cuenta cuántas veces se presiona cada uno de los cuatro botones (f
 
 Los diagramas permiten verificar la estructura sintetizada, el uso de recursos y la correcta jerarquía en el diseño de cada componente del sistema.
 
+
+# Explicación sobre cómo interactúa con aplicaciones externas (mqtt, chuck) etc.
+
+## Captura de la nota en la FPGA
+1. Presionas un botón en el teclado físico.  
+2. El periférico `perip_keyboard_pwm` detecta la tecla, el SoC calcula la frecuencia y genera el PWM para el buzzer.  
+3. El firmware del CPU lee ese evento (qué nota y si es ON/OFF).
+
+## Envío del evento por UART
+4. El firmware empaqueta el evento (por ejemplo: “nota 0 ON”) y lo manda por la UART del SoC.  
+5. La línea TXD de la FPGA va al RX del ESP32.
+
+## ESP32 como puente serie → WiFi/MQTT
+6. El ESP32 recibe cada evento por UART.  
+7. Conectado a la red WiFi, publica ese evento en un tópico MQTT acordado (ej. `orquesta/nota`).  
+8. Cada FPGA/teclado puede usar su propio tópico o un campo “id” para distinguirse.
+
+## Broker MQTT (PC del profesor o servidor local)
+9. El broker recibe los mensajes de todos los ESP32.  
+10. Los pone a disposición de cualquier cliente suscrito (en este caso, el PC con ChucK).
+
+## PC del profesor escucha los eventos
+11. En el PC, un proceso (puede ser un script intermedio o una herramienta) se suscribe al tópico MQTT.  
+12. Cada mensaje recibido (nota ON/OFF) se traduce a un evento que ChucK pueda entender (por ejemplo, vía OSC o entrada estándar).
+
+## ChucK interpreta y reproduce
+13. ChucK recibe el evento de “nota ON/OFF” con su identificador.  
+14. Asigna un instrumento/sonido a cada “id” del alumno o a cada nota.  
+15. Genera el audio en tiempo real, creando la “orquesta” virtual con todos los teclados.
+EOF
+	@echo "Archivo generado en docs/explicacion_ext.md"
