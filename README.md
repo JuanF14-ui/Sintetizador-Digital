@@ -10,4 +10,4 @@ Los instrumentos presentes son:
 - Theremín Digital
 - Bajo Láser
 - Teclado
--
+- Bongoes

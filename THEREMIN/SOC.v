@@ -1,111 +1,76 @@
-module SOC (
-    input             clk,     // system clock
-    input             resetn,  // reset button
-    output wire [0:0] LEDS,    // system LEDs
-    input             RXD,     // UART receive
-    output            TXD      // UART transmit
+// Top-level SoC para Theremin digital
+module soc (
+    input        clk,
+    input        rst,
+    output       tx,
+    output       trigger1,
+    input        echo1,
+    output       trigger2,
+    input        echo2
 );
-  wire [31:0] mem_addr;
-  wire [31:0] mem_rdata;
-  wire mem_rstrb;
-  wire [31:0] mem_wdata;
-  wire [3:0] mem_wmask;
 
-  FemtoRV32 CPU (
-      .clk(clk),
-      .reset(resetn),
-      .mem_addr(mem_addr),
-      .mem_rdata(mem_rdata),
-      .mem_rstrb(mem_rstrb),
-      .mem_wdata(mem_wdata),
-      .mem_wmask(mem_wmask),
-      .mem_rbusy(1'b0),
-      .mem_wbusy(1'b0)
-  );
-  wire [31:0] RAM_rdata;
-  wire wr = |mem_wmask;
-  wire rd = mem_rstrb;
+    wire [15:0] dist_tone;
+    wire        ready_tone;
+    wire [15:0] dist_vol;
+    wire        ready_vol;
+    wire [7:0]  midi_byte;
+    wire        midi_send;
+    wire        tx_busy;
 
-  Memory RAM (
-      .clk(clk),
-      .mem_addr(mem_addr),
-      .mem_rdata(RAM_rdata),
-      .mem_rstrb(cs[0] & rd),
-      .mem_wdata(mem_wdata),
-      .mem_wmask({4{cs[0]}} & mem_wmask)
-  );
+    // Sensor ultrasónico para tono
+    ultrasonic_sensor u_tone (
+        .clk(clk),
+        .rst(rst),
+        .trigger(trigger1),
+        .echo(echo1),
+        .distance_cm(dist_tone),
+        .distance_ready(ready_tone)
+    );
 
-  wire [31:0] uart_dout;
-  wire [31:0] gpio_dout;
-  wire [31:0] mult_dout;
-  wire [31:0] div_dout;
-  wire [31:0] bin2bcd_dout;
-  wire [31:0] dpram_dout;
+    // Sensor ultrasónico para volumen
+    ultrasonic_sensor u_vol (
+        .clk(clk),
+        .rst(rst),
+        .trigger(trigger2),
+        .echo(echo2),
+        .distance_cm(dist_vol),
+        .distance_ready(ready_vol)
+    );
 
-  peripheral_uart #(
-      .clk_freq(25000000),  // 27000000 for gowin
-      .baud    (57600)      // 57600 for gowin
-  ) per_uart (
-      .clk(clk),
-      .rst(!resetn),
-      .d_in(mem_wdata),
-      .cs(cs[5]),
-      .addr(mem_addr[4:0]),
-      .rd(rd),
-      .wr(wr),
-      .d_out(uart_dout),
-      .uart_tx(TXD),
-      .uart_rx(RXD),
-      .ledout(LEDS[0])
-  );
+    // Generador de nota MIDI según distancia del primer sensor
+    midi_note_sender m_tone (
+        .clk(clk),
+        .rst(rst),
+        .distance_cm(dist_tone),
+        .distance_ready(ready_tone),
+        .midi_byte(midi_byte),
+        .midi_send(midi_send),
+        .uart_ready(!tx_busy)
+    );
 
-  peripheral_mult mult1 (
-      .clk(clk),
-      .reset(!resetn),
-      .d_in(mem_wdata[15:0]),
-      .cs(cs[3]),
-      .addr(mem_addr[4:0]),
-      .rd(rd),
-      .wr(wr),
-      .d_out(mult_dout)
-  );
+    // Generador de volumen MIDI según distancia del segundo sensor
+    midi_volume_sender m_vol (
+        .clk(clk),
+        .rst(rst),
+        .distance_cm(dist_vol),
+        .distance_ready(ready_vol),
+        .midi_byte(midi_byte),
+        .midi_send(midi_send),
+        .uart_ready(!tx_busy)
+    );
 
-  // peripheral_dpram dpram_p0 (
-  //     .clk(clk),
-  //     .reset(!resetn),
-  //     .d_in(mem_wdata[15:0]),
-  //     .cs(cs[6]),
-  //     .addr(mem_addr[15:0]),
-  //     .rd(rd),
-  //     .wr(wr),
-  //     .d_out(dpram_dout)
-  // );
-
-  wire [6:0] cs;
-  address_decoder address_decoder (
-      .mem_addr(mem_addr),
-      .cs(cs)
-  );
-
-  chip_select chip_select (
-      .cs(cs),
-      .dpram_dout(dpram_dout),
-      .uart_dout(uart_dout),
-      .gpio_dout(gpio_dout),
-      .mult_dout(mult_dout),
-      .div_dout(div_dout),
-      .bin2bcd_dout(bin2bcd_dout),
-      .RAM_rdata(RAM_rdata),
-      .mem_rdata(mem_rdata)
-  );
-
-`ifdef BENCH
-  always @(posedge clk) begin
-    if (cs[5] & wr) begin
-      $write("%c", mem_wdata[7:0]);
-      $fflush(32'h8000_0001);
-    end
-  end
-`endif
+    // Transmisor UART para enviar bytes MIDI
+    uart_tx #(
+        .CLK_FREQ(50000000),
+        .BAUD_RATE(31250)
+    ) uart_inst (
+        .clk(clk),
+        .rst(rst),
+        .tx_data(midi_byte),
+        .tx_start(midi_send),
+        .tx_serial(tx),
+        .tx_busy(tx_busy)
+    );
 
 endmodule
+
