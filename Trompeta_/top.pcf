@@ -1,0 +1,11 @@
+# Botones conectados a los pines físicos (ejemplo: P31, P24, P25)
+set_io btn0_raw 9   # P31
+set_io btn1_raw 18  # P24
+set_io btn2_raw 17  # P25
+
+# Reloj de 25 MHz integrado en la FPGA
+set_io clk 60
+
+# Salida UART TX de la FPGA (esto va al RX de la ESP32)
+set_io tx 61
+

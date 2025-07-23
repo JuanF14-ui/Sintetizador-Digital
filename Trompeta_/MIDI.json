@@ -1,0 +1,20 @@
+{
+    "controls": {
+        "volume": {
+            "type": "CC",
+            "number": 7,
+            "range": [0, 127],
+            "default": 90
+        },
+        "expression": {
+            "type": "CC",
+            "number": 11,
+            "range": [0, 127],
+            "default": 127
+        }
+    },
+    "channels": {
+        "tuba": 1,
+        "percussion": 10
+    }
+}
