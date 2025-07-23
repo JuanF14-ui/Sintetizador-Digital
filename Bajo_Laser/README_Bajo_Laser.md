@@ -44,6 +44,8 @@ Por otra parte, a través de un potenciometro
 
 ![Imagenx](Flujo.png)
 
+Una vez el programa se inicializa y presionado el botón de Reset de la FPGA, se activarán los módulos laser, de LDR y el potenciómetro, de tal manera que el programa asigna de forma predeterminada como una salida a nivel BAJO del LDR de 4 bits (0000), después, si se presiona un pulsador, entonces se leerá tanto el potenciometro como la salida de los láseres, de lo contrario solo se tendrá en cuenta lo registrado por el láser a través de la funciòn `Get_Laser()`, la cual recibirá una entrada binaria y posteriormente realizará una conversión de binario a decimal para en seguida enviar la información procesada al Chuck mediante el protocolo OSC via Wi-Fi. Cuando se presione el pulsador, el ADC del ESP32 leerá el valor de tensión que cae en el potenciometro y a este se le asignará un valor binario de 12 bits, de tal forma que al Chuck obtendrá la información tanto del láser como del potenciometro. En la secciòn final de "Explicación de conexión con Chuck", se comentará detalladamente el procesamiento de la información recibida por Chuck.
+
 ## Diagrama RTL
 
 ![Imagenx](sim/SOC.svg)
