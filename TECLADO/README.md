@@ -57,7 +57,7 @@ Este módulo tiene como propósito principal la detección de teclas presionadas
 
 ## 🔁 Diagrama ASM
 
-![Diagrama ASM del módulo PWM_AUDIO](./diagrama_asm_pwm_audio.png)
+![Diagrama ASM del módulo PWM_AUDIO](https://github.com/JuanF14-ui/Sintetizador-de-Chuck-Digital/blob/b5a2995438b3b82fcb4e63dbe2cd7be1b3461952/TECLADO/DIAGRAMA%20ASM.png)
 
 El sistema comienza en un estado de inicialización con frecuencia cero y reset en alto. Luego verifica continuamente el estado de los botones físicos. Cuando uno está presionado, se asigna una nueva frecuencia.
 
