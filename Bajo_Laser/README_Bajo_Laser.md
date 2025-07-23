@@ -12,3 +12,8 @@ El sistema se compone de cuatro módulos láser de punto (650 nm, 6 mm, 5 
 Además, se incorpora un potenciómetro en un divisor de tensión que genera una señal analógica proporcional a su resistencia. Esta señal es digitalizada mediante el ADC de un ESP32 y convertida a un número binaria de 10 bits, que se transfiere a la FPGA. El valor binario representa la "altura" sobre el mástil de un bajo, permitiendo modificar la frecuencia de la nota según la tensión recibida, tal como ocurre al presionar una cuerda en diferentes trastes.
 
 ## Requerimientos Funcionales
+
+1. El sistema debe detectar 
+
+
+
