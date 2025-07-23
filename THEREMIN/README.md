@@ -122,6 +122,31 @@ Aunque actualmente es un SoC lógico simulado, este proyecto puede escalarse a u
 Se simularos los modulos mencionados anteriormente:
 ### Simulacion midi_note_sender.v:
 <img width="1153" height="322" alt="imagen" src="https://github.com/user-attachments/assets/3e285aad-2c7f-4d74-9961-80f8c2d5b019" />
+El módulo `midi_note_sender.v`  convierte una distancia (`distance_cm`) en una nota MIDI y la envía como un mensaje "Note On" a través de UART.
+
+**Funcionamiento:**
+1.  **Cálculo de Nota:** En `IDLE`, con `distance_ready` activo, calcula la `note`:
+    * `< 5 cm`: `note = 80`
+    * `> 60 cm`: `note = 50`
+    * `5-60 cm`: `note` se escala inversamente de 80 a 50.
+2.  **Envío MIDI (secuencial):** Envía 3 bytes si `uart_ready` está activo:
+    * **1er Byte:** `0x90` (Note On, Canal 1).
+    * **2do Byte:** La `note` calculada.
+    * **3er Byte:** `0x64` (Velocidad 100).
+3.  **Control de Envío:** `midi_send` se activa por un ciclo de reloj por cada byte enviado.
+
+**Análisis de Simulación (con `distance_cm = 20`):**
+
+La simulación es **consistente** con el código.
+
+* **Cálculo:** `note` se calcula como `72` (`0x48`).
+* **Secuencia de Envío (con `midi_send` activo):**
+    1.  `midi_byte` = `0x90`
+    2.  `midi_byte` = `0x48` (la nota 72)
+    3.  `midi_byte` = `0x64` (velocidad 100)
+
+La simulación confirma el correcto funcionamiento.
+
 
 ### Simulacion midi_volume_sender.v:
 <img width="1131" height="366" alt="imagen" src="https://github.com/user-attachments/assets/5fb5bdc6-e0ec-46cc-b014-dddf783c6e6f" />
