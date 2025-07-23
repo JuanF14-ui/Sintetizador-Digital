@@ -7,7 +7,7 @@ El presente repositorio describe el desarrollo de un "bajo láser" como componen
 - Luciano Manrique Medina
 - Samuel Mahecha Arango
 
-![Imagen1](Bajo_Laser/Impresion3D.jpg)
+![Imagen1](Impresion3D.jpeg)
 
 El sistema se compone de cuatro módulos láser de punto (650 nm, 6 mm, 5 V, 5 mW, color rojo), orientados hacia cuatro sensores LDR (Sensores de luminosidad con fotoresistencia de salida digital). Cada sensor LDR entrega una señal de nivel alto cuando no se detecta una intensidad luminosa suficiente. Dicho umbral que puede ajustarse directamente en el módulo mediante un trimmer. Esta configuración permite que los haces láser funcionen como “cuerdas virtuales”, en donde al interrumpir alguno de ellos, el correspondiente LDR activa una señal de nivel alto, la cual es enviada directamente a la FPGA (BlackIce40), simulando el efecto de pulsar una cuerda en un instrumento tradicional, en este caso el de un bajo.
 
