@@ -1,0 +1,312 @@
+
+ /----------------------------------------------------------------------------\
+ |                                                                            |
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |                                                                            |
+ |  Copyright (C) 2012 - 2020  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |                                                                            |
+ |  Permission to use, copy, modify, and/or distribute this software for any  |
+ |  purpose with or without fee is hereby granted, provided that the above    |
+ |  copyright notice and this permission notice appear in all copies.         |
+ |                                                                            |
+ |  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES  |
+ |  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF          |
+ |  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR   |
+ |  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    |
+ |  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN     |
+ |  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF   |
+ |  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.            |
+ |                                                                            |
+ \----------------------------------------------------------------------------/
+
+ Yosys 0.33+6 (git sha1 41b34a193, x86_64-conda-linux-gnu-cc 11.2.0 -fvisibility-inlines-hidden -fmessage-length=0 -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -fdebug-prefix-map=/root/conda-eda/conda-eda/workdir/conda-env/conda-bld/yosys_1694128612374/work=/usr/local/src/conda/yosys-0.33_7_g41b34a193 -fdebug-prefix-map=/home/juanf/miniconda3/envs/digital=/usr/local/src/conda-prefix -fPIC -Os -fno-merge-constants)
+
+
+-- Parsing `SOC.v' using frontend ` -vlog2k' --
+
+1. Executing Verilog-2005 frontend: SOC.v
+Parsing Verilog input from `SOC.v' to AST representation.
+Storing AST representation for module `$abstract\SOC'.
+Successfully finished Verilog frontend.
+
+-- Parsing `cores/cpu/femtorv32_quark.v' using frontend ` -vlog2k' --
+
+2. Executing Verilog-2005 frontend: cores/cpu/femtorv32_quark.v
+Parsing Verilog input from `cores/cpu/femtorv32_quark.v' to AST representation.
+Storing AST representation for module `$abstract\FemtoRV32'.
+Successfully finished Verilog frontend.
+
+-- Parsing `chip_select.v' using frontend ` -vlog2k' --
+
+3. Executing Verilog-2005 frontend: chip_select.v
+Parsing Verilog input from `chip_select.v' to AST representation.
+Storing AST representation for module `$abstract\chip_select'.
+Successfully finished Verilog frontend.
+
+-- Parsing `cores/memory/Memory.v' using frontend ` -vlog2k' --
+
+4. Executing Verilog-2005 frontend: cores/memory/Memory.v
+Parsing Verilog input from `cores/memory/Memory.v' to AST representation.
+Storing AST representation for module `$abstract\Memory'.
+Successfully finished Verilog frontend.
+
+-- Parsing `cores/uart/perip_uart.v' using frontend ` -vlog2k' --
+
+5. Executing Verilog-2005 frontend: cores/uart/perip_uart.v
+Parsing Verilog input from `cores/uart/perip_uart.v' to AST representation.
+Storing AST representation for module `$abstract\peripheral_uart'.
+Storing AST representation for module `$abstract\peripheral_uart_addr_decoder'.
+Storing AST representation for module `$abstract\peripheral_uart_register_control'.
+Successfully finished Verilog frontend.
+
+-- Parsing `cores/uart/uart.v' using frontend ` -vlog2k' --
+
+6. Executing Verilog-2005 frontend: cores/uart/uart.v
+Parsing Verilog input from `cores/uart/uart.v' to AST representation.
+Storing AST representation for module `$abstract\uart'.
+Storing AST representation for module `$abstract\uart_rx'.
+Storing AST representation for module `$abstract\uart_tx'.
+Successfully finished Verilog frontend.
+
+-- Parsing `cores/mult/perip_mult.v' using frontend ` -vlog2k' --
+
+7. Executing Verilog-2005 frontend: cores/mult/perip_mult.v
+Parsing Verilog input from `cores/mult/perip_mult.v' to AST representation.
+Storing AST representation for module `$abstract\peripheral_mult'.
+Successfully finished Verilog frontend.
+
+-- Parsing `cores/mult/mult.v' using frontend ` -vlog2k' --
+
+8. Executing Verilog-2005 frontend: cores/mult/mult.v
+Parsing Verilog input from `cores/mult/mult.v' to AST representation.
+Storing AST representation for module `$abstract\mult'.
+Successfully finished Verilog frontend.
+
+-- Parsing `cores/dpRAM/dpram.v' using frontend ` -vlog2k' --
+
+9. Executing Verilog-2005 frontend: cores/dpRAM/dpram.v
+Parsing Verilog input from `cores/dpRAM/dpram.v' to AST representation.
+Storing AST representation for module `$abstract\dp_ram'.
+Successfully finished Verilog frontend.
+
+-- Parsing `cores/dpRAM/perip_dpram.v' using frontend ` -vlog2k' --
+
+10. Executing Verilog-2005 frontend: cores/dpRAM/perip_dpram.v
+Parsing Verilog input from `cores/dpRAM/perip_dpram.v' to AST representation.
+Storing AST representation for module `$abstract\peripheral_dpram'.
+Successfully finished Verilog frontend.
+
+-- Parsing `cores/laser/perip_laser.v' using frontend ` -vlog2k' --
+
+11. Executing Verilog-2005 frontend: cores/laser/perip_laser.v
+Parsing Verilog input from `cores/laser/perip_laser.v' to AST representation.
+Storing AST representation for module `$abstract\perip_laser'.
+Successfully finished Verilog frontend.
+
+-- Running command `prep -top perip_laser; hierarchy -check; proc; write_json sim/perip_laser.json' --
+
+12. Executing PREP pass.
+
+12.1. Executing HIERARCHY pass (managing design hierarchy).
+
+12.2. Executing AST frontend in derive mode using pre-parsed AST for module `\perip_laser'.
+Generating RTLIL representation for module `\perip_laser'.
+Warning: wire '\d_out' is assigned in a block at cores/laser/perip_laser.v:16.9-16.18.
+Warning: wire '\d_out' is assigned in a block at cores/laser/perip_laser.v:20.21-20.44.
+
+12.2.1. Analyzing design hierarchy..
+Top module:  \perip_laser
+
+12.2.2. Analyzing design hierarchy..
+Top module:  \perip_laser
+Removing unused module `$abstract\perip_laser'.
+Removing unused module `$abstract\peripheral_dpram'.
+Removing unused module `$abstract\dp_ram'.
+Removing unused module `$abstract\mult'.
+Removing unused module `$abstract\peripheral_mult'.
+Removing unused module `$abstract\uart_tx'.
+Removing unused module `$abstract\uart_rx'.
+Removing unused module `$abstract\uart'.
+Removing unused module `$abstract\peripheral_uart_register_control'.
+Removing unused module `$abstract\peripheral_uart_addr_decoder'.
+Removing unused module `$abstract\peripheral_uart'.
+Removing unused module `$abstract\Memory'.
+Removing unused module `$abstract\chip_select'.
+Removing unused module `$abstract\FemtoRV32'.
+Removing unused module `$abstract\SOC'.
+Removed 15 unused modules.
+
+12.3. Executing PROC pass (convert processes to netlists).
+
+12.3.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+12.3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$cores/laser/perip_laser.v:14$1 in module perip_laser.
+Removed a total of 0 dead cases.
+
+12.3.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 1 assignment to connection.
+
+12.3.4. Executing PROC_INIT pass (extract init attributes).
+
+12.3.5. Executing PROC_ARST pass (detect async resets in processes).
+
+12.3.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+
+12.3.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\perip_laser.$proc$cores/laser/perip_laser.v:14$1'.
+     1/1: $1\d_out[31:0]
+
+12.3.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+12.3.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\perip_laser.\d_out' using process `\perip_laser.$proc$cores/laser/perip_laser.v:14$1'.
+  created $dff cell `$procdff$11' with positive edge clock.
+
+12.3.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+12.3.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 3 empty switches in `\perip_laser.$proc$cores/laser/perip_laser.v:14$1'.
+Removing empty process `perip_laser.$proc$cores/laser/perip_laser.v:14$1'.
+Cleaned up 3 empty switches.
+
+12.3.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module perip_laser.
+
+12.4. Executing OPT_EXPR pass (perform const folding).
+Optimizing module perip_laser.
+
+12.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \perip_laser..
+Removed 0 unused cells and 5 unused wires.
+
+12.6. Executing CHECK pass (checking for obvious problems).
+Checking module perip_laser...
+Found and reported 0 problems.
+
+12.7. Executing OPT pass (performing simple optimizations).
+
+12.7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module perip_laser.
+
+12.7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\perip_laser'.
+Removed a total of 0 cells.
+
+12.7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \perip_laser..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+12.7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \perip_laser.
+Performed a total of 0 changes.
+
+12.7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\perip_laser'.
+Removed a total of 0 cells.
+
+12.7.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \perip_laser..
+
+12.7.7. Executing OPT_EXPR pass (perform const folding).
+Optimizing module perip_laser.
+
+12.7.8. Finished OPT passes. (There is nothing left to do.)
+
+12.8. Executing WREDUCE pass (reducing word size of cells).
+Removed top 3 bits (of 5) from port B of cell perip_laser.$eq$cores/laser/perip_laser.v:19$3 ($eq).
+
+12.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \perip_laser..
+
+12.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+12.11. Executing OPT pass (performing simple optimizations).
+
+12.11.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module perip_laser.
+
+12.11.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\perip_laser'.
+Removed a total of 0 cells.
+
+12.11.3. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \perip_laser..
+
+12.11.4. Finished fast OPT passes.
+
+12.12. Printing statistics.
+
+=== perip_laser ===
+
+   Number of wires:                 14
+   Number of wire bits:            203
+   Number of public wires:           9
+   Number of public wire bits:     105
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  6
+     $dff                            1
+     $eq                             1
+     $logic_and                      1
+     $mux                            3
+
+12.13. Executing CHECK pass (checking for obvious problems).
+Checking module perip_laser...
+Found and reported 0 problems.
+
+13. Executing HIERARCHY pass (managing design hierarchy).
+
+13.1. Analyzing design hierarchy..
+Top module:  \perip_laser
+
+13.2. Analyzing design hierarchy..
+Top module:  \perip_laser
+Removed 0 unused modules.
+
+14. Executing PROC pass (convert processes to netlists).
+
+14.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+14.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Removed a total of 0 dead cases.
+
+14.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 0 assignments to connections.
+
+14.4. Executing PROC_INIT pass (extract init attributes).
+
+14.5. Executing PROC_ARST pass (detect async resets in processes).
+
+14.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+
+14.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+
+14.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+14.9. Executing PROC_DFF pass (convert process syncs to FFs).
+
+14.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+14.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+14.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module perip_laser.
+
+15. Executing JSON backend.
+
+Warnings: 2 unique messages, 2 total
+End of script. Logfile hash: 2114b9839c, CPU: user 0.04s system 0.01s, MEM: 12.38 MB peak
+Yosys 0.33+6 (git sha1 41b34a193, x86_64-conda-linux-gnu-cc 11.2.0 -fvisibility-inlines-hidden -fmessage-length=0 -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -fdebug-prefix-map=/root/conda-eda/conda-eda/workdir/conda-env/conda-bld/yosys_1694128612374/work=/usr/local/src/conda/yosys-0.33_7_g41b34a193 -fdebug-prefix-map=/home/juanf/miniconda3/envs/digital=/usr/local/src/conda-prefix -fPIC -Os -fno-merge-constants)
+Time spent: 43% 22x read_verilog (0 sec), 14% 6x opt_expr (0 sec), ...
