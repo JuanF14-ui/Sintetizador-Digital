@@ -42,7 +42,12 @@ Por otra parte, a través de un potenciometro
 
 ## Diagrama de flujo
 
+![Imagenx](Flujo.png)
+
 ## Diagrama RTL
+
+![Imagenx](sim/SOC.svg)
+![Imagenx](sim/perip_laser.svg)
 
 
 ## Simulación verilog-gtkwave
@@ -63,6 +68,21 @@ En el procesamiento de los valores de cada laser, se definió a cada laser como 
 Para la combinación 0001, se tiene un Mi (64), para 0010 un La (69), para 0100 un Re (62), para 1000 Sol (67), para valores intermedios se tienen configurados otros valores.
 
 Para todas la notas el volumen de sonido se mantiene constante y la duración de cada nota es de 250ms.
+
+El siguiente fragmento de código pertenece a parte de la logica principal realizada en chuck:
+
+```
+[0, 64, 69,60 , 62,61 ,63 ,65,67,66,68,69,70,71,72,73] @=> int arreglo[];
+
+if (msg.address == "/dev1/piano") {
+                arreglo[amsg.getInt(0)] => int note;
+                <<< "Nota de piano recibida:", note >>>;
+                spork ~ playPiano(note);
+            }
+```
+
+Se difinieron las 16 notas MIDI pertenecientes a las combinaciones posibles entre las 4 cuerdas, tomando en cuenta que el valor de 0 en la lista "arreglo" no representa ningún sonido en específico ya que corresponde al caso donde no se está tocando ninguna cuerda. A través de un condicional, se verifica si las cuerdas están siendo tocadas; en caso de ser así, el dato entero recibido se convierte en el indice de una de las notas de la lista, procediendo con la respectiva reproducción de la nota indicada.
+
 
 
 
