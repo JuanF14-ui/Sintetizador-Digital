@@ -44,6 +44,8 @@ Por otra parte, a través de un potenciometro
 
 ## Simulación verilog-gtkwave
 
+![Imagen1](Testbench.png)
+
 ## Logs
 
 
