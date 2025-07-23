@@ -366,7 +366,7 @@ De esta forma, el sistema permite orquestar múltiples teclados conectados en re
 Para conectar la FPGA con el puente serie→WiFi/MQTT (ESP32‑C6) se presentaron varios errores. A continuación se documentan los síntomas observados, el mensaje de consola y las acciones correctivas.  
 
 > **Evidencia:**  
-> ![Log ESP32-C6](docs/esp32c6_invalid_header.jpg)  
+> ![fallo ESP32-C6](https://github.com/JuanF14-ui/Sintetizador-de-Chuck-Digital/blob/6bc22dbdc00c0e3b7e4319eb28a562d6083e357e/TECLADO/docs/falloesp32.png)  
 > (Mensaje repetitivo: `Invalid header: 0xffffffff`, `boot:0x7b (SPI FAST FLASH BOOT)`, `rst:0x7 (TG0 WDT HPSYS)`)
 
 ###### 1. Mensaje: `Invalid header: 0xffffffff`
