@@ -55,13 +55,41 @@ Este módulo tiene como propósito principal la detección de teclas presionadas
 
 ---
 
-## 🔁 Diagrama ASM
+## Diagramas RTL
 
-![Diagrama ASM del módulo PWM_AUDIO](https://github.com/JuanF14-ui/Sintetizador-de-Chuck-Digital/blob/b5a2995438b3b82fcb4e63dbe2cd7be1b3461952/TECLADO/DIAGRAMA%20ASM.png)
+A continuación se presentan los diagramas RTL generados para distintos componentes del sistema. Estos esquemas fueron obtenidos tras la síntesis del código en Verilog y permiten visualizar la estructura lógica interna de cada módulo.
 
-El sistema comienza en un estado de inicialización con frecuencia cero y reset en alto. Luego verifica continuamente el estado de los botones físicos. Cuando uno está presionado, se asigna una nueva frecuencia.
+### Diagrama RTL del SoC
+
+Este diagrama muestra la interconexión general entre los módulos periféricos, la CPU y la memoria.
+
+![RTL SoC](https://github.com/JuanF14-ui/Sintetizador-de-Chuck-Digital/blob/c9b0b9e960c6adfaceaaf1664454107d37ef90d4/TECLADO/DIAGRAMA%20SOC.jpg)
 
 ---
+
+### Diagrama RTL del Módulo Teclado (`keyboard_pwm`)
+
+Representa la lógica encargada de leer los botones físicos, priorizar las notas y generar la señal PWM correspondiente.
+
+![RTL Teclado](https://github.com/JuanF14-ui/Sintetizador-de-Chuck-Digital/blob/c9b0b9e960c6adfaceaaf1664454107d37ef90d4/TECLADO/DIAGRAMA%20TECLADO.jpg)
+
+---
+
+### Diagrama RTL del Módulo LED PWM
+
+Este módulo genera una señal PWM para controlar el brillo de un LED. Su periodo puede ser configurado desde el bus.
+
+![RTL LED](https://github.com/JuanF14-ui/Sintetizador-de-Chuck-Digital/blob/c9b0b9e960c6adfaceaaf1664454107d37ef90d4/TECLADO/DIAGRAMA%20LED.jpg)
+
+### Diagrama RTL del Módulo Contador (`perip_contador`)
+
+Este módulo cuenta los flancos de subida de cada botón. Cada contador es independiente y puede ser leído desde el bus por el procesador.
+
+![RTL Contador](https://github.com/JuanF14-ui/Sintetizador-de-Chuck-Digital/blob/c9b0b9e960c6adfaceaaf1664454107d37ef90d4/TECLADO/DIAGRAMA%20CONTADOR.jpg)
+
+---
+
+Los diagramas permiten verificar la estructura sintetizada, el uso de recursos y la correcta jerarquía en el diseño de cada componente del sistema.
 
 ## 🏗️ Diagrama RTL
 
