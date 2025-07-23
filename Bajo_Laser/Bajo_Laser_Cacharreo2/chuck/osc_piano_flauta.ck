@@ -33,7 +33,7 @@ fun void listenOSC() {
         
         while (oin.recv(msg)) {
             if (msg.address == "/dev1/piano") {
-                msg.getInt(0) => int note;
+                msg.getInt(0)+60 => int note;
                 <<< "Nota de piano recibida:", note >>>;
                 spork ~ playPiano(note);
             }
