@@ -642,4 +642,33 @@ En general, la simulación demuestra la integración y el flujo de datos entre l
 ## Video simulacion: 
 ## Logs de make log-prn, make log-syn
 ## ¿Còmo interactùa con entornos externos?
+
+## ¿Cómo interactúa con aplicaciones externas?
+
+El Theremin digital no solo genera audio y MIDI localmente, sino que también puede comunicarse con aplicaciones y servicios externos para expandir su funcionalidad, permitir control remoto, visualización de datos y síntesis avanzada. Gracias al ESP32 con capacidad Wi-Fi y a la salida UART/USB-MIDI, podemos integrar protocolos y entornos como MQTT o ChucK de la siguiente manera:
+
+| Aplicación / Plataforma | Protocolo            | Descripción                                                                                                                                       |
+|-------------------------|----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
+| **MQTT Broker**         | MQTT (TCP/IP)        | El ESP32 publica en tópicos los valores de distancia, nota MIDI y volumen. Otros dispositivos o dashboards (Node-RED, Home Assistant, etc.) se suscriben para visualizar o modificar parámetros en tiempo real. |
+| **ChucK**               | MIDI (UART/USB) o OSC (UDP) | ChucK puede leer directamente los mensajes MIDI Note On / Control Change desde el puerto serial o recibir paquetes OSC (configurables en el firmware) para realizar síntesis y procesamiento sonoro avanzado. |
+| **Node-RED**            | MQTT / HTTP REST     | Node-RED se suscribe a los tópicos MQTT o consulta una API REST expuesta por el ESP32 para orquestar flujos de datos, disparar eventos y crear paneles de control dinámicos.       |
+| **DAW (Ableton Live, Logic, etc.)** | USB-MIDI / DIN-5 | Permite grabar o manipular en tiempo real los mensajes MIDI del Theremin, integrándolo en sesiones de producción musical o performance en vivo.                      |
+| **Dashboards Web**      | WebSocket / HTTP     | Aplicaciones web en tiempo real que muestran gráficamente las lecturas de distancia y permiten ajustar parámetros (rango de notas, volumen mínimo, etc.) directamente desde el navegador. |
+
+1. **MQTT**:  
+   - El firmware del ESP32 incluye un cliente MQTT que se conecta a un broker (público o local).  
+   - Publica cada vez que cambia `distance_tone` o `distance_vol` en tópicos como `theremin/tone` y `theremin/volume`.  
+   - Puede suscribirse a tópicos de control (`theremin/scale`, `theremin/velocity_max`) para ajustar la lógica de conversión en caliente.
+
+2. **ChucK**:  
+   - Sobre la salida UART-MIDI (31 250 bps) o USB-MIDI del ESP32 se conecta ChucK, que lee los bytes MIDI y ejecuta scripts de síntesis.  
+   - Alternativamente, el ESP32 puede encapsular los mismos datos en paquetes OSC (p. ej. `/tone 72`, `/volume 93`) y enviarlos por UDP al puerto de escucha de ChucK.
+
+3. **Otras integraciones**:  
+   - **Node-RED**: Visualización y lógica de orquestación.  
+   - **DAW**: Grabación y edición de MIDI.  
+   - **WebSockets/REST**: Dashboards personalizados en el navegador para control remoto.
+
+Con estas conexiones, el Theremin digital se convierte en un nodo IoT musical y en una fuente de datos interactiva para entornos de programación de audio, producción musical y sistemas de control domótico o de visualización.```
+
 ## Video del proyecto
