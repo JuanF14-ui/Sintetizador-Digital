@@ -120,9 +120,6 @@ Aunque actualmente es un SoC lógico simulado, este proyecto puede escalarse a u
 
 ## Maquina de estados:
 
-
-## Diagramas funcionales:
-
 ```mermaid
 stateDiagram-v2
 
@@ -142,9 +139,7 @@ stateDiagram-v2
 
 Esta máquina de estados orquesta la interacción entre los sensores ultrasónicos y la salida MIDI. Inicia configurando el hardware, luego mide distancias continuamente para procesarlas en valores MIDI. Finalmente, multiplexa y envía los mensajes MIDI resultantes a través de la UART.
 
-# Máquina de Estados del Sistema MIDI
 
-## Descripción de Estados
 
 ### S0_Inicio
 **Estado inicial** del sistema al encender o reiniciar.
