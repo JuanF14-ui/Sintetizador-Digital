@@ -359,6 +359,13 @@ El sistema no solo genera audio localmente con PWM, sino que además envía even
 - ChucK interpreta los eventos y genera audio real (síntesis por software).
 
 De esta forma, el sistema permite orquestar múltiples teclados conectados en red, con reproducción colectiva por ChucK en el computador del profesor o en un entorno distribuido.
+
+### Logs de make log-pnr, make log-syn
+
+![Logs de make log-pnr](https://github.com/JuanF14-ui/Sintetizador-de-Chuck-Digital/blob/5cee717dcdfb01cf5979fc196f2acb34bbf46851/TECLADO/docs/GTKW_4.png)
+![Logs de make log-syn](https://github.com/JuanF14-ui/Sintetizador-de-Chuck-Digital/blob/5cee717dcdfb01cf5979fc196f2acb34bbf46851/TECLADO/docs/GTKW_4.png)
+
+
 -------------------------------------------------------------------------------------------------------------------------------------------
 #### Problemas para implementar la ESP32 C6
 ##### Fallos durante la integración de la ESP32‑C6
