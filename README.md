@@ -8,6 +8,6 @@ Los instrumentos presentes son:
 
 - Trompeta
 - Theremín Digital
-- Bajo Lasér
+- Bajo Láser
 - Teclado
 -
