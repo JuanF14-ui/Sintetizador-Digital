@@ -9,5 +9,5 @@ Los instrumentos presentes son:
 - Trompeta
 - Theremín Digital
 - Bajo Lasér
--
+- Teclado
 -
