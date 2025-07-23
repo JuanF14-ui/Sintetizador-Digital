@@ -116,7 +116,82 @@ Aunque actualmente es un SoC lógico simulado, este proyecto puede escalarse a u
 | `*_tb.v`                 | Testbenches para simular comportamiento |
 
 ---
-## Diagrama ASM/ Maquina de estados/ diagramas funcionales:
+## Diagrama ASM:
+
+## Maquina de estados:
+
+
+## Diagramas funcionales:
+
+```mermaid
+stateDiagram-v2
+
+    [*] --> S0_Inicio
+    S0_Inicio --> S1_ConfigurarHardware : iniciar sistema
+    S1_ConfigurarHardware --> S2_EsperarSensoresListos : hardware listo
+    S2_EsperarSensoresListos --> S3_LeerDistancias : sensores listos para medicion
+
+    S3_LeerDistancias --> S4_ProcesarDistancias
+    S4_ProcesarDistancias --> S5_GenerarMensajesMIDI
+
+    S5_GenerarMensajesMIDI --> S6_MuxMIDI
+    S6_MuxMIDI --> S7_EnviarPorUART
+
+    S7_EnviarPorUART --> S3_LeerDistancias : ciclo continuo
+```
+
+Esta máquina de estados orquesta la interacción entre los sensores ultrasónicos y la salida MIDI. Inicia configurando el hardware, luego mide distancias continuamente para procesarlas en valores MIDI. Finalmente, multiplexa y envía los mensajes MIDI resultantes a través de la UART.
+
+# Máquina de Estados del Sistema MIDI
+
+## Descripción de Estados
+
+### S0_Inicio
+**Estado inicial** del sistema al encender o reiniciar.
+
+### S1_ConfigurarHardware
+Realiza la configuración inicial de:
+- Pines GPIO para sensores HC-SR04 (Trigger/Echo)
+- Pines UART para comunicación MIDI
+- Otros periféricos del ESP32
+
+### S2_EsperarSensoresListos
+Espera hasta que:
+- Los sensores ultrasónicos estén listos para nueva medición
+- O hayan completado una medición anterior
+- Indicado por señales `distance_ready`
+
+### S3_LeerDistancias
+- Activa pulsos de disparo (`trigger1`, `trigger2`)
+- Espera respuestas de eco (`echo1`, `echo2`)
+- Calcula distancias (`distancia_tono`, `distancia_volumen`)
+
+### S4_ProcesarDistancias
+Convierte distancias medidas a valores MIDI:
+- `distancia_tono` → nota MIDI
+- `distancia_volumen` → volumen MIDI
+- Usa lógica de escalado de `midi_note_sender` y `midi_volume_sender`
+
+### S5_GenerarMensajesMIDI
+Ensambla bytes MIDI:
+- Status byte
+- Note number/Control number  
+- Velocity/Value
+- Procesado en módulos `midi_note_sender` y `midi_volume_sender`
+
+### S6_MuxMIDI
+Lógica de multiplexación:
+- Selecciona mensaje con prioridad (`midi_byte_mux`)
+- Gestiona conflictos cuando ambos módulos intentan enviar
+- Usa señales `midi_send_mux`
+
+### S7_EnviarPorUART
+Transmisión serial:
+- Envía `midi_byte_mux` por UART
+- Gestiona señal `midi_send_mux`
+- Espera disponibilidad UART (`uart_ready`)
+- Vuelve a S2_EsperarSensoresListos al completar
+
 ## Diagrama RTL del SoC y su mòdulo:
 ## Simulaciones:
 Se simularos los modulos mencionados anteriormente:
