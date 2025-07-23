@@ -1,6 +1,8 @@
-# Módulo PWM_AUDIO
+# Teclado-Electronica digital 1
 
-Este módulo tiene como propósito principal la detección de teclas presionadas en un conjunto de cuatro botones físicos conectados a una FPGA (BlackIce iCE40) y la generación de una señal PWM (Pulse Width Modulation) con una frecuencia correspondiente a la tecla presionada. Esta señal PWM puede usarse para activar un buzzer o un LED (como reemplazo visual del sonido), permitiendo construir un sistema básico de teclado musical digital.
+
+El módulo está diseñado para leer cuatro botones físicos conectados a la FPGA (BlackIce iCE40) y, a partir de su estado, generar una señal PWM (Pulse Width Modulation) cuya frecuencia corresponde a la nota asociada a cada botón. Cuando ninguno está presionado, la salida permanece en silencio (PWM desactivado). Al detectarse una pulsación, el periférico `perip_keyboard_pwm` selecciona la nota según una prioridad predefinida (DO > RE > MI > FA) o, si el SoC lo indica, aplica una frecuencia forzada desde registro. La señal PWM resultante puede dirigirse a un buzzer para producir sonido o a un LED como indicador visual del tono, permitiendo construir un teclado musical digital básico con retroalimentación audible o luminosa.
+
 
 ---
 
