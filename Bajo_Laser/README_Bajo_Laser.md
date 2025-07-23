@@ -42,7 +42,12 @@ Por otra parte, a través de un potenciometro
 
 ## Diagrama de flujo
 
+![Imagenx](Flujo.png)
+
 ## Diagrama RTL
+
+![Imagenx](Bajo_Laser/sim/SOC.svg)
+![Imagenx](Bajo_Laser/sim/perip_laser.svg)
 
 
 ## Simulación verilog-gtkwave
