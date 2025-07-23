@@ -660,6 +660,7 @@ En general, la simulación demuestra la integración y el flujo de datos entre l
 
 ## Video simulacion: 
 ## Logs de make log-prn, make log-syn
+
 ## ¿Còmo interactùa con entornos externos?
 El Theremin digital no solo genera audio y MIDI localmente, sino que también puede comunicarse con aplicaciones y servicios externos para expandir su funcionalidad, permitir control remoto, visualización de datos y síntesis avanzada. Gracias al ESP32 con capacidad Wi-Fi y a la salida UART/USB-MIDI, podemos integrar protocolos y entornos como MQTT o ChucK de la siguiente manera:
 
