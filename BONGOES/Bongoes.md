@@ -86,4 +86,4 @@ Este diagrama muestra el diseño interno del puente (bridge) entre el sensor y e
 
 Este es el bloque encargado de generar la señal bongo_hit. Lo hace tomando como entrada dos señales binarias (left_sensor y right_sensor), luego usa multiplexores para formar un bus de 2 bits según qué sensor esté activo y genera una señal binaria bongo_hit si se detecta un cambio (probablemente con flanco o lógica combinacional).
 
-![Diagrama general]()
+![Diagrama general](https://github.com/migueltriana37408/Sintetizador-de-Chuck-Digital/blob/main/BONGOES/WhatsApp%20Image%202025-07-23%20at%205.13.05%20PM.jpeg?raw=true)
