@@ -56,7 +56,7 @@ Una vez el programa se inicializa y presionado el botón de Reset de la FPGA, se
 
 ![Imagen1](Testbench.png)
 
-Como se observa, cuando la variable de read (rd) y la de chipset se encuentre encendida, luego, la salida ´d_out´ pasa de un estado indeterminado (´XXX´) a un valor ´0x0000000A´ de dirección de memoria, que corresponde correctamente al valor del laser.
+Como se observa, cuando la variable de read (rd) y la de chipset se encuentre encendida, luego, la salida `d_out` pasa de un estado indeterminado (`XXX`) a un valor `0x0000000A` de dirección de memoria, que corresponde correctamente al valor del laser.
 
 ## Logs
 
