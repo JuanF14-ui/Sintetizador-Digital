@@ -1,12 +1,1 @@
-Proyecto: Teclado PWM (Do–Re–Mi–Fa) en BlackIce40 + SoC FemtoRV32i conectado a una ESP32 C6
-
-stateDiagram-v2
-    [*] --> IDLE
-    IDLE: btn==0 && soc_freq==0\npwm=0
-    IDLE --> PLAY: btn!=0 || soc_freq!=0
-    PLAY: final_pwm_freq = prio(btn,soc)\npwm activo
-    PLAY --> IDLE: btn==0 && soc_freq==0
-    PLAY --> PLAY: btn cambia || soc_freq cambia
-
-
 
