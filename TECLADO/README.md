@@ -56,9 +56,9 @@ Este módulo tiene como propósito principal la detección de teclas presionadas
 
 ---
 
-## 🔁 Diagrama ASM
+## Diagrama ASM
 
-![Diagrama ASM del módulo PWM_AUDIO](./diagrama_asm_pwm_audio.png)
+![Diagrama ASM del módulo PWM_AUDIO](https://github.com/JuanF14-ui/Sintetizador-de-Chuck-Digital/blob/7afd143a660e506a7a00f404d333cb289c0e7ce1/TECLADO/DIAGRAMA%20ASM.png)
 
 El sistema comienza en un estado de inicialización con frecuencia cero y reset en alto. Luego verifica continuamente el estado de los botones físicos. Cuando uno está presionado, se asigna una nueva frecuencia.
 
@@ -67,11 +67,18 @@ El sistema comienza en un estado de inicialización con frecuencia cero y reset 
 
 ## Diagramas RTL
 
-A continuación se presentan los diagramas RTL generados para distintos componentes del sistema. Estos esquemas fueron obtenidos tras la síntesis del código en Verilog y permiten visualizar la estructura lógica interna de cada módulo.
+A continuación se presentan los diagramas RTL (Register Transfer Level) generados para distintos módulos del sistema. Estos esquemas muestran la estructura interna sintetizada de cada componente, permitiendo entender cómo se traduce el diseño de alto nivel en lógica estructural, y cómo se interconectan los elementos básicos como registros, multiplexores, contadores, comparadores y lógica secuencial.
+
+Los diagramas se obtuvieron tras la síntesis del código Verilog, y son útiles para verificar:
+- Jerarquía correcta del diseño
+- Uso y optimización de recursos
+- Conexiones entre señales internas y periféricos
+- Integración de cada módulo dentro del SoC
 
 ### Diagrama RTL del SoC
 
-Este diagrama muestra la interconexión general entre los módulos periféricos, la CPU y la memoria.
+Este diagrama muestra la estructura general del sistema integrado, incluyendo el procesador, la memoria, los módulos periféricos (`keyboard_pwm`, `led_pwm`, `perip_contador`, etc.) y el sistema de interconexión (bus). Es útil para visualizar cómo se comunican los distintos bloques a través del bus, cómo se manejan las señales de control y datos, y cómo se implementa el decodificador de direcciones (`chip_select`).
+
 
 ![RTL SoC](https://github.com/JuanF14-ui/Sintetizador-de-Chuck-Digital/blob/c9b0b9e960c6adfaceaaf1664454107d37ef90d4/TECLADO/DIAGRAMA%20SOC.jpg)
 
@@ -79,7 +86,7 @@ Este diagrama muestra la interconexión general entre los módulos periféricos,
 
 ### Diagrama RTL del Módulo Teclado (`keyboard_pwm`)
 
-Representa la lógica encargada de leer los botones físicos, priorizar las notas y generar la señal PWM correspondiente.
+Este módulo detecta el estado de los botones físicos conectados al sistema, prioriza las entradas activas y selecciona la frecuencia PWM correspondiente a la nota musical. El diagrama muestra la lógica de sincronización de botones (doble flip-flop), los multiplexores para la selección de frecuencia, y la generación de la señal PWM con ciclo útil fijo. También incluye lógica adicional para permitir que el procesador fuerce una frecuencia personalizada desde el bus.
 
 ![RTL Teclado](https://github.com/JuanF14-ui/Sintetizador-de-Chuck-Digital/blob/c9b0b9e960c6adfaceaaf1664454107d37ef90d4/TECLADO/DIAGRAMA%20TECLADO.jpg)
 
@@ -87,13 +94,13 @@ Representa la lógica encargada de leer los botones físicos, priorizar las nota
 
 ### Diagrama RTL del Módulo LED PWM
 
-Este módulo genera una señal PWM para controlar el brillo de un LED. Su periodo puede ser configurado desde el bus.
+Este componente genera una señal PWM con periodo configurable por el procesador. Se usa para controlar un LED (interno o externo) que puede visualizar el efecto del PWM. El RTL muestra cómo se implementa el generador de PWM, con contadores internos que comparan el valor del registro configurado con el reloj del sistema. Si la frecuencia se configura como cero, el módulo apaga la salida del LED.
 
 ![RTL LED](https://github.com/JuanF14-ui/Sintetizador-de-Chuck-Digital/blob/c9b0b9e960c6adfaceaaf1664454107d37ef90d4/TECLADO/DIAGRAMA%20LED.jpg)
 
 ### Diagrama RTL del Módulo Contador (`perip_contador`)
 
-Este módulo cuenta los flancos de subida de cada botón. Cada contador es independiente y puede ser leído desde el bus por el procesador.
+Este módulo cuenta cuántas veces se presiona cada uno de los cuatro botones (flancos de subida). Está compuesto por contadores independientes para cada entrada, lógica de flanco, y registros de salida que permiten al procesador leer los valores acumulados. El RTL permite visualizar claramente cada camino de datos y cómo se sincronizan las entradas con el reloj del sistema.
 
 ![RTL Contador](https://github.com/JuanF14-ui/Sintetizador-de-Chuck-Digital/blob/c9b0b9e960c6adfaceaaf1664454107d37ef90d4/TECLADO/DIAGRAMA%20CONTADOR.jpg)
 
@@ -101,9 +108,3 @@ Este módulo cuenta los flancos de subida de cada botón. Cada contador es indep
 
 Los diagramas permiten verificar la estructura sintetizada, el uso de recursos y la correcta jerarquía en el diseño de cada componente del sistema.
 
-## 🏗️ Diagrama RTL
-
-Puedes generar el diagrama con:
-
-```bash
-make rtl top=pwm_audio
