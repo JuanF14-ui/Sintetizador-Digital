@@ -74,5 +74,10 @@ flowchart TB
 
 El diseño digital del sistema se implementa como un SoC (System-on-Chip) en la FPGA Colorlight 5A-75E, basado en un procesador FemtoRV32. La siguiente figura muestra el diagrama de interconexión generado automáticamente por la herramienta de síntesis lógica.
 
-![Diagrama general]()
+![Diagrama general](https://github.com/migueltriana37408/Sintetizador-de-Chuck-Digital/blob/main/BONGOES/WhatsApp%20Image%202025-07-23%20at%204.50.59%20PM.jpeg?raw=true)
 
+# Diagrama bridge de memoria: 
+
+Este diagrama muestra el diseño interno del puente (bridge) entre el sensor y el bus de memoria. Su función es permitir que la CPU lea la señal bongo_hit como si fuera un dato en memoria.
+
+![Diagrama general]()
