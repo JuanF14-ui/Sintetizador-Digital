@@ -117,6 +117,185 @@ Aunque actualmente es un SoC lógico simulado, este proyecto puede escalarse a u
 
 ---
 ## Diagrama ASM:
+### Diagrama ASM módulo nota:
+```mermaid
+graph TD
+    %% ========== DIAGRAMA DE ESTADOS MIDI NOTE SENDER ==========
+    A[Reset] --> IDLE
+
+    %% --- Estado IDLE ---
+    IDLE{distance_ready?} -- No --> IDLE
+    IDLE{distance_ready?} -- Sí --> C1(Calcular nota MIDI) --> SEND1
+    
+    C1 -.->|"if distance_cm < 5: note=80<br>else if distance_cm > 60: note=50<br>else: note=80-((distance_cm-5)*30/55)"| C1
+
+    %% --- Estados de Transmisión ---
+    SEND1{uart_ready?} -- No --> SEND1
+    SEND1{uart_ready?} -- Sí --> O1["midi_byte <= 8'h90 (Note On)<br>midi_send <= 1"] --> SEND2
+
+    SEND2{uart_ready?} -- No --> SEND2
+    SEND2{uart_ready?} -- Sí --> O2["midi_byte <= note<br>midi_send <= 1"] --> SEND3
+
+    SEND3{uart_ready?} -- No --> SEND3
+    SEND3{uart_ready?} -- Sí --> O3["midi_byte <= 8'd100 (Velocity)<br>midi_send <= 1"] --> IDLE
+
+    %% ========== ESTILOS ==========
+    classDef states fill:#dbe4ff,stroke:#333,stroke-width:2px;
+    classDef operations fill:#fff,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5;
+    
+    class IDLE,SEND1,SEND2,SEND3 states;
+    class C1,O1,O2,O3 operations;
+```
+Este diagrama muestra la máquina de estados para el envío de notas MIDI. Comienza en estado IDLE hasta recibir señal distance_ready, luego calcula la nota según la distancia medida y envía secuencialmente: 1) Comando Note On, 2) Valor de la nota, y 3) Velocidad fija (100), volviendo a IDLE al completar la transmisión. Todos los estados esperan señal uart_ready antes de transmitir.
+### Diagrama ASM módulo volumen: 
+```mermaid
+graph TD
+    %% ========== DIAGRAMA DE ESTADOS MIDI VOLUME SENDER ==========
+    A[Reset] --> IDLE
+
+    %% --- Estado IDLE ---
+    IDLE{distance_ready?} -- No --> IDLE
+    IDLE{distance_ready?} -- Sí --> C1(Calcular volumen MIDI) --> SEND1
+    
+    C1 -.->|"if distance_cm < 5: volume=127<br>else if distance_cm > 60: volume=0<br>else: volume=127-((distance_cm-5)*127/55)"| C1
+
+    %% --- Estados de Transmisión ---
+    SEND1{uart_ready?} -- No --> SEND1
+    SEND1{uart_ready?} -- Sí --> O1["midi_byte <= 8'hB0 (Control Change)<br>midi_send <= 1"] --> SEND2
+
+    SEND2{uart_ready?} -- No --> SEND2
+    SEND2{uart_ready?} -- Sí --> O2["midi_byte <= 8'h07 (CC Volume)<br>midi_send <= 1"] --> SEND3
+
+    SEND3{uart_ready?} -- No --> SEND3
+    SEND3{uart_ready?} -- Sí --> O3["midi_byte <= volume<br>midi_send <= 1"] --> IDLE
+
+    %% ========== ESTILOS ==========
+    classDef states fill:#dbe4ff,stroke:#333,stroke-width:2px;
+    classDef operations fill:#fff,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5;
+    
+    class IDLE,SEND1,SEND2,SEND3 states;
+    class C1,O1,O2,O3 operations;
+```
+Este diagrama muestra la máquina de estados para control de volumen MIDI. Comienza en IDLE hasta recibir distance_ready, calcula el volumen (127=máximo, 0=silencio) y envía: 1) Comando Control Change (0xB0), 2) Parámetro de volumen (0x07), y 3) Valor calculado, volviendo a IDLE. Cada transmisión requiere uart_ready.
+### Diagrama ASM módulo UART:  
+```mermaid
+graph TD
+    %% ========== DIAGRAMA DE ESTADOS UART TX ==========
+    A[Reset] --> IDLE_TX
+
+    %% --- Estado IDLE ---
+    IDLE_TX{send & ready?} -- No --> IDLE_TX
+    IDLE_TX{send & ready?} -- Sí --> O1["Inicialización:<br>• shift_reg <= {1'b1, data_in, 1'b0}<br>• sending <= 1<br>• ready <= 0<br>• clk_count <= 0<br>• bit_index <= 0"] --> SENDING
+
+    %% --- Estado SENDING ---
+    SENDING{clk_count == CLK_PER_BIT-1?} -- No --> O2["clk_count <= clk_count + 1"] --> SENDING
+    SENDING{clk_count == CLK_PER_BIT-1?} -- Sí --> C2["Transmisión:<br>• tx <= shift_reg[0]<br>• shift_reg <= {1'b0, shift_reg[9:1]}<br>• clk_count <= 0"] --> C3{bit_index == 9?}
+
+    %% --- Transición Final ---
+    C3{bit_index == 9?} -- Sí --> O3["Finalización:<br>• sending <= 0<br>• ready <= 1"] --> IDLE_TX
+    C3{bit_index == 9?} -- No --> O4["bit_index <= bit_index + 1"] --> SENDING
+
+    %% ========== ESTILOS ==========
+    classDef states fill:#dbe4ff,stroke:#333,stroke-width:2px;
+    classDef operations fill:#fff,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5;
+    classDef conditions fill:#fff,stroke:#333,stroke-width:2px;
+    
+    class IDLE_TX,SENDING states;
+    class O1,O2,O3,O4 operations;
+    class C2,C3 conditions;
+```
+Máquina de estados para transmisor UART que: 1) Espera en IDLE hasta recibir señal de envío, 2) Transmite bits serialmente con temporización precisa (CLK_PER_BIT), 3) Maneja el formato UART estándar (start bit + 8 datos + stop bit), y 4) Vuelve a IDLE cuando completa la transmisión, señalizando con 'ready'.
+
+
+
+
+
+### Diagrama de Bloques / Conexiones del Theremin MIDI (ESP32)
+
+Este diagrama muestra los principales módulos lógicos y físicos y sus interconexiones dentro del sistema Theremin MIDI basado en el ESP32.
+
+```mermaid
+graph TD
+    %% ========== ENTRADAS ==========
+    subgraph Sensores["Entradas - Sensores Ultrasónicos"]
+        HCSR04_TONO[Sensor HC-SR04 Tono]
+        HCSR04_VOL[Sensor HC-SR04 Volumen]
+    end
+
+    %% ========== PROCESAMIENTO ==========
+    subgraph ESP32["ESP32 (Microcontrolador/FPGA)"]
+        CLK_SYS(Reloj del Sistema)
+        RST_SW(Reset)
+        
+        subgraph TOP["Top Module"]
+            %% --- Módulos Principales ---
+            NoteSender[midi_note_sender]
+            VolumeSender[midi_volume_sender]
+            UartTx[uart_tx]
+            
+            %% --- Señales de Control ---
+            CLK_SYS --> NoteSender
+            CLK_SYS --> VolumeSender
+            CLK_SYS --> UartTx
+            RST_SW --> NoteSender
+            RST_SW --> VolumeSender
+            RST_SW --> UartTx
+            
+            %% --- Interfaz de Sensores ---
+            TRIG1_PIN(GPIO Trigger Tono)
+            TRIG2_PIN(GPIO Trigger Volumen)
+            ECHO1_PIN(GPIO Echo Tono)
+            ECHO2_PIN(GPIO Echo Volumen)
+            
+            %% --- Lógica de Procesamiento ---
+            D_TONO[distancia_tono]
+            L_TONO[listo_tono]
+            D_VOL[distancia_volumen]
+            L_VOL[listo_volumen]
+            
+            D_TONO -->|input| NoteSender
+            L_TONO -->|input| NoteSender
+            D_VOL -->|input| VolumeSender
+            L_VOL -->|input| VolumeSender
+            
+            %% --- Salidas MIDI ---
+            NoteSender -->|midi_byte_note| MUX_LOGIC
+            NoteSender -->|midi_send_note| MUX_LOGIC
+            VolumeSender -->|midi_byte_vol| MUX_LOGIC
+            VolumeSender -->|midi_send_vol| MUX_LOGIC
+            
+            %% --- Multiplexación ---
+            MUX_LOGIC{Lógica de\nMultiplexación} -->|midi_byte_mux| UartTx
+            MUX_LOGIC -->|midi_send_mux| UartTx
+            UartTx -->|uart_ready| MUX_LOGIC
+        end
+        
+        %% --- Pines físicos ---
+        TOP --> TX_PIN(GPIO UART TX)
+    end
+
+    %% ========== SALIDAS ==========
+    subgraph MIDI_OUT["Salida MIDI"]
+        TX_PIN --> MIDI_CON[Conector DIN-5]
+        MIDI_CON --> DISPOSITIVO[Sintetizador/DAW]
+    end
+
+    %% ========== CONEXIONES FÍSICAS ==========
+    HCSR04_TONO -->|Trigger| TRIG1_PIN
+    HCSR04_TONO -->|Echo| ECHO1_PIN
+    HCSR04_VOL -->|Trigger| TRIG2_PIN
+    HCSR04_VOL -->|Echo| ECHO2_PIN
+
+    %% ========== ESTILOS ==========
+    classDef sensor fill:#f8f9fa,stroke:#495057,stroke-width:2px;
+    classDef esp32 fill:#e9f5ff,stroke:#1c7ed6,stroke-width:2px;
+    classDef midi fill:#e6fcf5,stroke:#099268,stroke-width:2px;
+    
+    class Sensores sensor;
+    class ESP32 esp32;
+    class MIDI_OUT midi;
+```
+
 
 ## Maquina de estados:
 
