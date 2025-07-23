@@ -76,7 +76,7 @@ if (msg.address == "/dev1/piano") {
             }
 ```
 
-Se difinieron las 16 notas MIDI pertenecientes a las combinaciones posibles entre las 4 cuerdas, donde a través de un condicional se verifica si las cuerdas están siendo tocadas; en caso de ser así, el dato entero recibido se convierte en el indice de una de las notas de la lista, procediendo con la respectiva reproducción de la nota indicada.
+Se difinieron las 16 notas MIDI pertenecientes a las combinaciones posibles entre las 4 cuerdas, tomando en cuenta que el valor de 0 en la lista "arreglo" no representa ningún sonido en específico ya que corresponde al caso donde no se está tocando ninguna cuerda. A través de un condicional, se verifica si las cuerdas están siendo tocadas; en caso de ser así, el dato entero recibido se convierte en el indice de una de las notas de la lista, procediendo con la respectiva reproducción de la nota indicada.
 
 
 
