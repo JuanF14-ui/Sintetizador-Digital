@@ -359,10 +359,52 @@ El sistema no solo genera audio localmente con PWM, sino que además envía even
 - ChucK interpreta los eventos y genera audio real (síntesis por software).
 
 De esta forma, el sistema permite orquestar múltiples teclados conectados en red, con reproducción colectiva por ChucK en el computador del profesor o en un entorno distribuido.
-
+-------------------------------------------------------------------------------------------------------------------------------------------
 #### Problemas para implementar la ESP32 C6
+##### Fallos durante la integración de la ESP32‑C6
 
+Para conectar la FPGA con el puente serie→WiFi/MQTT (ESP32‑C6) se presentaron varios errores. A continuación se documentan los síntomas observados, el mensaje de consola y las acciones correctivas.  
 
+> **Evidencia:**  
+> ![Log ESP32-C6](docs/esp32c6_invalid_header.jpg)  
+> (Mensaje repetitivo: `Invalid header: 0xffffffff`, `boot:0x7b (SPI FAST FLASH BOOT)`, `rst:0x7 (TG0 WDT HPSYS)`)
+
+###### 1. Mensaje: `Invalid header: 0xffffffff`
+| Síntoma | Causa probable | Solución aplicada |
+|--------|-----------------|-------------------|
+| La terminal muestra continuamente `Invalid header: 0xffffffff` y no arranca el firmware. | Flash vacío/corrupto o baudrate incorrecto al descargar; conexiones SPI/flash internas no inicializadas. | Reflashear con `esptool.py` o IDE (Arduino/IDF) a 460800 baudios; borrar flash completo (`erase_flash`) y volver a cargar el binario. Verificar que el binario sea para ESP32‑C6. |
+
+###### 2. `boot:0x7b (SPI FAST FLASH BOOT)` pero reinicios constantes
+| Síntoma | Causa probable | Solución aplicada |
+|--------|-----------------|-------------------|
+| Bootloader aparece pero el chip se reinicia en bucle. | Pines de *strapping* mal nivelados (GPIO0/BOOT, EN/RST), alimentación inestable o watchdog sin alimentar el loop principal. | Asegurar 3.3 V estables y GND comunes; comprobar que GPIO0 esté en alto para modo flash/run; deshabilitar WDT temporalmente o alimentar el loop. |
+
+###### 3. `rst:0x7 (TG0 WDT HPSYS)`
+| Síntoma | Causa probable | Solución aplicada |
+|--------|-----------------|-------------------|
+| Reset por watchdog de temporizador general (TG0). | Código queda bloqueado esperando UART o sin *feed* al WDT. | Añadir `esp_task_wdt_reset()` o desactivar WDT en pruebas; revisar bucles bloqueantes en lectura UART. |
+
+###### 4. Ruido/garbage en UART después de flashear
+| Síntoma | Causa probable | Solución aplicada |
+|--------|-----------------|-------------------|
+| Caracteres aleatorios en la consola. | Diferencia de baudrate entre ESP32‑C6 y terminal; nivel lógico o cableado cruzado TX/RX. | Fijar baudrate igual en ambos lados (ej. 115200); revisar que TXD_FPGA → RXD_ESP32 y RXD_FPGA → TXD_ESP32, ambos a 3.3 V. |
+
+#### 5. Falta de comunicación con el broker MQTT
+| Síntoma | Causa probable | Solución aplicada |
+|--------|-----------------|-------------------|
+| No llegan mensajes al tópico. | SSID/contraseña mal configurados, broker inaccesible o puerto bloqueado. | Comprobar conexión WiFi (ping), URL/puerto del broker, credenciales MQTT y QoS. Probar con `mosquitto_sub` en el PC para aislar el problema. |
+
+###### Checklist de verificación rápida
+
+- [ ] Flash borrada y firmware correcto para ESP32‑C6.  
+- [ ] Pines BOOT/EN en niveles adecuados (modo RUN).  
+- [ ] Alimentación 3.3 V estable, GND común con la FPGA.  
+- [ ] Baudrate UART idéntico en ambos extremos.  
+- [ ] TX/RX cruzados y sin invertir niveles.  
+- [ ] WDT alimentado o deshabilitado durante pruebas.  
+- [ ] Conexión WiFi/MQTT validada con herramientas externas.
+
+-----------------------------------------------------------------------------
 
 #### Videos funcionamiento del proyecto
 [![Simulación en YouTube](https://img.youtube.com/vi/mxJqw3s66pg/hqdefault.jpg)](https://youtu.be/mxJqw3s66pg)
