@@ -359,3 +359,6 @@ El sistema no solo genera audio localmente con PWM, sino que además envía even
 - ChucK interpreta los eventos y genera audio real (síntesis por software).
 
 De esta forma, el sistema permite orquestar múltiples teclados conectados en red, con reproducción colectiva por ChucK en el computador del profesor o en un entorno distribuido.
+#### Videos funcionamiento del proyecto
+[![Simulación en YouTube](https://img.youtube.com/vi/mxJqw3s66pg/hqdefault.jpg)](https://youtu.be/mxJqw3s66pg)
+
