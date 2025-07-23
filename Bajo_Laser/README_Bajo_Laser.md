@@ -9,7 +9,7 @@ El presente repositorio describe el desarrollo de un "bajo láser" como componen
 
 ![Imagen2](Impresion3D.jpeg)
 
-El sistema se compone de cuatro módulos láser de punto (650 nm, 6 mm, 5 V, 5 mW, color rojo), orientados hacia cuatro sensores LDR (Sensores de luminosidad con fotoresistencia de salida digital). Cada sensor LDR entrega una señal de nivel alto cuando no se detecta una intensidad luminosa suficiente. Dicho umbral que puede ajustarse directamente en el módulo mediante un trimmer. Esta configuración permite que los haces láser funcionen como “cuerdas virtuales”, en donde al interrumpir alguno de ellos, el correspondiente LDR activa una señal de nivel alto, la cual es enviada directamente a la FPGA (BlackIce40), simulando el efecto de pulsar una cuerda en un instrumento tradicional, en este caso el de un bajo.
+El sistema se compone de cuatro módulos láser de punto (650 nm, 6 mm, 5 V, 5 mW, color rojo), orientados hacia cuatro sensores LDR (Sensores de luminosidad con fotoresistencia de salida digital). Cada sensor LDR entrega una señal de nivel alto cuando no se detecta una intensidad luminosa suficiente. Dicho umbral que puede ajustarse directamente en el módulo mediante un trimmer. Esta configuración permite que los haces láser funcionen como “cuerdas virtuales”, en donde al interrumpir alguno de ellos, el correspondiente LDR activa una señal de nivel alto, la cual es enviada directamente a la FPGA (BlackIce40), simulando el efecto de pulsar una cuerda en un instrumento tradicional, en este caso el de un bajo. Para el correcto desempeño del làser se desarrolló una estructura mediante impresión 3D, de tal manera que el laser se encuentre en una posición fija y que efectivamente le llegue toda la luz a la fotorresistencia; también la estructura propicia un ambiente controlado al fotorresistor para que no se vea afectado ante las diversas condiciones lumínicas del ambiente.
 
 ![Imagen3](Fussion.jpeg)
 ![Imagen4](Tapa.jpeg)
@@ -35,7 +35,7 @@ Por otra parte, a través de un potenciometro
 
 ## Requerimientos funcionales
 
-- Uso de LDR para la generación de una funete de luz estable.
+- Uso de LDR para la generación de una fuente de luz estable.
 - Implementación de un modulo con fotorresistencia incorporada para medir cuando se toca una nota.
 - Generación de nota MIDI con chuck
 - Uso de del chip SoC ESP32 como transmisor de datos entre la FPGA a través de red wifi.
@@ -48,6 +48,8 @@ Por otra parte, a través de un potenciometro
 ## Simulación verilog-gtkwave
 
 ![Imagen1](Testbench.png)
+
+Como se observa, cuando la variable de read (rd) y la de chipset se encuentre encendida, a la salida se encontrará el dato en el pin de entrada y en la direcció en memoria deseada. 
 
 ## Logs
 
