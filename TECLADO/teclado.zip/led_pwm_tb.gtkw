@@ -1,0 +1,26 @@
+[*]
+[*] GTKWave Analyzer v3.3.117 (w)1999-2023 BSI
+[*] Thu Jul 17 19:33:35 2025
+[*]
+[dumpfile] "/home/digital/proyecto/femtoriscv/sim/led_pwm_tb.vcd"
+[dumpfile_mtime] "Thu Jul 17 19:21:43 2025"
+[dumpfile_size] 16926960
+[savefile] "/home/digital/proyecto/femtoriscv/led_pwm_tb.gtkw"
+[timestart] 0
+[size] 1000 600
+[pos] 344 -8
+*-22.775955 9040000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] led_pwm_tb.
+[sst_width] 216
+[signals_width] 110
+[sst_expanded] 1
+[sst_vpaned_height] 150
+@28
+led_pwm_tb.uut.clk
+@24
+led_pwm_tb.uut.duty[17:0]
+led_pwm_tb.uut.freq[17:0]
+@25
+led_pwm_tb.uut.pwm
+[pattern_trace] 1
+[pattern_trace] 0
