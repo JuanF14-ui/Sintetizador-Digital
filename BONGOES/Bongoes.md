@@ -70,7 +70,8 @@ flowchart TB
 
 ````
 
-# Escalabilidad 
+# Diagrama de arquitectura de interconexión en FPGA: 
 
+El diseño digital del sistema se implementa como un SoC (System-on-Chip) en la FPGA Colorlight 5A-75E, basado en un procesador FemtoRV32. La siguiente figura muestra el diagrama de interconexión generado automáticamente por la herramienta de síntesis lógica.
 
 
