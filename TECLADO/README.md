@@ -415,8 +415,13 @@ Para conectar la FPGA con el puente serie→WiFi/MQTT (ESP32‑C6) se presentaro
 -----------------------------------------------------------------------------
 
 #### Videos funcionamiento del proyecto
-[![Simulación en YouTube](https://img.youtube.com/vi/mxJqw3s66pg/hqdefault.jpg)](https://youtu.be/mxJqw3s66pg)
 
+[![Simulación en YouTube](https://img.youtube.com/vi/wSBYV9-H8Fc/hqdefault.jpg)](https://youtu.be/wSBYV9-H8Fc)
+Video expliacndo el soc y el funcionamiento del proyecto
+
+
+[![Simulación en YouTube](https://img.youtube.com/vi/mxJqw3s66pg/hqdefault.jpg)](https://youtu.be/mxJqw3s66pg)
+video del funcionamiento de la intensidad del led 
 [![Simulación en YouTube](https://img.youtube.com/vi/etBYM3xEQlE/hqdefault.jpg)](https://youtu.be/etBYM3xEQlE)
 
 
