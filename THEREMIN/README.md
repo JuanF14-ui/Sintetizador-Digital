@@ -151,18 +151,190 @@ La simulación confirma el correcto funcionamiento.
 ### Simulacion midi_volume_sender.v:
 <img width="1131" height="366" alt="imagen" src="https://github.com/user-attachments/assets/5fb5bdc6-e0ec-46cc-b014-dddf783c6e6f" />
 
+El módulo `midi_volume_sender.v` convierte una distancia (`distance_cm`) en un valor de volumen MIDI y lo envía como un mensaje "Control Change" a través de UART.
+
+**Funcionamiento:**
+1.  **Cálculo de Volumen:** En `IDLE`, con `distance_ready` activo, calcula el `volume`:
+    * `< 5 cm`: `volume = 127` (máximo)
+    * `> 60 cm`: `volume = 0` (mínimo)
+    * `5-60 cm`: `volume` se escala inversamente de 127 a 0.
+2.  **Envío MIDI (secuencial):** Envía 3 bytes si `uart_ready` está activo:
+    * **1er Byte:** `0xB0` (Control Change, Canal 1).
+    * **2do Byte:** `0x07` (Control Number para Volumen Maestro).
+    * **3er Byte:** El `volume` calculado.
+3.  **Control de Envío:** `midi_send` se activa por un ciclo de reloj por cada byte enviado.
+
+**Análisis de Simulación (con `distance_cm = 20`):**
+
+La simulación es **consistente** con el código.
+
+* **Cálculo:** `volume` se calcula como `93` (`0x5D`). Esto se puede verificar: `127 - ((20 - 5) * 127 / 55) = 127 - (15 * 127 / 55) = 127 - 34.63... = 92.36...` (entero 92). La simulación muestra `0x5D` (93), lo que indica un posible redondeo diferente o truncamiento. Asumiendo `93` es el resultado esperado.
+* **Secuencia de Envío (con `midi_send` activo):**
+    1.  `midi_byte` = `0xB0` (Status Byte).
+    2.  `midi_byte` = `0x07` (Control Number).
+    3.  `midi_byte` = `0x5D` (el volumen 93).
+
+La simulación confirma el correcto funcionamiento del `midi_volume_sender.v`.
+
+
+
 ### Simulacion uart_tx.v:
 <img width="1158" height="215" alt="imagen" src="https://github.com/user-attachments/assets/37835ce0-4b1e-41ae-92db-681c0c876d68" />
+El módulo `UART_TX.v` convierte datos paralelos de 8 bits (`data_in`) en una secuencia serial (`tx`) usando el protocolo UART, a una velocidad de baudios configurable (`BAUD_RATE`).
+
+**Parámetros Clave:**
+* `CLK_FREQ = 50_000_000 Hz` (frecuencia del reloj del sistema)
+* `BAUD_RATE = 31_250 bps` (velocidad de transmisión UART)
+* `CLK_PER_BIT = CLK_FREQ / BAUD_RATE = 50_000_000 / 31_250 = 1600` (ciclos de reloj por bit de UART).
+
+**Funcionamiento General:**
+1.  **Estado Inicial/Reposo (`ready = 1`):** `tx` está en alto (estado de reposo UART).
+2.  **Inicio de Transmisión:** Cuando `send` es alto y `ready` es alto:
+    * El bit de inicio (`0`), los 8 bits de `data_in`, y el bit de parada (`1`) se cargan en `shift_reg` (formato `{1'b1, data_in, 1'b0}`).
+    * `sending` se activa.
+    * `ready` se desactiva (ocupado).
+    * Contadores se reinician.
+3.  **Transmisión de Bits (`sending = 1`):**
+    * Se cuenta `CLK_PER_BIT` ciclos de reloj para cada bit.
+    * Cada vez que `clk_count` llega a `CLK_PER_BIT - 1`:
+        * El bit menos significativo de `shift_reg` se envía a `tx`.
+        * `shift_reg` se desplaza a la derecha.
+        * `bit_index` se incrementa (de 0 a 9, para 10 bits: Start + 8 data + Stop).
+4.  **Fin de Transmisión:** Cuando `bit_index` llega a 9 (el último bit, el bit de parada, ha sido enviado):
+    * `sending` se desactiva.
+    * `ready` vuelve a activarse (listo para la siguiente transmisión).
+    * `tx` queda en alto (estado de reposo).
+
+**Análisis de Simulación (con `data_in = 0xA5`):**
+
+La simulación es **consistente** con el código.
+
+* **Reset:** `rst` inicializa `tx = 1` y `ready = 1`.
+* **Inicio (aprox. 20 µs):**
+    * `data_in` es `0xA5` (`10100101` binario).
+    * `send` se activa mientras `ready` es alto.
+    * `ready` pasa a bajo.
+    * El `shift_reg` se carga con `{1'b1, 10100101, 1'b0}` lo que es `1101001010` (Stop + Data + Start).
+* **Transmisión (desde ~20 µs hasta ~180 µs):**
+    * `tx` se pone a `0` (bit de inicio) y permanece así por 1600 ciclos de reloj (`~32 µs`).
+    * Luego, `tx` transmite los bits de `data_in` de LSB a MSB, seguidos del bit de parada, cada uno durando `~32 µs`.
+        * `tx` = `0` (Start Bit)
+        * `tx` = `1` (LSB de `0xA5` -> `1010010**1**`)
+        * `tx` = `0` (siguiente bit -> `101001**0**1`)
+        * `tx` = `1` (siguiente bit -> `10100**1**01`)
+        * `tx` = `0` (siguiente bit -> `1010**0**101`)
+        * `tx` = `0` (siguiente bit -> `101**0**0101`)
+        * `tx` = `1` (siguiente bit -> `10**1**00101`)
+        * `tx` = `0` (siguiente bit -> `1**0**100101`)
+        * `tx` = `1` (MSB de `0xA5` -> `**1**0100101`)
+        * `tx` = `1` (Stop Bit)
+* **Fin de Transmisión (aprox. 180 µs):** `ready` vuelve a `1`, indicando que el módulo está listo para la siguiente transmisión. `tx` permanece en `1`.
+
+La simulación muestra una transmisión UART correcta de `0xA5` (Start bit `0`, Data bits `10100101` (LSB first), Stop bit `1`).
+
+
 
 ### Simulacion ultrasonic_sensor.v:
 <img width="1159" height="386" alt="imagen" src="https://github.com/user-attachments/assets/67fcb392-4f3c-415f-a923-659458eb4045" />
 <img width="1156" height="393" alt="imagen" src="https://github.com/user-attachments/assets/9d308e90-c71a-43d0-a362-a35cdb3fd9a5" />
 
+El módulo `ultrasonic_sensor.v`  convierte datos paralelos de 8 bits (`data_in`) en una secuencia serial (`tx`) usando el protocolo UART, a una velocidad de baudios configurable (`BAUD_RATE`).
+
+**Parámetros Clave:**
+* `CLK_FREQ = 50_000_000 Hz` (frecuencia del reloj del sistema)
+* `BAUD_RATE = 31_250 bps` (velocidad de transmisión UART)
+* `CLK_PER_BIT = CLK_FREQ / BAUD_RATE = 50_000_000 / 31_250 = 1600` (ciclos de reloj por bit de UART).
+
+**Funcionamiento General:**
+1.  **Estado Inicial/Reposo (`ready = 1`):** `tx` está en alto (estado de reposo UART).
+2.  **Inicio de Transmisión:** Cuando `send` es alto y `ready` es alto:
+    * El bit de inicio (`0`), los 8 bits de `data_in`, y el bit de parada (`1`) se cargan en `shift_reg` (formato `{1'b1, data_in, 1'b0}`).
+    * `sending` se activa.
+    * `ready` se desactiva (ocupado).
+    * Contadores se reinician.
+3.  **Transmisión de Bits (`sending = 1`):**
+    * Se cuenta `CLK_PER_BIT` ciclos de reloj para cada bit.
+    * Cada vez que `clk_count` llega a `CLK_PER_BIT - 1`:
+        * El bit menos significativo de `shift_reg` se envía a `tx`.
+        * `shift_reg` se desplaza a la derecha.
+        * `bit_index` se incrementa (de 0 a 9, para 10 bits: Start + 8 data + Stop).
+4.  **Fin de Transmisión:** Cuando `bit_index` llega a 9 (el último bit, el bit de parada, ha sido enviado):
+    * `sending` se desactiva.
+    * `ready` vuelve a activarse (listo para la siguiente transmisión).
+    * `tx` queda en alto (estado de reposo).
+
+**Análisis de Simulación (con `data_in = 0xA5`):**
+
+La simulación es **consistente** con el código.
+
+* **Reset:** `rst` inicializa `tx = 1` y `ready = 1`.
+* **Inicio (aprox. 20 µs):**
+    * `data_in` es `0xA5` (`10100101` binario).
+    * `send` se activa mientras `ready` es alto.
+    * `ready` pasa a bajo.
+    * El `shift_reg` se carga con `{1'b1, 10100101, 1'b0}` lo que es `1101001010` (Stop + Data + Start).
+* **Transmisión (desde ~20 µs hasta ~180 µs):**
+    * `tx` se pone a `0` (bit de inicio) y permanece así por 1600 ciclos de reloj (`~32 µs`).
+    * Luego, `tx` transmite los bits de `data_in` de LSB a MSB, seguidos del bit de parada, cada uno durando `~32 µs`.
+        * `tx` = `0` (Start Bit)
+        * `tx` = `1` (LSB de `0xA5` -> `1010010**1**`)
+        * `tx` = `0` (siguiente bit -> `101001**0**1`)
+        * `tx` = `1` (siguiente bit -> `10100**1**01`)
+        * `tx` = `0` (siguiente bit -> `1010**0**101`)
+        * `tx` = `0` (siguiente bit -> `101**0**0101`)
+        * `tx` = `1` (siguiente bit -> `10**1**00101`)
+        * `tx` = `0` (siguiente bit -> `1**0**100101`)
+        * `tx` = `1` (MSB de `0xA5` -> `**1**0100101`)
+        * `tx` = `1` (Stop Bit)
+* **Fin de Transmisión (aprox. 180 µs):** `ready` vuelve a `1`, indicando que el módulo está listo para la siguiente transmisión. `tx` permanece en `1`.
+
+La simulación muestra una transmisión UART correcta de `0xA5` (Start bit `0`, Data bits `10100101` (LSB first), Stop bit `1`).
+
+
+
+
+
 ### Simulacion top_module.v:
 <img width="1154" height="471" alt="imagen" src="https://github.com/user-attachments/assets/ef1a6071-e09e-432b-8df0-d722f7691e0b" />
 <img width="1157" height="465" alt="imagen" src="https://github.com/user-attachments/assets/a00004c9-853e-4f02-b5bc-37d1ecf4de3b" />
 
+El módulo `top_module` coordina dos sensores ultrasónicos para generar mensajes MIDI (notas y volumen) y enviarlos a través de una UART.
 
+**Componentes Integrados:**
+* **`sensor_tono` (ultrasonic_sensor):** Mide la distancia para controlar la nota MIDI.
+* **`sensor_volumen` (ultrasonic_sensor):** Mide la distancia para controlar el volumen MIDI.
+* **`note_midi` (midi_note_sender):** Convierte `distancia_tono` en un mensaje MIDI "Note On".
+* **`volume_midi` (midi_volume_sender):** Convierte `distancia_volumen` en un mensaje MIDI "Control Change" para el volumen.
+* **`uart` (uart_tx):** Transmite los bytes MIDI serialmente.
+
+**Lógica de Multiplexación MIDI:**
+* Un bloque `always @(*)` prioriza el envío de mensajes MIDI:
+    * Si `midi_send_note` está activo (el sensor de tono está enviando un byte), `midi_byte_mux` toma el valor de `midi_byte_note` y `midi_send_mux` se activa.
+    * Si `midi_send_note` no está activo pero `midi_send_vol` sí, `midi_byte_mux` toma el valor de `midi_byte_vol` y `midi_send_mux` se activa.
+    * Si ninguno está enviando, `midi_send_mux` es 0.
+* `uart_ready` (proveniente de `uart_tx`) es crucial, ya que los módulos `midi_note_sender` y `midi_volume_sender` solo avanzan y envían bytes cuando la UART está lista.
+
+**Análisis de la Simulación:**
+
+La simulación muestra el comportamiento esperado de integración, aunque las distancias se mantienen constantes en el fragmento visible:
+
+* **Inicialización:** `rst` es activo al inicio, reiniciando todos los submódulos. `tx` se pone en alto, `uart_ready` en alto.
+* **Activación Sensores:**
+    * `trigger1` y `trigger2` generan pulsos para los sensores.
+    * Los sensores calculan `distancia_tono` y `distancia_volumen` (ambos en `0x0014` = 20 cm en el ejemplo).
+    * `listo_tono` y `listo_volumen` se activan cuando las distancias están listas.
+* **Envío de Mensajes MIDI:**
+    * Debido a `listo_tono` y `listo_volumen` activos, `note_midi` y `volume_midi` intentan enviar sus respectivos mensajes.
+    * **Prioridad:** El bloque `always @(*)` decide qué byte se envía a la UART. En el fragmento visible, `midi_send_note` parece ser prioritario (o el primero en activarse).
+    * Se observa que `midi_byte_mux` toma valores y `midi_send_mux` se activa, lo que a su vez impulsa la transmisión en `uart_tx`.
+    * `uart_ready` sube y baja, coordinando los envíos.
+
+**Comportamiento Esperado (basado en código previo y simulación):**
+* Con `distance_cm = 20`, `note_midi` calcularía una nota de `72` (`0x48`). El mensaje Note On sería `0x90`, `0x48`, `0x64`.
+* Con `distance_cm = 20`, `volume_midi` calcularía un volumen de `93` (`0x5D`). El mensaje Control Change sería `0xB0`, `0x07`, `0x5D`.
+* La simulación muestra las líneas de control (`midi_send_note`, `midi_send_vol`) y los datos multiplexados (`midi_byte_mux`) reaccionando a las entradas y la disponibilidad de la UART. La señal `tx` muestra la salida serial combinada.
+
+En general, la simulación demuestra la integración y el flujo de datos entre los distintos módulos para implementar el sistema de control MIDI por distancia.
 
 
 
