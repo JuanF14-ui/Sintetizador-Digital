@@ -362,3 +362,4 @@ De esta forma, el sistema permite orquestar múltiples teclados conectados en re
 #### Videos funcionamiento del proyecto
 [![Simulación en YouTube](https://img.youtube.com/vi/mxJqw3s66pg/hqdefault.jpg)](https://youtu.be/mxJqw3s66pg)
 
+[![Simulación en YouTube](https://img.youtube.com/vi/etBYM3xEQlE/hqdefault.jpg)](https://youtu.be/etBYM3xEQlE)
