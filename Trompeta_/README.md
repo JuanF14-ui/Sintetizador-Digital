@@ -110,6 +110,12 @@ A continuación, a través de un Diagrama ASM, se sintetiza las combinaciones de
 <img alt="image" src="https://github.com/SantiH75/Sintetizador-de-Chuck-Digital-1/blob/main/Trompeta_/IMG-20250722-WA0012.jpg" />
 </p>
 
+### Simulaciones
+
+<p align="center">
+<img alt="image" src="https://github.com/JuanF14-ui/Sintetizador-de-Chuck-Digital/blob/main/Trompeta_/IMG-20250701-WA0001.jpg" />
+</p>
+
 ## Contador de pulsos
 
 ### Caracterización del sistema físico
@@ -168,6 +174,12 @@ A continuación, se muestra el diagrama ASM que sintetiza el proceso con su resp
 <img alt="image" src="https://github.com/SantiH75/Sintetizador-de-Chuck-Digital-1/blob/main/Trompeta_/IMG-20250722-WA0019.jpg" />
 </p>
 
+### Simulaciones
+
+<p align="center">
+<img alt="image" src="https://github.com/JuanF14-ui/Sintetizador-de-Chuck-Digital/blob/main/Trompeta_/IMG-20250723-WA0013.jpg" />
+</p>
+
 # Diseño de prototipo
 
 Para el desarrollo integral del proyecto, se diseñó, modeló e implementó un prototipo utilizando impresión 3D. Este diseño tiene como propósito proteger y almacenar los componentes de hardware utilizados en la aplicación: la hélice encargada de captar los pulsos, los botones que generan un código binario traducido en notas musicales, las tarjetas de desarrollo (ESP32 y FPGA) y el sistema de alimentación, compuesto por una batería externa (power bank).
@@ -178,4 +190,16 @@ Adicionalmente, se incorporaron dos elementos estéticos en la parte frontal y p
 
 <p align="center">
 <img alt="image" src="https://github.com/SantiH75/Sintetizador-de-Chuck-Digital-1/blob/main/Trompeta_/IMG-20250723-WA0001.jpg" />
+</p>
+
+<p align="center">
+<img alt="image" src="https://github.com/JuanF14-ui/Sintetizador-de-Chuck-Digital/blob/main/Trompeta_/IMG-20250723-WA0021.jpg" />
+</p>
+
+<p align="center">
+<img alt="image" src="https://github.com/JuanF14-ui/Sintetizador-de-Chuck-Digital/blob/main/Trompeta_/IMG-20250723-WA0019.jpg" />
+</p>
+
+<p align="center">
+<img alt="image" src="https://github.com/JuanF14-ui/Sintetizador-de-Chuck-Digital/blob/main/Trompeta_/IMG-20250723-WA0015.jpg" />
 </p>

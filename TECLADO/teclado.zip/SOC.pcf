@@ -1,0 +1,37 @@
+# CLK 25 MHZ
+set_io clk 60 # Señal de reloj del hardware 25 MHz
+
+# Led indicator
+set_io LEDS 28 # RED LED
+
+# Reset button
+set_io -pullup yes resetn 52 # GREEN LED | SW1
+
+## UART
+set_io TXD 104 # TX
+set_io RXD 134 # RX
+
+# Salidas PWM para Audio y LED
+set_io PWM_LED_OUT 55  # PMOD1 Pin 1 (J2.1) - Para PWM de control de LED externo # RED LED
+set_io PWM_AUDIO_OUT 32 # PMOD1 Pin 2 (J2.2) - Para PWM de audio (altavoz/buzzer)
+
+# Entradas de Botones para el Teclado (4 bits: BUTTONS_IN[3:0])
+# Conectados a los pines de PMOD 2 (J3) y usando pull-ups internos.
+# Conectar cada interruptor entre el pin de la FPGA y GND.
+# El valor será '0' cuando el botón esté presionado.
+set_io -pullup yes BUTTONS_IN[0] 9 # PMOD2 Pin 1 (J3.1) - Botón 0
+set_io -pullup yes BUTTONS_IN[1] 10 # PMOD2 Pin 2 (J3.2) - Botón 1
+set_io -pullup yes BUTTONS_IN[2] 11 # PMOD2 Pin 3 (J3.3) - Botón 2
+set_io -pullup yes BUTTONS_IN[3] 12 # PMOD2 Pin 4 (J3.4) - Botón 3
+
+
+# Opciones de configuración para port--pin
+# set_io [-nowarn] [-pullup yes|no] [-pullup_resistor 3P3K|6P8K|10K|100K] port pin
+
+# set_io clk 60 # Señal de reloj del hardware 25 MHz
+
+# COMENTARIOS
+# set_io port 56 # RED LED
+# set_io port 55 # YELLOW LED
+# set_io port 52 # GREEN LED | SW1
+# set_io port 49 # BLUE LED | SW2

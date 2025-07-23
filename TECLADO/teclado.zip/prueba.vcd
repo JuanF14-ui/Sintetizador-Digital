@@ -1,0 +1,36 @@
+$date
+	Sat Jul 19 19:54:58 2025
+$end
+$version
+	GTKWave Analyzer v3.3.117 (w)1999-2023 BSI
+$end
+$timescale
+	1ps
+$end
+$scope module keyboard_pwm_tb $end
+$var wire 1 # pwm $end
+$var reg 4 " btn[3:0] $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 "
+x#
+$end
+#10000
+0#
+#100000000
+b1 "
+#100010000
+1#
+#300000000
+b10 "
+#500000000
+b100 "
+#700000000
+b1000 "
+#900000000
+b0 "
+#900010000
+0#
+#1000000000

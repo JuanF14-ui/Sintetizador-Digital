@@ -65,4 +65,16 @@ Para la combinación 0001, se tiene un Mi (64), para 0010 un La (69), para 0100 
 Para todas la notas el volumen de sonido se mantiene constante y la duración de cada nota es de 250ms.
 
 
+```
+[0, 64, 69,60 , 62,61 ,63 ,65,67,66,68,69,70,71,72,73] @=> int arreglo[];
+if (msg.address == "/dev1/piano") {
+                arreglo[amsg.getInt(0)] => int note;
+                <<< "Nota de piano recibida:", note >>>;
+                spork ~ playPiano(note);
+            }
+```
+
+
+
+
 
