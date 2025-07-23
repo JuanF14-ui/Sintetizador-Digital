@@ -1,6 +1,13 @@
 # Teclado-Electronica digital 1
+# Introducción
 
+La evolución de los instrumentos musicales, desde los primeros arreglos puramente analógicos hasta las implementaciones digitales actuales, ha estado marcada por la búsqueda de precisión tonal y reproducibilidad. En los sistemas analógicos, mapear cada nota (frecuencia) implica tolerancias, inestabilidad y ajustes finos que vuelven el proceso laborioso. Con la lógica digital y los FPGAs, este reto se simplifica: es posible representar y generar sonidos a partir de valores discretos, controlados y reproducibles.
 
+En este proyecto se implementa un “teclado” musical digital sobre una FPGA BlackIce iCE40. Cuatro botones físicos actúan como disparadores de notas predefinidas, mientras un periférico dedicado (perip_keyboard_pwm) calcula y entrega una señal PWM con la frecuencia correspondiente. Esta señal puede excitar un buzzer (sonido) o un LED (indicador visual), emulando el comportamiento de un instrumento real pero con la flexibilidad, modularidad y exactitud propias del dominio digital.
+
+Además, la arquitectura del SoC permite extender la interacción hacia el exterior (por ejemplo, publicando eventos vía UART/MQTT para sintetizar audio en ChucK), construyendo así un entorno colaborativo y escalable, ideal para experimentación sonora y educativa.
+
+# Funcion
 El módulo está diseñado para leer cuatro botones físicos conectados a la FPGA (BlackIce iCE40) y, a partir de su estado, generar una señal PWM (Pulse Width Modulation) cuya frecuencia corresponde a la nota asociada a cada botón. Cuando ninguno está presionado, la salida permanece en silencio (PWM desactivado). Al detectarse una pulsación, el periférico `perip_keyboard_pwm` selecciona la nota según una prioridad predefinida (DO > RE > MI > FA) o, si el SoC lo indica, aplica una frecuencia forzada desde registro. La señal PWM resultante puede dirigirse a un buzzer para producir sonido o a un LED como indicador visual del tono, permitiendo construir un teclado musical digital básico con retroalimentación audible o luminosa.
 
 
