@@ -1,5 +1,5 @@
 # Teclado-Electronica digital 1
-# Introducción
+##Introducción
 
 La evolución de los instrumentos musicales, desde los primeros arreglos puramente analógicos hasta las implementaciones digitales actuales, ha estado marcada por la búsqueda de precisión tonal y reproducibilidad. En los sistemas analógicos, mapear cada nota (frecuencia) implica tolerancias, inestabilidad y ajustes finos que vuelven el proceso laborioso. Con la lógica digital y los FPGAs, este reto se simplifica: es posible representar y generar sonidos a partir de valores discretos, controlados y reproducibles.
 
@@ -64,9 +64,9 @@ El módulo está diseñado para leer cuatro botones físicos conectados a la FPG
 
 
 ---
-# Máquinas de estado
+## Máquinas de estado
 
-## Máquina de estado: `keyboard_pwm` / `perip_keyboard_pwm`
+### Máquina de estado: `keyboard_pwm` / `perip_keyboard_pwm`
 
 | Estado | Condición de entrada                          | Acciones / salidas                                                                 | Próximo estado                                                         |
 |--------|-----------------------------------------------|------------------------------------------------------------------------------------|------------------------------------------------------------------------|
@@ -78,7 +78,7 @@ El módulo está diseñado para leer cuatro botones físicos conectados a la FPG
 > - `note_freq_from_soc` permite forzar la frecuencia desde el SoC (override).  
 > - En `PLAY`, ante cualquier cambio de botones o del override, se recalcula la frecuencia sin salir del estado.
 
-## Máquina de estado: `led_pwm` (generador PWM 50%)
+### Máquina de estado: `led_pwm` (generador PWM 50%)
 
 | Estado    | Condición                         | Acción                              | Siguiente estado                                      |
 |-----------|-----------------------------------|--------------------------------------|-------------------------------------------------------|
@@ -92,7 +92,7 @@ El módulo está diseñado para leer cuatro botones físicos conectados a la FPG
 > - Si `freq` cambia a 0 en cualquier momento, se vuelve a `WAIT_CFG`, apagando el PWM.
 
 
-## Máquina de estado: `perip_contador` (conteo de flancos)
+### Máquina de estado: `perip_contador` (conteo de flancos)
 
 | Estado     | Condición                | Acción                       | Next        |
 |------------|--------------------------|------------------------------|-------------|
@@ -159,31 +159,31 @@ Este módulo cuenta cuántas veces se presiona cada uno de los cuatro botones (f
 Los diagramas permiten verificar la estructura sintetizada, el uso de recursos y la correcta jerarquía en el diseño de cada componente del sistema.
 
 
-# Explicación sobre cómo interactúa con aplicaciones externas (mqtt, chuck) etc.
+## Explicación sobre cómo interactúa con aplicaciones externas (mqtt, chuck) etc.
 
-## Captura de la nota en la FPGA
+### Captura de la nota en la FPGA
 1. Presionas un botón en el teclado físico.  
 2. El periférico `perip_keyboard_pwm` detecta la tecla, el SoC calcula la frecuencia y genera el PWM para el buzzer.  
 3. El firmware del CPU lee ese evento (qué nota y si es ON/OFF).
 
-## Envío del evento por UART
+### Envío del evento por UART
 4. El firmware empaqueta el evento (por ejemplo: “nota 0 ON”) y lo manda por la UART del SoC.  
 5. La línea TXD de la FPGA va al RX del ESP32.
 
-## ESP32 como puente serie → WiFi/MQTT
+### ESP32 como puente serie → WiFi/MQTT
 6. El ESP32 recibe cada evento por UART.  
 7. Conectado a la red WiFi, publica ese evento en un tópico MQTT acordado (ej. `orquesta/nota`).  
 8. Cada FPGA/teclado puede usar su propio tópico o un campo “id” para distinguirse.
 
-## Broker MQTT (PC del profesor o servidor local)
+### Broker MQTT (PC del profesor o servidor local)
 9. El broker recibe los mensajes de todos los ESP32.  
 10. Los pone a disposición de cualquier cliente suscrito (en este caso, el PC con ChucK).
 
-## PC del profesor escucha los eventos
+### PC del profesor escucha los eventos
 11. En el PC, un proceso (puede ser un script intermedio o una herramienta) se suscribe al tópico MQTT.  
 12. Cada mensaje recibido (nota ON/OFF) se traduce a un evento que ChucK pueda entender (por ejemplo, vía OSC o entrada estándar).
 
-## ChucK interpreta y reproduce
+### ChucK interpreta y reproduce
 13. ChucK recibe el evento de “nota ON/OFF” con su identificador.  
 14. Asigna un instrumento/sonido a cada “id” del alumno o a cada nota.  
 15. Genera el audio en tiempo real, creando la “orquesta” virtual con todos los teclados.
