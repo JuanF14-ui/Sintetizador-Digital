@@ -362,8 +362,8 @@ De esta forma, el sistema permite orquestar múltiples teclados conectados en re
 
 ### Logs de make log-pnr, make log-syn
 
-![Logs de make log-pnr](https://github.com/JuanF14-ui/Sintetizador-de-Chuck-Digital/blob/5cee717dcdfb01cf5979fc196f2acb34bbf46851/TECLADO/docs/GTKW_4.png)
-![Logs de make log-syn](https://github.com/JuanF14-ui/Sintetizador-de-Chuck-Digital/blob/5cee717dcdfb01cf5979fc196f2acb34bbf46851/TECLADO/docs/GTKW_4.png)
+![Logs de make log-pnr](https://github.com/JuanF14-ui/Sintetizador-de-Chuck-Digital/blob/73b73abff0111b475d4780d52730137c9a18ec0f/TECLADO/docs/make_log_1.png)
+![Logs de make log-syn](https://github.com/JuanF14-ui/Sintetizador-de-Chuck-Digital/blob/73b73abff0111b475d4780d52730137c9a18ec0f/TECLADO/docs/make_log_2.png)
 
 
 -------------------------------------------------------------------------------------------------------------------------------------------
