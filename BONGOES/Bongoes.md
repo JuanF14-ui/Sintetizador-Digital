@@ -80,4 +80,10 @@ El diseño digital del sistema se implementa como un SoC (System-on-Chip) en la 
 
 Este diagrama muestra el diseño interno del puente (bridge) entre el sensor y el bus de memoria. Su función es permitir que la CPU lea la señal bongo_hit como si fuera un dato en memoria.
 
+![Diagrama general](https://github.com/migueltriana37408/Sintetizador-de-Chuck-Digital/blob/main/BONGOES/WhatsApp%20Image%202025-07-23%20at%205.01.00%20PM.jpeg?raw=true)
+
+# Diagrama del periferico bongoe_sensor: 
+
+Este es el bloque encargado de generar la señal bongo_hit. Lo hace tomando como entrada dos señales binarias (left_sensor y right_sensor), luego usa multiplexores para formar un bus de 2 bits según qué sensor esté activo y genera una señal binaria bongo_hit si se detecta un cambio (probablemente con flanco o lógica combinacional).
+
 ![Diagrama general]()
