@@ -87,7 +87,7 @@ Se difinieron las 16 notas MIDI pertenecientes a las combinaciones posibles entr
 
 ## Video de implementación
 
-[![Simulación en YouTube](https://img.youtube.com/vi/wSBYV9-H8Fc/hqdefault.jpg)]([https://youtu.be/wSBYV9-H8Fc](https://youtu.be/qhPJnRK_2KU))
+[![Simulación en YouTube](https://i9.ytimg.com/vi/qhPJnRK_2KU/mqdefault.jpg?sqp=CIDvhcQG-oaymwEmCMACELQB8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGGUgWyhVMA8=&rs=AOn4CLCZzcg2YZVcfGauWZhHsELkmgbnMA)]([https://youtu.be/wSBYV9-H8Fc](https://youtu.be/qhPJnRK_2KU))
 
 
 
